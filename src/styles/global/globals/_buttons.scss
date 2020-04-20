@@ -1,0 +1,215 @@
+
+/*------------------------------------*\
+    #Buttons 
+\*------------------------------------*/
+
+@mixin button {
+  margin-bottom: rem-calc($level6); 
+  transition: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer; 
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-weight: normal;
+  padding: 0; 
+  display: block; 
+  text-decoration: none; 
+  letter-spacing: .5px;
+
+  .icon {
+    width: rem-calc(42);
+    height: rem-calc(26px); 
+  }
+
+
+  &.is-disabled {
+    filter: grayscale(100%);
+    opacity: .4; 
+    cursor: not-allowed;
+  }
+}
+
+
+@mixin button-primary {
+  background-color: white; 
+  border-radius: 10px;
+  color: #fff;
+  background-color: $accent-color;
+  text-transform: uppercase;  
+  font-family: $tertiary-font-family; 
+  font-weight: bold; 
+  position: relative; 
+  z-index: 1; 
+  transition: all .3s ease-in-out; 
+  overflow: hidden; 
+  display: flex;
+  border: 2.5px solid $accent-color;
+  @include h6(); 
+
+  span {
+    position: relative; 
+    z-index: 2; 
+    top: 0; 
+    bottom: 0; 
+    margin: auto; 
+    padding-bottom: 2px; 
+  }
+  
+
+  &:hover, 
+  &:focus {
+    background-color: $secondary-color;
+    color:  #fff; 
+    box-shadow: 0 7px 32px -9px rgba(177, 159, 159, 0.7);
+    border: 2.5px solid $secondary-color;
+
+    &:before {
+      transform: scale(2);
+      opacity: 1; 
+    }
+  }
+
+  &:after {
+    content: " ";
+    background-color: $accent-color;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    left: 0; 
+    right: 0; 
+    top: 0; 
+    border-radius: 10px; 
+    position: absolute; 
+    transition: all .3s ease-in-out; 
+  }
+
+  &:before {
+    content: " ";
+    background-color: $secondary-color; 
+    position: absolute; 
+    width: 200px;
+    height: 200px; 
+    border-radius: 100%; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    margin: auto;  
+    z-index: 1; 
+    transform: scale(0);
+    transform-origin: center; 
+    opacity: 0; 
+    transition: all .3s ease-in-out; 
+  }
+}
+
+
+@mixin button-secondary {
+  background-color: white; 
+  border-radius: 10px;
+  color: $secondary-color;
+  background-color: transparent; 
+  text-transform: uppercase;  
+  font-family: $tertiary-font-family; 
+  font-weight: bold; 
+  position: relative; 
+  z-index: 1; 
+  transition: all .3s ease-in-out; 
+  overflow: hidden; 
+  display: flex;
+  @include h6(); 
+  border: 2.5px solid $secondary-color;
+
+  span {
+    position: relative; 
+    z-index: 2; 
+    top: 0; 
+    bottom: 0; 
+    margin: auto; 
+    padding-bottom: 2px; 
+  }
+  
+
+  &:hover, 
+  &:focus {
+    background-color: $secondary-color;
+    color:  #fff; 
+    box-shadow: 0 7px 32px -9px rgba(177, 159, 159, 0.7);
+
+    &:before {
+      transform: scale(2);
+      opacity: 1; 
+    }
+  }
+
+  &:after {
+    content: " ";
+    background-color: transparent;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    left: 0; 
+    right: 0; 
+    top: 0; 
+    border-radius: 10px; 
+    position: absolute; 
+    transition: all .3s ease-in-out; 
+  }
+
+  &:before {
+    content: " ";
+    background-color: $secondary-color; 
+    position: absolute; 
+    width: 200px;
+    height: 200px; 
+    border-radius: 100%; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    margin: auto;  
+    z-index: 1; 
+    transform: scale(0);
+    transform-origin: center; 
+    opacity: 0; 
+    transition: all .3s ease-in-out; 
+  }
+
+}
+
+
+button,
+.button {
+  @include button()
+}
+
+
+.button--primary {
+  @include button-primary; 
+}
+
+.button--secondary {
+  @include button-secondary; 
+}
+
+
+
+.button--small {
+  height: rem-calc(36px);
+  padding-right: rem-calc($level2); 
+  padding-left: rem-calc($level2);
+}
+
+.button--medium {
+  height: rem-calc(44px);
+  padding-right: rem-calc($level2); 
+  padding-left: rem-calc($level2);
+}
+
+
+.button--expanded {
+  width: 100%;
+}
+

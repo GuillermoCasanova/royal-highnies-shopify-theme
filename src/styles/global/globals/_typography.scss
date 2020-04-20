@@ -1,0 +1,333 @@
+
+/*------------------------------------*\
+    #Typography
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+    #Variables
+\*------------------------------------*/
+
+
+
+$primary-font-family: 'cera_proregular', sans-serif; // Base Font Family
+
+$secondary-font-family:  navigo, sans-serif; // Secondary Font Family
+
+$tertiary-font-family: "cera_probold", sans-serif; // Secondary Font Family
+
+$quaternary-font-family: "Whitman", sans-serif; // Secondary Font Family
+
+@mixin tertiary-font-family {
+    letter-spacing: 1px; 
+    font-weight: 900; 
+    font-family: $tertiary-font-family; 
+    @include type-setting(0);  
+}
+
+// Weights 
+$light: 200;
+$normal: 400;
+$bold: 900;
+$extra-bold: 900;
+$base-font-weight: $normal;
+
+
+// Base font sizes and numbers for typographic rhytm
+$base-font-size: 1rem;
+$base-font-size-px: 16px; 
+$base-font-line-height: 1.5; //24px
+$base-magic-number: 24; 
+$base-magic-number-px: 24px;  
+
+
+
+strong {
+  font-family: $tertiary-font-family; 
+}
+
+
+/*------------------------------------*\
+    #Reset
+\*------------------------------------*/
+
+
+dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+pre, form, p, blockquote, th, td { 
+  margin: 0;
+  padding: 0;
+}
+
+li, 
+ul {
+  list-style: none; 
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset, img {
+  border: 0;
+}
+address, caption, cite, dfn, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+caption, th {
+  text-align: left; 
+}
+
+q:before, q:after {
+  content: '';
+}
+abbr, acronym {
+  border: 0;
+}
+
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+/*------------------------------------*\
+    #Headlines
+\*------------------------------------*/
+
+
+body {
+  font-family: $primary-font-family; 
+  color: $grey--dark;
+  font-size: $base-font-size;
+  line-height: 1.5rem; 
+}
+
+
+
+.headline {
+  font-weight: bold;
+  color: $secondary-color;
+  font-family: $tertiary-font-family; 
+}
+
+
+
+
+
+/*------------------------------------*\
+    #Paragraphs
+\*------------------------------------*/
+
+p {
+  margin-bottom: rem-calc($level5);
+}
+
+
+
+
+/*------------------------------------*\
+    #Links
+\*------------------------------------*/
+
+
+@mixin link-styles() {
+  color: $secondary-color;
+  font-weight: bold; 
+  font-family: $tertiary-font-family; 
+  text-decoration: underline  dotted $quintenary-color;
+  position: relative; 
+
+  &:hover, 
+  &:focus {
+    text-decoration-color: $primary-color; 
+  }
+}
+
+
+p {
+  a {
+   @include link-styles(); 
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+    #Responsive Type with Media Queries 
+\*------------------------------------*/
+
+//This allows for type to resize as needed as oppose to needing media queries
+//that force changing type size 
+//http://robertmaple.co.uk/fluid-responsive-type-with-media-queries/
+
+//Set your font size min/max (px)
+$max-font-size : 25;
+$min-font-size : 18;
+ 
+//Set your viewport size min/max (px)
+$max-media : 4000;
+$min-media : 600;
+ 
+// Internal variables for the font/viewport ranges
+$viewport-range : $max-media - $min-media;
+$font-increments : ($max-font-size - $min-font-size) / $viewport-range;
+ 
+// Calculate min/max :root font sizes (%) - 6.25 relates to 1px being 6.25% of the default 16px html font-size. 
+$min-root-font : (6.25 * $min-font-size);
+$max-root-font : (6.25 * $max-font-size);
+ 
+// Counter variable for use in loop
+$i : 0;
+
+
+// Loop through the range between the min/max viewport sizes
+@while $i < $viewport-range {
+    
+    // Calculate the font size based on position in the loop.
+    $font-size : ((($font-increments * $i) *  6.25 ) + $min-root-font ) * 1%;
+ 
+    // Calculate the breakpoint size based on position in the loop
+    $break : $i + $min-media * 1px;
+ 
+    // Print out breakpoint with :root font-size
+    @media screen and (min-width: #{$break}) {
+        :root {   
+            font-size: $font-size; 
+        }
+    }
+    
+    // Advance the counter
+    $i : $i + 1;
+}
+ 
+// Set the min and max font/viewport sizes where text will stop scaling.
+:root {    
+    @media (max-width: #{$min-media}px){
+        font-size: $min-root-font * 1%; 
+    }
+    @media (min-width: #{$max-media}px){
+        font-size: $max-root-font * 1%; 
+    } 
+}
+
+
+/*------------------------------------*\
+    #Base Typographic Rhythm Mixins
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+    #Text Sizes and Hn sizes 
+\*------------------------------------*/
+
+// Magic numberis 24 (1.5rem), line heights 
+// must be multiples of this for vertical rhythm
+// 24 ÷ (font size) = (line height)
+
+
+/* Sizes for text too small or too large for a header tag */
+
+$default-margin-bottom: rem-calc($level3);
+
+@mixin text-mini() {
+  font-size: 0.6rem;
+  line-height: $base-magic-number / 16;
+};
+
+@mixin text-micro() {
+  font-size: 0.7rem;
+  line-height: $base-magic-number / 16;
+}; 
+
+@mixin h6() {
+  font-size: .8rem; //16px
+  line-height:  $base-magic-number / 16; //24px
+}; 
+
+@mixin h5() {
+  font-size: 1rem; //16px
+  line-height:  $base-magic-number / 16; //24px
+}; 
+
+@mixin h4() {
+  font-size: 1.125rem; //18px
+  line-height:  $base-magic-number / 18;  //24px
+}; 
+
+
+@mixin h3() { // (2)
+  font-size: 1.25rem; //20px 
+  line-height:  $base-magic-number / 20; 
+}; 
+
+@mixin h2() { 
+  font-size: 1.5rem; //24px
+  line-height:  $base-magic-number / 20; //24px
+}; 
+
+@mixin h1() {
+  font-size: 2rem; //32px
+  line-height:  $base-magic-number / 20;  //48px
+}; 
+
+@mixin text-kilo() { // (5)
+  font-size: 2.5rem; //40px 
+  line-height: $base-magic-number / 24;
+}; 
+
+@mixin text-mega() {
+  font-size: 3rem; //60px
+  line-height: $base-magic-number / 24;
+}; 
+
+@mixin text-giga() {
+  font-size: 3.5rem; //64px
+  line-height: $base-magic-number / 24;  // 72px
+}; 
+
+
+
+h1 {
+  @include h1(); 
+}
+h2 {
+  @include h2(); 
+}
+h3 {
+  @include h3(); 
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: $default-margin-bottom;
+}
+
+
+/*------------------------------------*\
+    #Default Text Selection Color 
+\*------------------------------------*/
+
+
+::selection {
+  background-color: $accent-color; 
+  color: #fff; 
+}
+
+::-moz-selection {
+
+    background-color: $accent-color; 
+    color: #fff; 
+}
+
+
+

@@ -1,0 +1,279 @@
+
+/*------------------------------------*\
+    #Forms 
+\*------------------------------------*/
+
+
+
+
+
+/*------------------------------------*\
+    #Inputs 
+\*------------------------------------*/
+
+$input-border-width: 2.5px; 
+
+input[type="text"], 
+input[type="password"], 
+input[type="date"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="month"], 
+input[type="week"], 
+input[type="email"], 
+input[type="number"], 
+input[type="search"], 
+input[type="tel"], 
+input[type="time"], 
+input[type="url"], 
+input[type="color"],
+textarea {
+  color: $primary-color; 
+  border: 0; 
+  background-color: transparent; 
+  border: $input-border-width solid $quintenary-color; 
+  background-color: #fff;
+  width: 100%; 
+  outline: 0; 
+  border-radius: 4px; 
+  transition: all .4s ease-in-out; 
+
+  &:focus,
+  &:active {
+      outline: 0; 
+      background-color: $quintenary-color;
+      border: $input-border-width solid $primary-color;
+  }
+
+  &.ng-invalid.ng-dirty {
+     border: $input-border-width solid $warning-color; 
+     background-color: $tertiary-color; 
+
+     & + label {
+      color: $warning-color;
+     }
+  }
+}
+
+select {
+  color: $primary-color; 
+  border: 0; 
+  background-color: transparent; 
+  border: $input-border-width solid $quintenary-color; 
+  background-color: #fff;
+  width: 100%; 
+  outline: 0; 
+  border-radius: 4px; 
+  transition: all .4s ease-in-out; 
+
+  &:focus,
+  &:active {
+      outline: 0; 
+      background-color: $quintenary-color;
+      border: $input-border-width solid $primary-color;
+  }
+
+  &.ng-invalid.ng-touched {
+     border: $input-border-width solid $warning-color; 
+    background-color: $tertiary-color; 
+    
+     & + label {
+      color: $warning-color;
+     }
+  }
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  -webkit-text-fill-color: $primary-color !important;
+}
+
+textarea {
+  width: 100%;  
+  padding: rem-calc($level2); 
+
+  &:active,
+  &:focus {
+    border-color: $accent-color;
+    background-color: $tertiary-color; 
+
+    & + label {
+      color: $accent-color; 
+    }
+  }
+
+}
+
+.form-section {
+    margin-bottom: rem-calc($level2); 
+}
+
+
+.input-label {
+  font-weight: bold; 
+  display: block; 
+  text-align: left; 
+  text-transform: uppercase; 
+  color: $primary-color; 
+  margin-bottom: rem-calc($level1); 
+}
+
+
+
+
+
+/*------------------------------------*\
+    #Input Sizes
+\*------------------------------------*/
+
+
+input,
+select {
+  &.input--micro {
+    padding: rem-calc($level1);
+    padding-right: rem-calc($level2);
+    padding-left: rem-calc($level2);
+  }
+
+  &.input--small {
+    padding: rem-calc($level1);
+    padding-right: rem-calc($level3);
+    padding-left: rem-calc($level3);
+  }
+
+
+  &.input--medium {
+    height: rem-calc(42px);
+    padding-right: rem-calc($level2);
+    padding-left: rem-calc($level2);
+  }
+
+  &.input--large {
+    padding: rem-calc($level2);
+    padding-right: rem-calc($level3);
+    padding-left: rem-calc($level3);
+  }
+
+  &.input--kilo {
+    padding: rem-calc($level3);
+    padding-right: rem-calc($level3);
+    padding-left: rem-calc($level3); 
+  }
+
+  &.input--mega {
+    padding: rem-calc($level3);
+    padding-right: rem-calc($level3);
+    padding-left: rem-calc($level3); 
+  }
+
+  &.input--giga {
+    padding: rem-calc($level4);
+    padding-right: rem-calc($level3);
+    padding-left: rem-calc($level3); 
+  }
+
+  &.input--half {
+    @include media-query($medium-up) {
+      width: 96%;  
+
+      & ~ alert {
+        width: 96%;
+      }    
+    }
+  }
+
+  &.input--primary {
+        
+    &:active,
+    &:focus {
+      border-color: $accent-color;
+      background-color: $tertiary-color; 
+
+      & + label {
+        color: $accent-color; 
+      }
+    }
+  
+  }
+}
+
+
+
+.input-wrapper {
+  padding-top: rem-calc($level3);
+  position: relative; 
+  margin-bottom: rem-calc($level4); 
+
+  alert {
+    width: 100%;
+    background-color: $warning-color;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    font-size: .8rem;
+    color: #fff;
+    padding-left: .5rem;
+    top: -3px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  textarea {
+    margin-bottom: -7px; 
+  }
+  label {
+    position: absolute; 
+    left: 0; 
+    top: -8px; 
+    font-family: $tertiary-font-family; 
+    text-transform: uppercase; 
+    color: $secondary-color;
+    @include  h5();
+
+    @include media-query($medium-up) {
+      top: -6px; 
+      @include h6(); 
+    } 
+  }
+}
+
+
+
+.form-fields {
+  margin-bottom: rem-calc($level1); 
+}
+
+
+@mixin submission-error {
+  background-color: $warning-color;
+  border-radius: 8px;
+  padding: rem-calc($level2);
+  line-height: 1.5;
+  height: auto;
+  width: 100%;
+  max-width: rem-calc(400px);
+  display: block;
+  margin-bottom: 1rem;
+  color: #fff;
+  @include h6(); 
+}
+
+.disclaimer-acceptance {
+  color: #7d7d7d;
+  display: flex; 
+  margin-bottom: rem-calc($level2);
+  @include h6(); 
+
+  input {
+    margin-right: rem-calc($level1);
+    margin-top: rem-calc(3px);
+  }
+}
+
+
+
+
+

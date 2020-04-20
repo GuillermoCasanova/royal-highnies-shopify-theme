@@ -1,0 +1,85 @@
+
+/*------------------------------------*\
+    #Colors 
+\*------------------------------------*/
+
+// Royal Blue
+$primary-color: #19335F; 
+$primary-color--dark: darken($primary-color, 15%); 
+$primary-color--translucent: rgba(15, 11, 35, .85);
+
+
+// Royal Gray
+$secondary-color: #82342F; 
+$secondary-color--dark: darken($secondary-color, 20%); 
+$secondary-color--translucent: #fff;
+
+// Royal Light Gray
+$tertiary-color: #F0F0F0; 
+$tertiary-color--dark: darken($tertiary-color, 25%); 
+$tertiary-color--translucent: #fff; 
+
+
+// Royal Blue
+$accent-color: #19335F; 
+$accent-color--dark: darken($accent-color, 45%); 
+$accent-color--translucent: rgba(68, 219, 228, 0.7);  
+   
+
+// Body Color
+$body-color: $primary-color; 
+
+
+
+
+/*------------------------------------*\
+    #Blacks n greys
+\*------------------------------------*/
+
+
+$off-black: #191919;
+$grey-light: #F6F6F6;
+$grey--mid: #808083;
+$grey--dark: #444444;
+
+
+
+
+/*------------------------------------*\
+    #Social Media Colors
+\*------------------------------------*/
+
+
+$blue-twitter: #55ACEE;
+$blue-facebook: #3b5998;
+$blue-vimeo: #1ab7ea; 
+$blue-instagram: #517fa4; 
+$red-pinterest: #cb2027; 
+
+
+
+/*------------------------------------*\
+    #UI Colors 
+\*------------------------------------*/
+
+//$warning-color: #F07181; 
+$warning-color: #B73D37;
+
+%primary-gradient {
+	 background: #f66206; /* Old browsers */
+   background: -moz-linear-gradient(left, #f66206 0%, #f49b64 100%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(left, #f66206 0%,#f49b64 100%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(to right, #f66206 0%,#f49b64 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f66206', endColorstr='#f49b64',GradientType=1 ); /* IE6-9 */
+}
+
+
+%secondary-gradient {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#901aff+0,c88fff+100 */
+	background: #901aff; /* Old browsers */
+	background: -moz-linear-gradient(left, #901aff 0%, #c88fff 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #901aff 0%,#c88fff 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #901aff 0%,#c88fff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#901aff', endColorstr='#c88fff',GradientType=1 ); /* IE6-9 */
+}
+

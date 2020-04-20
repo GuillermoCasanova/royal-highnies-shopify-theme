@@ -1,0 +1,42 @@
+
+
+
+/*------------------------------------*\
+    #Visibility
+\*------------------------------------*/
+
+//Hides element, but not from screen readers, etc. 
+.hide-elem {
+  visibiliy: hidden; 
+  position: fixed; 
+  left: -999999px; 
+  z-index: -1; 
+}
+
+$visibility-breakpoints: ('small-up', 'medium-up', 'large-up', 'xlarge-up') !default;
+
+
+/*================ Responsive Show/Hide Helper ================*/
+@mixin responsive-display-helper($breakpoint: '') {
+  // sass-lint:disable no-important
+  .show-for-#{$breakpoint} {
+    display: block !important;
+  }
+
+  .hide-for-#{$breakpoint} {
+    display: none !important;
+  }
+}
+
+//Hides all elements that appear at specific devices 
+[class*='show-for-'] {
+  display: none; 
+}
+
+//Creates classes for hiding and showing based on breakpoint
+@each $breakpoint in $visibility-breakpoints {
+  @include media-query($breakpoint) {
+    @include responsive-display-helper('#{$breakpoint}');
+  }
+}
+
