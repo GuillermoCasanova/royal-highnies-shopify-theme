@@ -117,5 +117,47 @@
 			}
 		}
 	}
+
+	.featured-collections__cta {
+		margin-left: auto; 
+		margin-right: auto; 
+		max-width: rem-calc(15rem); 
+
+		@include media-query($medium-up) {
+			max-width: 13.625rem;
+		}
+	}
+}
+
+
+
+
+
+/*------------------------------------*\
+    #Home Intro Section
+\*------------------------------------*/
+
+
+.home-intro-section {
+	text-align: center; 
+
+	.home-intro-section_inner {
+		width: 100%; 
+	}
+
+	.home-intro-section__headline {
+			@include h2(); 
+	}
+
+	.home-intro-section__body {
+		max-width: rem-calc(660px); 
+		margin-right: auto; 
+		margin-left: auto; 
+		width: 100%;
+
+		@include media-query($medium-up) {
+			@include h4(); 
+		}
+	}
 }
 

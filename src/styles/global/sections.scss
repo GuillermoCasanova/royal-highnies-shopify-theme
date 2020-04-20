@@ -1,0 +1,18 @@
+
+
+/*------------------------------------*\
+    #Sections
+\*------------------------------------*/
+
+
+section {
+	padding-bottom: rem-calc($level7 + $level7);
+
+	@include media-query($medium-up) {
+		padding-bottom: rem-calc($level7 + $level7 + $level4);
+	} 
+
+	@include media-query($large-up) {
+		padding-bottom: rem-calc($level7 + $level7 + $level5);
+	} 
+}

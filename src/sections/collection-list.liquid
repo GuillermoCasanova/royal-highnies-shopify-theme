@@ -42,6 +42,11 @@
                </ul>
         </div>
       </div>
+      <div class="col-sm-12">
+        <a href="{{section.settings.cta-link}}"  rel="internal" class="button button--secondary button--medium  featured-collections__cta">
+          {{section.settings.cta}}
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -61,6 +66,17 @@
         "id": "title",
         "label": "Heading",
         "default": "Collection list"
+      },
+      {
+        "type": "text",
+        "id": "cta",
+        "label": "Call To Action Buton Text",
+        "default": "View All"
+      },
+      {
+        "type": "url",
+        "id": "cta-link",
+        "label": "Call To Action Link"
       }
     ],
     "blocks": [
