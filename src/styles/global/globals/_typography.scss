@@ -277,12 +277,12 @@ $default-margin-bottom: rem-calc($level3);
 }; 
 
 @mixin text-kilo() { // (5)
-  font-size: 2.5rem; //40px 
+  font-size: 2.75rem; //40px 
   line-height: $base-magic-number / 24;
 }; 
 
 @mixin text-mega() {
-  font-size: 3rem; //60px
+  font-size: 4.25rem; //60px
   line-height: $base-magic-number / 24;
 }; 
 

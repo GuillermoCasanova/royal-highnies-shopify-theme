@@ -23,8 +23,8 @@
 	text-transform: uppercase;
 	font-family: $tertiary-font-family;  
 
-  .icon {
-    width: rem-calc(42);
+  .button__icon {
+    width: rem-calc(26px);
     height: rem-calc(26px); 
   }
 
@@ -79,9 +79,13 @@ button,
 }
 
 .button--medium {
-  height: rem-calc(52px);
+  height: rem-calc(56px);
   padding-right: rem-calc($level2); 
   padding-left: rem-calc($level2);
+
+  @include media-query($medium-up) {
+    height: rem-calc(52px);
+  }
 }
 
 
