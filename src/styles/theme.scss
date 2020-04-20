@@ -10,12 +10,17 @@
 /*================ SETTINGS ================*/
 @import url('settings/variables.scss.liquid');
 
+
+/*================ VENDOR ================*/
+@import url('vendor/normalize.scss');
+@import url('vendor/foundationFunctions.scss');
+
+
 /*================ GOBALS ================*/
 @import url('global/normalize.scss');
 @import url('global/slate-reset.scss');
 @import url('global/helper-classes.scss');
 @import url('global/layout.scss');
-@import url('global/icons.scss');
 @import url('global/rte.scss');
 @import url('global/responsive-tables.scss');
 @import url('global/links-buttons.scss');
@@ -26,9 +31,16 @@
 @import url('global/colors.scss'); 
 @import url('global/margins-and-padding.scss'); 
 @import url('global/visibility.scss'); 
+@import url('global/typography.scss'); 
 
 
 
 /*================ MODULES ================*/
 @import url('modules/site-header.scss');
 @import url('modules/gift-card-template.scss');
+
+/*================ PAGES ================*/
+@import url('pages/home.scss');
+
+
+

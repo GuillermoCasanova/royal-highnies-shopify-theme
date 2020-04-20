@@ -73,5 +73,42 @@
 
   {% section 'footer' %}
 
+
+    <style>
+    @font-face {
+      font-family: 'Gotham-Book';
+      src: url('{{ 'Gotham-Book.woff' | asset_url }}') format('woff'), url('{{ 'Gotham-Book.ttf' | asset_url }}')  format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+
+    }
+    @font-face {
+      font-family: 'Gotham-Black';
+      src: url('{{ 'Gotham-Black.woff' | asset_url }}') format('woff'), url('{{ 'Gotham-Black.ttf' | asset_url }}')  format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    </style>
+
+    <script async>
+       WebFontConfig = {
+          google: {
+            families: ['Playfair Display:ital,500', 'Playfair Display:500']
+          },
+          classes: true,
+          events: false
+       };
+
+       (function(d) {
+          var wf = d.createElement('script'), s = d.scripts[0];
+          wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+          wf.async = true;
+          s.parentNode.insertBefore(wf, s);
+       })(document);
+    </script>
+
 </body>
 </html>

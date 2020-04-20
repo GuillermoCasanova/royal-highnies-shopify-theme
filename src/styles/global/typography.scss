@@ -9,21 +9,11 @@
 \*------------------------------------*/
 
 
+//Font Families 
+$primary-font-family: 'Gotham-Book', sans-serif; 
+$secondary-font-family:  'Playfair Display', serif; 
+$tertiary-font-family: "Gotham-Black", sans-serif;
 
-$primary-font-family: 'cera_proregular', sans-serif; // Base Font Family
-
-$secondary-font-family:  navigo, sans-serif; // Secondary Font Family
-
-$tertiary-font-family: "cera_probold", sans-serif; // Secondary Font Family
-
-$quaternary-font-family: "Whitman", sans-serif; // Secondary Font Family
-
-@mixin tertiary-font-family {
-    letter-spacing: 1px; 
-    font-weight: 900; 
-    font-family: $tertiary-font-family; 
-    @include type-setting(0);  
-}
 
 // Weights 
 $light: 200;
@@ -41,10 +31,12 @@ $base-magic-number: 24;
 $base-magic-number-px: 24px;  
 
 
-
 strong {
   font-family: $tertiary-font-family; 
 }
+
+
+
 
 
 /*------------------------------------*\
@@ -138,7 +130,7 @@ p {
   color: $secondary-color;
   font-weight: bold; 
   font-family: $tertiary-font-family; 
-  text-decoration: underline  dotted $quintenary-color;
+  text-decoration: underline  dotted $primary-color;
   position: relative; 
 
   &:hover, 
@@ -167,7 +159,7 @@ p {
 //http://robertmaple.co.uk/fluid-responsive-type-with-media-queries/
 
 //Set your font size min/max (px)
-$max-font-size : 25;
+$max-font-size : 24;
 $min-font-size : 18;
  
 //Set your viewport size min/max (px)
@@ -267,7 +259,7 @@ $default-margin-bottom: rem-calc($level3);
 }; 
 
 @mixin h2() { 
-  font-size: 1.75rem; //24px
+  font-size: 1.5rem; //24px
   line-height:  $base-magic-number / 20; //24px
 }; 
 

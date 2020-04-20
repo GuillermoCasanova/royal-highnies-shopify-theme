@@ -1,0 +1,121 @@
+
+
+/*------------------------------------*\
+    #Home Page
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+    #Featured Collections
+\*------------------------------------*/
+
+.featured-collections {
+	width: 100%; 
+
+	.featured-collections__list {
+		list-style: none; 
+		padding-inline-start: 0;
+
+			@include media-query($medium-up) {
+				//margin-right: rem-calc(-1 * $level4);
+			}
+
+			@include media-query($large-up) {
+				margin-right: rem-calc(-1 * $level5);
+				margin-left: rem-calc(-1 * $level5);
+			}
+
+	}
+	
+	.featured-collections__collection {
+		 text-decoration: none; 
+			margin-bottom: rem-calc($level6); 
+			text-align: center; 
+			@include h1(); 
+
+			@include media-query($medium-up) {
+				padding-right: rem-calc($level3);
+				padding-left: rem-calc($level3);
+				margin-bottom: rem-calc($level7 + $level2); 
+			}
+
+			@include media-query($large-up) {
+				padding-right: rem-calc($level5);
+				padding-left: rem-calc($level5);
+				margin-bottom: rem-calc($level7 + $level4); 
+			}
+
+		.featured-collections__collection__image {
+			position: relative; 
+			padding-bottom: 100%; 
+			overflow: hidden; 
+			display: block; 
+			margin-bottom: rem-calc($level1); 
+			transition: all .2s ease-in-out; 
+
+			@include media-query($large-up) {
+				margin-bottom: rem-calc($level2); 
+			}
+
+			&:hover, 
+			&:focus {
+				img {
+					transform: scale(1.05);
+				}
+			}
+
+			img {
+				top: 0; 
+				bottom: 0; 
+				left: 0; 
+				right: 0;
+				height: 100%;
+				width: 100%;
+				object-fit: cover; 
+				position: absolute; 
+				transition: all .2s ease-in-out; 
+			}
+		}
+
+		.featured-collections__collection__name {
+			width: 100%; 
+			text-align: center; 
+			font-weight: 500; 
+			font-family: $secondary-font-family; 
+			color: $primary-color; 
+			margin-bottom: 0;  
+			@include h1(); 
+		}
+
+		.featured-collections__collection__cta {
+			text-decoration: none; 
+			color: $secondary-color;
+			position: relative; 
+			transition: all .2s ease-in-out; 
+			@include h4(); 
+
+			&:after {
+				position: absolute; 
+				bottom: -4px; 
+				left: 0; 
+				right: 0; 
+				content: " ";
+				height: 2px;
+				width: 100%; 
+				background-color: $secondary-color; 
+				transition: all .2s ease-in-out; 
+			}
+
+			&:hover, 
+			&:focus {
+				color: $primary-color;
+
+				&:after {
+					bottom: -8px;
+					background-color: $primary-color; 
+				}
+			}
+		}
+	}
+}
+

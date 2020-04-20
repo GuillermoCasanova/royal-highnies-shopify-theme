@@ -5,26 +5,17 @@
 
 // Royal Blue
 $primary-color: #19335F; 
-$primary-color--dark: darken($primary-color, 15%); 
-$primary-color--translucent: rgba(15, 11, 35, .85);
 
 
 // Royal Gray
-$secondary-color: #82342F; 
-$secondary-color--dark: darken($secondary-color, 20%); 
-$secondary-color--translucent: #fff;
+$secondary-color: #A0A0A0; 
+
 
 // Royal Light Gray
 $tertiary-color: #F0F0F0; 
-$tertiary-color--dark: darken($tertiary-color, 25%); 
-$tertiary-color--translucent: #fff; 
-
 
 // Royal Blue
 $accent-color: #19335F; 
-$accent-color--dark: darken($accent-color, 45%); 
-$accent-color--translucent: rgba(68, 219, 228, 0.7);  
-   
 
 // Body Color
 $body-color: $primary-color; 

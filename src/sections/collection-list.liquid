@@ -1,31 +1,51 @@
-{% if section.settings.title != blank %}
-  <h2>{{ section.settings.title | escape }}</h2>
-{% endif %}
 
-{% for block in section.blocks limit: section.blocks.size %}
-  <div {{ block.shopify_attributes }}>
-    {%- assign collection = collections[block.settings.collection] -%}
 
-    <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
-      {% if collection.image != blank %}
-        {{ collection | img_url: '480x480' | img_tag: collection.title }}
-      {% elsif collection.products.first != blank %}
-        {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
-      {% elsif collection == empty %}
-        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-      {% endif %}
-
-      <p>
-        {% if collection == empty %}
-          {{ 'homepage.onboarding.collection_title' | t }}
-        {% else %}
-          {{ collection.title }}
-        {% endif %}
-      </p>
-    </a>
+<section class="featured-collections">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="featured-collections__inner">
+           {% if section.settings.title != blank %}
+            <h2 class="hide-elem">{{ section.settings.title | escape }}</h2>
+          {% endif %}
+          
+             <ul class="row start-sm featured-collections__list">
+               {% for block in section.blocks limit: section.blocks.size %}
+                 <li class="col-sm-12  col-md-6" {{ block.shopify_attributes }}>
+               
+                   {%- assign collection = collections[block.settings.collection] -%}
+               
+                   <div  class="featured-collections__collection">
+                      <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}"class="featured-collections__collection__image" tabindex="-1" role="presentation">
+                          {% if collection.image != blank %}
+                            {{ collection | img_url: '480x480' | img_tag: collection.title }}
+                          {% elsif collection.products.first != blank %}
+                            {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
+                          {% elsif collection == empty %}
+                            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                          {% endif %}
+                      </a>
+                     <p class="featured-collections__collection__name">
+                       {% if collection == empty %}
+                         {{ 'homepage.onboarding.collection_title' | t }}
+                       {% else %}
+                         {{ collection.title }}
+                       {% endif %}
+                     </p>
+                      <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}" class="featured-collections__collection__cta">
+                       Shop Now
+                     </a>
+                   </div>
+                </li>
+                 {% endfor %}
+               </ul>
+        </div>
+      </div>
+    </div>
   </div>
-{% endfor %}
+</section>
+
 
 {% if section.blocks.size == 0 %}
   {% include 'no-blocks' %}
