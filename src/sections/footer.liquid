@@ -1,72 +1,148 @@
+
+
 <footer>
 
-  {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
-  <ul>
-    {% for social in social_accounts %}
-      {%- assign social_handle = social | handleize -%}
-      {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-      {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+  <div class="footer-inner">
+    
+    <div class="row">
+      
+      <div class="col-sm-12 col-md-11 ">
 
-      {% if settings[social_link] != blank %}
-        <li>
-          <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
-            {% include social_icon %}
-            <span class="icon-fallback-text">{{ social }}</span>
-          </a>
-        </li>
-      {% endif %}
+        <div class="row">
 
-    {% endfor %}
-  </ul>
+          <div class="col-sm-12 columns">
 
-  {% if section.settings.show_payment_icons %}
-    {% unless shop.enabled_payment_types == empty %}
-      {%- assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' -%}
+            <div class="row">
 
-      <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
-      <ul class="payment-icons">
-        {% for type in shop.enabled_payment_types %}
-          {% if payment_icons_available contains type %}
-            <li>
-              {%- assign icon_name = type | prepend: 'icon-' -%}
-              {% include icon_name %}
-              <span class="visually-hidden">{{ type | capitalize | replace: '_', ' ' }}</span>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    {% endunless %}
-  {% endif %}
+              {% for block in section.blocks %}
 
-  {%- assign footer_linklist = section.settings.footer_linklist -%}
-  {% if linklists[footer_linklist].links.size > 0 %}
-    <ul>
-      {% for link in linklists[footer_linklist].links %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+                <div class="col-sm-12  col-md-4">
+                {% case block.type %}
+                  {% when 'menu' %}
+                    <ul class="footer-menu">
+                      <h1 class="footer-menu-title">
+                          {{ block.settings.menu_title | escape}}
+                      </h1>
+                      {% for link in linklists[block.settings.menu].links %}
+                        <li class="footer-menu-item" >
+                          <a href="{{ link.url }}" class="footer-menu-link">{{ link.title | escape }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
 
-  <div>
-    <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
+                  {% when 'social' %}
+
+                    <ul class="footer-menu">
+
+                      <h1 class="footer-menu-title">
+                          {{ block.settings.menu_title | escape}}
+                      </h1>
+
+                        <ul class="footer-social [ grid  grid--center  grid--justifyStart large-grid--justifyCenter  ]">
+                        <li class="footer-social-item  text-center">
+                            <a target="_blank" href="https://www.facebook.com/whiskerslaces/">
+                              {% include 'icon-facebook' %}
+                              <span  class="hide-elem" aria-hidden="true">{{ 'general.social.share_on_facebook' | t }}</span>
+                              <span class="hide-elem">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
+                            </a>
+                         </li>
+
+                        <li class="footer-social-item  text-center">
+                            <a target="_blank" href="https://www.instagram.com/whiskerslaces/">
+                              {% include 'icon-instagram' %}
+                              <span  class="hide-elem" aria-hidden="true">{{ 'general.social.share_on_pinterest' | t }}</span>
+                              <span class="hide-elem">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>
+                            </a>
+                         </li>
+
+                        <li class="footer-social-item  show-for-medium-up">
+                          <a href="https://www.instagram.com/explore/tags/whiskerslaces/"  target="_blank" class="footer-social-tag">#whiskerslaces</a>
+                        </li>
+
+                      </ul>
+                    </ul>
+
+                    {% else %}
+          
+                {% endcase %}
+                </div>
+              {% endfor %}
+
+            </div>
+
+          </div>
+          
+        </div>
+
+      </div>
+
+
+      <div class="footer-logo">
+
+      </div> 
+
+    </div>
+
+    <div class="row">
+      
+      <div class="col-sm-12">
+
+        <div class="footer-credit">
+            Softest luxury pajamas | {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
 </footer>
 
 {% schema %}
   {
     "name": "Footer",
+    "max_blocks": 4,
     "settings": [
-      {
-        "type": "link_list",
-        "id": "footer_linklist",
-        "label": "First menu",
-        "default": "footer"
-      },
       {
         "type": "checkbox",
         "id": "show_payment_icons",
         "label": "Show payment icons",
         "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "menu",
+        "name": "Footer Section",
+        "settings": [
+        {
+          "id" : "menu_title",
+          "type" : "text",
+          "label": "Menu Title",
+          "default": "Title"
+        },
+        {
+          "id": "menu",
+          "type": "link_list",
+          "label": "Footer Link List"
+        }]
+      },
+      {
+        "type": "social",
+        "name": "Footer Social Links",
+        "limit": 1,
+        "settings": [
+        {
+          "id" : "menu_title",
+          "type" : "text",
+          "label": "Menu Title",
+          "default": "Title"
+        },
+        {
+          "type" : "paragraph",
+          "content": "Edit your social settings and accounts in General settings"
+        }]
       }
     ]
   }

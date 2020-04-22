@@ -1,0 +1,86 @@
+
+
+/*------------------------------------*\
+    #Retailers Page
+\*------------------------------------*/
+
+
+#MainContent .default-page {
+	padding-top: 60px !important;
+}
+
+.store-locator-header {
+	margin-bottom: 4rem; 
+	text-align: center; 
+	padding-left: 2%; 
+	padding-right: 2%; 
+	margin-top: 10rem; 
+}
+
+
+
+.store-locator-container {
+	max-width: 1100px; 
+	margin-right: auto; 
+	width: 100%; 
+	padding-left: 2%; 
+	padding-right: 2%; 
+	margin-left: auto; 
+	margin-bottom: 48px; 
+}
+
+.store-locator-title {
+	text-align: center; 
+}
+
+div#storemapper .storemapper-powered-by {
+	display: none !important; 
+	opacity: 0; 
+}
+
+#storemapper #storemapper-form #storemapper-go {
+	background-color: $primary-color !important; 
+	font-family: 'Gotham-Black', sans-serif !important;
+	letter-spacing: 1px; 
+	font-weight: normal !important; 
+}
+
+#storemapper a {
+	color:  $primary-color !important;
+	//border-color: $primary-color !important;
+}
+
+#storemapper #storemapper-list li h4 {
+	font-size: 18px !important;
+	color: $primary-color !important; 
+}
+
+#storemapper #storemapper-list li.storemapper-selected {
+	background-color: #4b6193 !important;
+	color: #fff !important;
+
+	a, 
+	h4 {
+		color: #fff !important;
+		//border-color: #fff !important;
+	}
+}
+
+#storemapper #storemapper-list li.storemapper-selected p.storemapper_view a {
+	background-color: #fff !important; 
+	border-color: #fff !important;
+	color: $primary-color !important;
+}
+
+.storemapper-map-directions {
+	display: inline-block;
+	font-family: 'Gotham-Black';
+	letter-spacing: .5px;
+	margin-top: 12px !important;
+	font-weight: normal !important;
+}
+
+#storemapper #storemapper-list li .storemapper-email {
+	display: none !important;
+}
+

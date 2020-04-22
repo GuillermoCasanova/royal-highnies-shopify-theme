@@ -37,13 +37,19 @@
 
 
 
-
 /*================ MODULES ================*/
 @import url('modules/site-header.scss');
 @import url('modules/gift-card-template.scss');
+@import url('modules/header.scss');
+
+
+
 
 /*================ PAGES ================*/
 @import url('pages/home.scss');
+@import url('pages/product.scss');
+@import url('pages/cart.scss');
+
 
 
 

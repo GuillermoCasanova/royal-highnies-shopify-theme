@@ -1,0 +1,141 @@
+
+
+/*------------------------------------*\
+    #Footer Styles
+\*------------------------------------*/
+
+
+footer {
+  background-color: $secondary-color;
+  
+  .footer-logo {
+    margin-top: rem-calc($level6); 
+    margin-bottom: rem-calc($level6 + $level3); 
+
+    @include media-query($medium-up) {
+      margin-top: rem-calc($level7); 
+      margin-bottom: rem-calc($level7  + $level3); 
+    }
+  }
+
+  .footer-inner {
+    background-color: $secondary-color;
+    padding-top: rem-calc($level4); 
+    padding-bottom: rem-calc($level4);  
+      
+    @include media-query($large-up) {
+      padding-top: rem-calc($level5); 
+      padding-bottom: rem-calc($level3);  
+      max-width: 1280px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+
+  .footer-menu {
+    margin-bottom: rem-calc($level5); 
+    color: $tertiary-color; 
+    @include h6();  
+
+    @include media-query($large-up) {
+      margin-bottom: 0; 
+    }
+
+    .footer-menu-title {
+      font-family: $secondary-font-family; 
+      margin-bottom: rem-calc($level2); 
+      text-transform: uppercase; 
+      font-weight: bold; 
+      @include h4();  
+
+      @include media-query($large-up) {
+        margin-bottom: rem-calc($level1); 
+        @include h6();  
+      }
+
+    }
+
+    .footer-menu-item {
+
+      margin-bottom: rem-calc($level2); 
+      @include media-query($medium-up) {
+        margin-bottom: rem-calc($level1); 
+      }
+    }
+    
+    .footer-menu-link {
+      color: $tertiary-color; 
+      
+      &:hover, 
+      &:focus {
+        border-bottom: 2px solid $accent-color; 
+      }
+    }
+  }
+
+  .footer-credit {
+    width: 100%; 
+    text-align: left; 
+    color: $accent-color; 
+    margin-bottom: 0; 
+    @include text-mini(); 
+
+    a {
+      color: $accent-color;
+      
+      &:hover, 
+      &:focus {
+        color: $accent-color; 
+      }
+    }
+  }
+
+  .footer-logo {
+    margin-top: rem-calc($level3); 
+
+    img {
+      max-width: 90%; 
+    }
+  }
+
+  .footer-social {
+    
+    .footer-social-item {
+      margin-right: rem-calc($level3); 
+      text-transform: uppercase; 
+      @include text-mini();
+    }
+
+    a {
+      color: $accent-color; 
+      width: rem-calc(36px); 
+      transition: all .2s cubic-bezier(0.23, 1, 0.32, 1);
+
+      &:hover, 
+      &:focus {
+        fill: $accent-color; 
+        color: #fff; 
+      }
+    }
+  }
+}
+
+
+
+
+/*------------------------------------*\
+    #Footer Wallpaper
+\*------------------------------------*/
+
+
+.iconWallpaper {
+  width: 100%; 
+  position: relative;
+  overflow: hidden; 
+
+  .iconWallpaper-img {
+    height: rem-calc(260px); 
+    object-fit: cover; 
+  }
+}

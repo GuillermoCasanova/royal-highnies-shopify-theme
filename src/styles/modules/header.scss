@@ -1,0 +1,772 @@
+
+
+/*------------------------------------*\
+    #Navigation Styles  
+\*------------------------------------*/
+
+
+.nav-is-open {
+  // overflow: hidden; 
+  // overflow-x: hidden; 
+}
+
+
+.rewardsAlert {
+  background-color: $secondary-color;
+  top: rem-calc(72px); 
+  right: 0; 
+  z-index: 120; 
+  position: fixed;
+  @include text-micro(); 
+
+  @include media-query($medium-up) {
+    right: 16rem;
+    bottom: auto;
+    top: 0; 
+    position: fixed;
+  }
+
+  a {
+    color: #fff;
+    position: relative;
+    padding: rem-calc($level1); 
+    display: inline-block;
+    top: -2px;
+
+    &:active,
+    &:hover, 
+    &:focus {
+      .icon svg {
+        fill: #fff;
+      }
+    }
+
+    @include media-query($medium-up) {
+      padding-right: rem-calc($level2);
+      padding-left: rem-calc($level2);
+    }
+  }
+
+  .icon {
+    width: .8rem;
+    height: .8rem;
+    margin-right: 3px;
+    top: -1px;
+    position: relative;
+
+    @include media-query($medium-up) {
+      top: -2px;
+    }
+
+    svg {
+      fill: $accent-color;
+    }
+  }
+}
+
+/*------------------------------------*\
+    #Main Nav Basic Styles
+\*------------------------------------*/
+
+
+.mainNav {
+  background-color: transparent; 
+  width: 100%; 
+  position: fixed; 
+  top: 0; 
+
+  .mainNav-title {
+    z-index: 190; 
+    transition: all .8s cubic-bezier(0.23, 1, 0.32, 1); 
+  }
+
+  .mainNav-rewardsAlert {
+    left: 0; 
+    text-align: center; 
+    width: 100%;
+    position: absolute;
+  }
+
+  .mainNav-accountLink {
+    color: #fff;
+    margin-bottom: rem-calc($level4);
+
+    @include media-query($large-up) {
+      @include text-micro(); 
+    }
+    
+    span  {
+      height: rem-calc(16px);
+      width: rem-calc(16px);
+      display: inline-block;
+      margin-right: rem-calc(2px);
+
+      @include media-query($large-up) {
+        height: rem-calc(12px);
+        width: rem-calc(12px);
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: #fff;
+        position: relative;
+        top: 2px; 
+      }
+    }
+
+    a { 
+      color: #fff;
+      border-bottom: 2px solid transparent;
+
+      &:hover, 
+      &:focus {
+        border-bottom: 2px solid $accent-color; 
+      }
+
+      &:active {
+        border-bottom: 2px solid $accent-color; 
+      }
+    }
+  }
+}
+
+
+
+
+/*------------------------------------*\
+    #Header Logo
+\*------------------------------------*/
+
+
+.headerLogo {
+  position: fixed; 
+  z-index: 200; 
+  height: rem-calc(60px);
+  width: 25%;
+  top: 0; 
+
+  @include media-query($medium-up) {
+    height: rem-calc(75px)
+  } 
+
+  @include media-query($medium-up) {
+    width: 6.5rem;  
+    position: fixed;
+    margin-top: 0;
+    top: 0; 
+    height: rem-calc(80px);
+    margin-top: rem-calc($level1);
+  }
+
+  .headerLogo-inner {
+    width: rem-calc(60px); 
+  }
+
+}
+
+
+
+/*------------------------------------*\
+    #Main Nav Position Styles 
+\*------------------------------------*/
+
+
+.fixed-nav {
+  width: 100%; 
+  z-index: 100;
+  @extend %position-fixed; 
+}
+
+.absolute-nav {
+  width: 100%; 
+  z-index: 100; 
+  top: 0; 
+  @extend %position-absolute; 
+}
+
+
+
+
+
+/*------------------------------------*\
+    #Main Navigation Small 
+\*------------------------------------*/
+
+
+.mainNav {
+  height: rem-calc(60px);
+  width: 100%; 
+  z-index: 199; 
+  @extend %position-relative;
+
+  @include media-query($medium-up) {
+    height: rem-calc(75px)
+  } 
+
+  @include media-query($medium-up) {
+    width: 15rem;
+    height: 5rem;
+    right: 0; 
+  }
+
+
+  .mainNav-title {
+    height: 100%; 
+    background-color: $primary-color; 
+    width: 25%; 
+    @extend %position-relative; 
+
+    @include media-query($medium-up) {
+      display: none; 
+    }
+  }
+
+
+  /*------------------------------------*\
+      #Main Nav Small Menu Toggle
+  \*------------------------------------*/
+
+  $toggleStrokeWidth: 4px;
+  $toggleHeight: .9rem; 
+  $toggleWidth: 2.1rem;  
+
+  .mainNav-menuToggleWrapper {
+      background-color: $secondary-color; 
+      color: #fff; 
+      right: 0; 
+      width: 75%; 
+      z-index: 201; 
+      height: 100%; 
+      @extend %text-center; 
+
+      @include media-query($medium-up) {
+        width: 100%; 
+      }
+  }
+
+  .mainNav-menuToggle {
+    background-color: transparent; 
+    margin-bottom: 0; 
+    text-transform: uppercase; 
+    transition: all .2s cubic-bezier(0.23, 1, 0.32, 1); 
+
+    &.is-opaqued {
+      opacity: .3; 
+    }
+    
+    .menuToggle-label {
+      margin-right: rem-calc($level1); 
+      @include text-micro(); 
+    }
+  }
+
+
+  .menuToggle-icon {
+    height: $toggleHeight;
+    width: $toggleWidth; 
+    position: relative;
+    display: block;
+    text-align: center; 
+    transition: all .2s cubic-bezier(0.23, 1, 0.32, 1); 
+
+    &:after,
+    &:before {
+      content: ""; 
+      height: $toggleStrokeWidth;
+      background-color: $accent-color; 
+      width: 100%;  
+      left: 0; 
+      right: 0; 
+      position: absolute;
+      transition: all .2s cubic-bezier(0.23, 1, 0.32, 1); 
+    }
+
+    &:after {
+      top: 70%;
+    }
+
+    &:hover,
+    &:focus {
+      transform: scale(1.1); 
+    }
+  }
+}
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+    #Main Nav Small Menu Toggle Open
+\*------------------------------------*/
+
+
+.mainNav-menuToggle.is-menu-open {
+  
+  .menuToggle-label {
+    opacity: 0; 
+  }
+
+  .menuToggle-icon {
+    border-bottom: solid 2px transparent; 
+
+    &:before {
+      top: 50%; 
+      background-color: $accent-color; 
+      transform: translateY(0) rotate(-45deg); 
+    }
+
+    &:after {
+      top: 50%; 
+      background-color: $accent-color; 
+      transform: translateY(0) rotate(45deg); 
+    }
+
+    &:hover,
+    &:focus {
+      transform: scale(1.1); 
+    }
+  }
+}
+
+
+
+
+
+
+/*------------------------------------*\
+    #Main Nav Off Canvas 
+\*------------------------------------*/
+
+.mainNavoffCanvas {
+    background-color: $secondary-color;
+    height: 100vh;
+    width: 100vw; 
+    z-index: 38; 
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    color: #fff; 
+    margin-top: rem-calc(60px); 
+    transform: translateY(-100%); 
+    position: fixed;
+
+    @include media-query($medium-up) {
+      width: 15rem; 
+      left: auto; 
+    }
+
+    &.is-closed {  // for when nav is closed
+        animation: main-nav-disappear .7s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+    }
+
+    &.is-open { // for when nav is open
+        animation: main-nav-appear .8s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+    }
+
+    .mainNav-navToggle {
+      width: 100%; 
+      padding-left: rem-calc(3px); 
+      text-align: right;
+      
+      .navToggle-icon {
+        color: $tertiary-color; 
+        z-index: 201; 
+
+        &:active  {
+          color: $primary-color; 
+        }
+      }
+    }
+
+    .mainNav-container {
+      height: 100vh; 
+      position: relative;
+
+      .mainNav-animElem {
+        opacity: 0; 
+        transform: translateY(12px); 
+        transition: all .4s cubic-bezier(0.23, 1, 0.32, 1); 
+        will-change: transform; 
+      }
+      
+      .mainNav-menuContainer.is-showing {
+        .mainNav-animElem {
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+      }
+    }
+
+    .mainNav-menu {
+      padding-top: rem-calc($level7); 
+      margin-left: 25%;
+      margin-bottom: rem-calc($level4); 
+      text-align: left; 
+
+
+      @include media-query($medium-up) {
+        margin-left: rem-calc($level5);
+        padding-top: rem-calc($level4); 
+      } 
+
+      .mainNav-menu-item {
+        margin-bottom: rem-calc($level4); 
+
+        @include media-query($large-up) {
+          margin-bottom: rem-calc($level3); 
+        }
+      }
+      
+      .mainNav-menu-link {
+        color: #fff;  
+        width: 100%; 
+        margin-bottom: rem-calc($level2); 
+        display: block; 
+        font-family: $tertiary-font-family; 
+        @include h1(); 
+
+        @include media-query($medium-up) {
+          margin-bottom: 0;  
+          @include h3(); 
+        }
+
+        @include media-query($large-up) {
+          margin-bottom:0;
+        }
+      }
+    }
+
+
+    .mainNav-social {
+      margin-bottom: rem-calc($level6); 
+      margin-left: 25%;
+      color: $accent-color; 
+      transition-delay: .06s * 5; 
+      @extend %text-left; 
+
+      @include media-query($medium-up) {
+        margin-left: rem-calc($level5); 
+      } 
+
+      .mainNav-social-link {
+        color: $accent-color; 
+        display: block;
+        margin-right: rem-calc($level2); 
+        
+        svg {
+          width: rem-calc($level3); 
+          fill: $accent-color; 
+          height: rem-calc($level3);
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: $accent-color; 
+        }
+      }
+    }
+
+    .mainNav-tagline {
+      color: $primary-color; 
+      font-family: $secondary-font-family;
+      margin-bottom: 30%;  
+      position: relative;
+      width: 100%; 
+      margin-left: 25%; 
+      
+      @include media-query($medium-up) {
+        margin-bottom: 20%; 
+        margin-left: rem-calc($level5); 
+      }
+    
+      @include media-query($medium-up) {
+        margin-bottom: 40%; 
+      }
+    }
+
+    .mainNav-contact {
+      margin-left: rem-calc($level3);
+      margin-bottom: rem-calc($level4); 
+      color: #fff;
+      transition-delay: .06s * 6; 
+    }
+
+    .mainNav-address {
+      text-align: left; 
+    }
+
+
+    .mainNav-dropDown {
+      margin-bottom: 0; 
+
+      &.is-open {
+        margin-bottom: rem-calc($level5); 
+          
+        .mainNav-dropDown-item {
+          display: block; 
+          margin-bottom: rem-calc($level2); 
+
+          @include media-query($medium-up) {
+            margin-bottom: rem-calc($level1); 
+          }
+        }
+      }
+
+      .mainNav-dropDown-item {
+        display: none; 
+
+        @include media-query($medium-up) {
+          display: block !important; 
+        }
+      }
+
+      .mainNav-dropDown-item:last-child {
+        margin-bottom: rem-calc(3px); 
+      }
+
+      .mainNav-dropDown-link {
+        color: #ffffff; 
+        @include h4(); 
+
+        @include media-query($medium-up) {
+          @include h6(); 
+        }
+
+        @include media-query($large-up) {
+          margin-bottom: 0; 
+          @include text-micro();
+        }
+
+        &:hover, 
+        &:focus {
+          border-bottom: 2px solid $accent-color; 
+        }
+      }
+  }
+}
+
+
+
+@include media-query($medium-up) {
+
+  .mainNav-menuContainer {
+    opacity: 0;  
+    position: absolute;
+    z-index: 0; 
+    transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateZ(0);
+    width: 100%; 
+
+    &.is-showing {
+      z-index: 1; 
+      opacity: 1;  
+    }
+  }
+
+  .mainNav-cartContainer {
+    opacity: 0; 
+    z-index: 0; 
+    position: absolute;
+    transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateZ(0);
+    width: 100%; 
+    height: 100%; 
+
+    &.is-showing {
+      z-index: 1; 
+      opacity: 1; 
+    }
+  }
+
+}
+
+
+@keyframes  main-nav-appear {
+
+  0% {
+    transform: translateY(-120vh); 
+  }
+
+  1% {
+    transform: translateY(-120vh); 
+  }
+
+ 100% {
+    transform: translateY(0); 
+  }
+}
+
+@keyframes main-nav-disappear {
+
+  0% {
+    transform: translateY(0); 
+  }
+
+  99% {
+    transform: translateY(-120vh); 
+  }
+
+ 100% {
+    transform: translateY(-120vh); 
+  }
+}
+
+
+
+/*------------------------------------*\
+    #Main Nav Message
+\*------------------------------------*/
+
+.mainNav-message {
+  z-index: 102; 
+  position: relative;
+}
+
+
+
+.header-cart {
+  position: relative; 
+
+  @media only screen and (min-width: 793px) {
+    top: 12px;
+  }
+}
+
+.site-header__cart-count {
+  top: -10px;
+  right: -12px;
+  width: 24px !important; 
+  height: 24px !important;
+  min-width: 0; 
+  background-color: #dcd741 !important; 
+  color: #213258; 
+
+
+
+  span {
+    font-size: .9rem !important; 
+  }
+}
+
+.header-announcement {
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: #fff;
+  margin: auto;
+  font-family: 'Gotham-Black';
+  text-transform: uppercase;
+  font-size: .75rem;
+  top: 6px;
+  text-align: center;
+  max-width: 190px;
+
+  @include media-query($medium-up) {
+    max-width: 100%; 
+  }
+}
+
+
+.topbar-signin{
+  background-color:#1f305a;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  position: relative;
+  text-align: right;
+  height: 50px;
+  z-index: 999;
+
+  @include media-query($medium-up) {
+    height: 30px;
+  } 
+}
+
+
+
+.signin-list{
+  list-style: none;
+  display:inline;
+}
+.signin-list{
+  display: flex; 
+  flex-direction: column;
+
+  @include media-query($medium-up) {
+    flex-direction: row; 
+  }
+
+    li{
+      display:inline;
+      line-height: 20px; 
+      @include media-query($medium-up) {
+        line-height: 27px; 
+      }
+
+      a{
+        font-size:12px;
+        margin-right: 13px;
+        color: #fff !important;
+        font-family: 'Gotham-Book';
+        font-weight:700;
+
+        @include media-query($medium-up) {
+          margin-right: 25px; 
+        }
+    }
+  }
+}
+
+header.fixed .topbar-signin {
+  display: none;
+}
+.top-signin-menu{
+  float: right;
+  font-weight:700;
+  list-style: none;
+}
+
+.top-signin-menu {
+  z-index: 1;
+  position: relative;
+}
+
+.site-nav__childlist {
+
+  @include media-query($large-up) {
+    background-color: rgb(247, 247, 247) !important;
+  }
+}
+
+
+.site-nav__child-link {
+  color: #565252 !important; 
+}
+
+.site-nav__child-link--parent {
+
+  @include media-query($large-up) {
+    font-family: 'Gotham-Black' !important;
+    font-weight: normal !important;
+    letter-spacing: 1px !important;
+  }
+}
+
+
+.submenu-title {
+  @include media-query($large-up) {
+    display: none; 
+  }
+}
+
+
+.site-nav__childlist {
+  padding-top:  30px;
+}
