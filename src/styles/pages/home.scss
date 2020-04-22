@@ -15,15 +15,13 @@
 	position: relative; 
 	height: 90vh;
 	background-color: $tertiary-color;
- 	margin-top: 143px; 
  	max-height: 770px;
 	overflow: hidden; 
-	margin-bottom: rem-calc($level7 + $level7);
+	margin-bottom: rem-calc($level7 + $level7 + $level3);
 
  	@include media-query($large-up) {
  		height: 84vh;
  		max-height: 900px; 
-	 margin-bottom: rem-calc($level7 + $level7 + $level3);
  	}
 
 	.hero-header__inner {

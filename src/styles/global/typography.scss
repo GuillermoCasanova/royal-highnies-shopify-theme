@@ -237,7 +237,7 @@ $default-margin-bottom: rem-calc($level3);
 }; 
 
 @mixin h6() {
-  font-size: .8rem; //16px
+  font-size: .9rem; //16px
   line-height:  $base-magic-number / 16; //24px
 }; 
 

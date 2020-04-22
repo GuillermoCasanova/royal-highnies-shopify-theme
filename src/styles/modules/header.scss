@@ -11,58 +11,360 @@
 }
 
 
-.rewardsAlert {
-  background-color: $secondary-color;
-  top: rem-calc(72px); 
+.navigation {
+  position: fixed; 
+  top: 0; 
   right: 0; 
-  z-index: 120; 
-  position: fixed;
-  @include text-micro(); 
+  width: 100%; 
+  left: 0;
+  z-index: 99; 
+}
 
-  @include media-query($medium-up) {
-    right: 16rem;
-    bottom: auto;
-    top: 0; 
-    position: fixed;
-  }
 
-  a {
-    color: #fff;
-    position: relative;
-    padding: rem-calc($level1); 
-    display: inline-block;
-    top: -2px;
+/*------------------------------------*\
+    #Header
+\*------------------------------------*/
 
-    &:active,
-    &:hover, 
-    &:focus {
-      .icon svg {
-        fill: #fff;
-      }
-    }
+$toggleStrokeWidth: 3px;
+$toggleHeight: 1.15rem; 
+$toggleWidth: 72%;  
 
-    @include media-query($medium-up) {
-      padding-right: rem-calc($level2);
-      padding-left: rem-calc($level2);
-    }
-  }
+header {
+  background-color: #fff; 
+  width: 100%;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding-right: rem-calc($level2); 
+  padding-left: rem-calc($level2); 
+  height: rem-calc(70px);
+  z-index: 40;
+  position: relative;  
+  //box-shadow: 0px 0px 15px 2px rgba(0,0,0, .1),  0px 0px 17px 3px rgba(0,0,0, .12); 
+  box-shadow: 0px 0px 3px 1px rgba(0,0,0, .1),  0px 0px 4px 2px rgba(0,0,0, .12); 
 
-  .icon {
-    width: .8rem;
-    height: .8rem;
-    margin-right: 3px;
-    top: -1px;
-    position: relative;
-
-    @include media-query($medium-up) {
-      top: -2px;
+  .header__logo {
+    width: rem-calc(100px);
+    margin-bottom: 0; 
+    position: relative; 
+    bottom: -2px; 
+    
+    h1, 
+    a {
+      width: 100%;
+      height: 100%; 
+      display: block; 
     }
 
     svg {
-      fill: $accent-color;
+      width: 100%;
+      height: 100%; 
+      fill: $primary-color; 
+    }
+  }
+
+
+  .header__menu-toggle-wrapper {
+    width: rem-calc(42px);
+    height: rem-calc(42px);
+  }
+
+  .header__menu-toggle {
+    background-color: transparent; 
+    margin-bottom: 0; 
+    text-transform: uppercase; 
+    transition: all .2s cubic-bezier(0.23, 1, 0.32, 1); 
+    width: 100%; 
+    height: 100%; 
+
+    .header__menu-toggle__icon {
+      height: $toggleHeight;
+      width: $toggleWidth; 
+      position: relative;
+      display: block;
+      text-align: center; 
+      transition: all .2s cubic-bezier(0.23, 1, 0.32, 1); 
+      border-bottom: solid $toggleStrokeWidth $primary-color; 
+
+      &:after,
+      &:before {
+        content: ""; 
+        height: $toggleStrokeWidth;
+        background-color: $primary-color; 
+        width: 100%;  
+        left: 0; 
+        right: 0; 
+        top: 0; 
+        bottom: 0; 
+        position: absolute;
+        transition: all .2s cubic-bezier(0.23, 1, 0.32, 1); 
+      }
+
+      &:after {
+        top: 50%; 
+        bottom: auto; 
+      }
+
+      &:bottom {
+        top: auto; 
+        bottom: 50%;
+      }
+
+      &:hover,
+      &:focus {
+
+      }
+    }
+  }
+
+  .header__cart-toggle-wrapper {
+    width: rem-calc(42px);
+    height: rem-calc(42px);
+  }
+
+  .header__cart-toggle {
+    background-color: transparent; 
+    width: 100%;
+    height: 100%; 
+
+    .header__cart-toggle__total {
+      display: none; 
+    }
+
+    .header__cart-toggle__icon {
+      width: rem-calc(32px);
+      height: rem-calc(32px); 
+
+      svg {
+        fill: $primary-color; 
+        width: 100%; 
+        height: 100%; 
+      }   
     }
   }
 }
+
+
+
+
+
+/*------------------------------------*\
+    #Navigation Menu
+\*------------------------------------*/
+
+.navigation-menu-container {
+    height: 100vh;
+    width: 100vw; 
+    z-index: 36; 
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    color: #fff; 
+    padding-top: rem-calc(60px); 
+    transform: translateY(-120vh); 
+    position: fixed;
+    z-index: 0; 
+    background-color: #ffff; 
+    overflow: auto; 
+
+    &.is-closed {  // for when nav is closed
+        animation: main-nav-disappear .7s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+    }
+
+    &.is-open { // for when nav is open
+        animation: main-nav-appear .8s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+
+        // .mainNav-container {
+        //   .mainNav-animElem {
+        //     opacity: 1; 
+        //     transform: translateY(0); 
+        //   }
+        // }
+    }
+
+    .navigation-menu {
+      position: relative; 
+      width: 100%; 
+      min-height: calc(100vh - 60px);  
+      padding-left: rem-calc($level4); 
+      padding-right: rem-calc($level4); 
+
+      .navigation-menu__link[href="/pages/about-royal-highnies"] {
+        display: none; 
+
+        @include media-query($medium-up) {
+          display: block; 
+        }
+      }
+      
+      .navigation-menu__primary-links-list {
+        margin-bottom: rem-calc($level4); 
+      }
+
+      .navigation-menu__item {
+        margin-bottom: rem-calc($level4); 
+        width: 100%; 
+        position: relative; 
+      }
+
+      .navigation-menu__inner {
+        width: 100%; 
+        padding-top: rem-calc($level6); 
+        min-height: calc(100vh - 4rem);
+        position: relative;
+        height: auto; 
+        padding-top: rem-calc($level7); 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: space-between; 
+        padding-bottom: 40%; 
+      }
+
+      .navigation-menu__link {
+        color: $primary-color; 
+        font-family: $secondary-font-family; 
+        text-transform: capitalize; 
+        text-decoration: none; 
+        margin-bottom: rem-calc($level4);
+        width: 100%; 
+        @include h1();
+
+        .icon {
+          position: absolute; 
+          right: 0; 
+          top: 0; 
+          bottom: 0; 
+        } 
+      }
+
+      .navigation-menu__drop-down {
+        .navigation-menu__drop-down__title {
+
+        }
+
+        .navigation-menu__drop-down__links {
+          display: none; 
+        }
+
+        .navigation-menu__drop-down__category-title {
+          text-transform: uppercase; 
+          font-family: $tertiary-font-family; 
+          color: $quaternary-color;
+          text-decoration: none; 
+          @include h6();
+        }
+
+        .navigation-menu__drop-down__category-links {
+          margin-bottom: rem-calc($level5);
+        }
+          
+        .navigation-menu__drop-down__item {
+          margin-bottom: rem-calc($level1);
+        }
+
+        .navigation-menu__drop-down__link {
+          color: $primary-color;
+          text-decoration: none; 
+        }
+      }
+
+      .navigation-menu__secondary-links-list {
+        max-width: 100%; 
+        display: flex; 
+        position: absolute; 
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        bottom: 5%; 
+
+        .navigation-menu__secondary-links-list__item {
+          width: 48%; 
+          padding: rem-calc($level2);
+          border-bottom: 1px solid $tertiary-color; 
+          border-right: 1px solid $tertiary-color; 
+          text-align: center; 
+        }
+
+        .navigation-menu__secondary-links-list__item:nth-child(even) {
+          border-right: none; 
+        }
+
+        .navigation-menu__secondary-links-list__item:nth-child(3),
+        .navigation-menu__secondary-links-list__item:nth-child(4) {
+          border-bottom: none; 
+        }
+
+        .navigation-menu__secondary-links-list__link {
+          color: $primary-color;
+          text-decoration: none; 
+          @include h6(); 
+        }
+      }
+    }
+}
+
+
+
+@keyframes  main-nav-appear {
+
+  0% {
+    transform: translateY(-120vh); 
+  }
+
+  1% {
+    transform: translateY(-120vh); 
+  }
+
+ 100% {
+    transform: translateY(0); 
+  }
+}
+
+@keyframes main-nav-disappear {
+
+  0% {
+    transform: translateY(0); 
+  }
+
+  99% {
+    transform: translateY(-120vh); 
+  }
+
+ 100% {
+    transform: translateY(-120vh); 
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+    #Header Announcement
+\*------------------------------------*/
+
+
+.header-announcement {
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: #fff;
+  margin: auto;
+  font-family: 'Gotham-Black';
+  text-transform: uppercase;
+  font-size: .75rem;
+  top: 6px;
+  text-align: center;
+  max-width: 190px;
+
+  @include media-query($medium-up) {
+    max-width: 100%; 
+  }
+}
+
+
+
+
 
 /*------------------------------------*\
     #Main Nav Basic Styles
@@ -134,36 +436,9 @@
 
 
 
-/*------------------------------------*\
-    #Header Logo
-\*------------------------------------*/
 
 
-.headerLogo {
-  position: fixed; 
-  z-index: 200; 
-  height: rem-calc(60px);
-  width: 25%;
-  top: 0; 
 
-  @include media-query($medium-up) {
-    height: rem-calc(75px)
-  } 
-
-  @include media-query($medium-up) {
-    width: 6.5rem;  
-    position: fixed;
-    margin-top: 0;
-    top: 0; 
-    height: rem-calc(80px);
-    margin-top: rem-calc($level1);
-  }
-
-  .headerLogo-inner {
-    width: rem-calc(60px); 
-  }
-
-}
 
 
 
@@ -223,74 +498,6 @@
   }
 
 
-  /*------------------------------------*\
-      #Main Nav Small Menu Toggle
-  \*------------------------------------*/
-
-  $toggleStrokeWidth: 4px;
-  $toggleHeight: .9rem; 
-  $toggleWidth: 2.1rem;  
-
-  .mainNav-menuToggleWrapper {
-      background-color: $secondary-color; 
-      color: #fff; 
-      right: 0; 
-      width: 75%; 
-      z-index: 201; 
-      height: 100%; 
-      @extend %text-center; 
-
-      @include media-query($medium-up) {
-        width: 100%; 
-      }
-  }
-
-  .mainNav-menuToggle {
-    background-color: transparent; 
-    margin-bottom: 0; 
-    text-transform: uppercase; 
-    transition: all .2s cubic-bezier(0.23, 1, 0.32, 1); 
-
-    &.is-opaqued {
-      opacity: .3; 
-    }
-    
-    .menuToggle-label {
-      margin-right: rem-calc($level1); 
-      @include text-micro(); 
-    }
-  }
-
-
-  .menuToggle-icon {
-    height: $toggleHeight;
-    width: $toggleWidth; 
-    position: relative;
-    display: block;
-    text-align: center; 
-    transition: all .2s cubic-bezier(0.23, 1, 0.32, 1); 
-
-    &:after,
-    &:before {
-      content: ""; 
-      height: $toggleStrokeWidth;
-      background-color: $accent-color; 
-      width: 100%;  
-      left: 0; 
-      right: 0; 
-      position: absolute;
-      transition: all .2s cubic-bezier(0.23, 1, 0.32, 1); 
-    }
-
-    &:after {
-      top: 70%;
-    }
-
-    &:hover,
-    &:focus {
-      transform: scale(1.1); 
-    }
-  }
 }
 
 
@@ -337,286 +544,6 @@
 
 
 
-
-/*------------------------------------*\
-    #Main Nav Off Canvas 
-\*------------------------------------*/
-
-.mainNavoffCanvas {
-    background-color: $secondary-color;
-    height: 100vh;
-    width: 100vw; 
-    z-index: 38; 
-    top: 0; 
-    bottom: 0; 
-    left: 0; 
-    right: 0; 
-    color: #fff; 
-    margin-top: rem-calc(60px); 
-    transform: translateY(-100%); 
-    position: fixed;
-
-    @include media-query($medium-up) {
-      width: 15rem; 
-      left: auto; 
-    }
-
-    &.is-closed {  // for when nav is closed
-        animation: main-nav-disappear .7s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
-    }
-
-    &.is-open { // for when nav is open
-        animation: main-nav-appear .8s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
-    }
-
-    .mainNav-navToggle {
-      width: 100%; 
-      padding-left: rem-calc(3px); 
-      text-align: right;
-      
-      .navToggle-icon {
-        color: $tertiary-color; 
-        z-index: 201; 
-
-        &:active  {
-          color: $primary-color; 
-        }
-      }
-    }
-
-    .mainNav-container {
-      height: 100vh; 
-      position: relative;
-
-      .mainNav-animElem {
-        opacity: 0; 
-        transform: translateY(12px); 
-        transition: all .4s cubic-bezier(0.23, 1, 0.32, 1); 
-        will-change: transform; 
-      }
-      
-      .mainNav-menuContainer.is-showing {
-        .mainNav-animElem {
-          opacity: 1; 
-          transform: translateY(0); 
-        }
-      }
-    }
-
-    .mainNav-menu {
-      padding-top: rem-calc($level7); 
-      margin-left: 25%;
-      margin-bottom: rem-calc($level4); 
-      text-align: left; 
-
-
-      @include media-query($medium-up) {
-        margin-left: rem-calc($level5);
-        padding-top: rem-calc($level4); 
-      } 
-
-      .mainNav-menu-item {
-        margin-bottom: rem-calc($level4); 
-
-        @include media-query($large-up) {
-          margin-bottom: rem-calc($level3); 
-        }
-      }
-      
-      .mainNav-menu-link {
-        color: #fff;  
-        width: 100%; 
-        margin-bottom: rem-calc($level2); 
-        display: block; 
-        font-family: $tertiary-font-family; 
-        @include h1(); 
-
-        @include media-query($medium-up) {
-          margin-bottom: 0;  
-          @include h3(); 
-        }
-
-        @include media-query($large-up) {
-          margin-bottom:0;
-        }
-      }
-    }
-
-
-    .mainNav-social {
-      margin-bottom: rem-calc($level6); 
-      margin-left: 25%;
-      color: $accent-color; 
-      transition-delay: .06s * 5; 
-      @extend %text-left; 
-
-      @include media-query($medium-up) {
-        margin-left: rem-calc($level5); 
-      } 
-
-      .mainNav-social-link {
-        color: $accent-color; 
-        display: block;
-        margin-right: rem-calc($level2); 
-        
-        svg {
-          width: rem-calc($level3); 
-          fill: $accent-color; 
-          height: rem-calc($level3);
-        }
-
-        &:hover,
-        &:active,
-        &:focus {
-          color: $accent-color; 
-        }
-      }
-    }
-
-    .mainNav-tagline {
-      color: $primary-color; 
-      font-family: $secondary-font-family;
-      margin-bottom: 30%;  
-      position: relative;
-      width: 100%; 
-      margin-left: 25%; 
-      
-      @include media-query($medium-up) {
-        margin-bottom: 20%; 
-        margin-left: rem-calc($level5); 
-      }
-    
-      @include media-query($medium-up) {
-        margin-bottom: 40%; 
-      }
-    }
-
-    .mainNav-contact {
-      margin-left: rem-calc($level3);
-      margin-bottom: rem-calc($level4); 
-      color: #fff;
-      transition-delay: .06s * 6; 
-    }
-
-    .mainNav-address {
-      text-align: left; 
-    }
-
-
-    .mainNav-dropDown {
-      margin-bottom: 0; 
-
-      &.is-open {
-        margin-bottom: rem-calc($level5); 
-          
-        .mainNav-dropDown-item {
-          display: block; 
-          margin-bottom: rem-calc($level2); 
-
-          @include media-query($medium-up) {
-            margin-bottom: rem-calc($level1); 
-          }
-        }
-      }
-
-      .mainNav-dropDown-item {
-        display: none; 
-
-        @include media-query($medium-up) {
-          display: block !important; 
-        }
-      }
-
-      .mainNav-dropDown-item:last-child {
-        margin-bottom: rem-calc(3px); 
-      }
-
-      .mainNav-dropDown-link {
-        color: #ffffff; 
-        @include h4(); 
-
-        @include media-query($medium-up) {
-          @include h6(); 
-        }
-
-        @include media-query($large-up) {
-          margin-bottom: 0; 
-          @include text-micro();
-        }
-
-        &:hover, 
-        &:focus {
-          border-bottom: 2px solid $accent-color; 
-        }
-      }
-  }
-}
-
-
-
-@include media-query($medium-up) {
-
-  .mainNav-menuContainer {
-    opacity: 0;  
-    position: absolute;
-    z-index: 0; 
-    transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
-    transform: translateZ(0);
-    width: 100%; 
-
-    &.is-showing {
-      z-index: 1; 
-      opacity: 1;  
-    }
-  }
-
-  .mainNav-cartContainer {
-    opacity: 0; 
-    z-index: 0; 
-    position: absolute;
-    transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
-    transform: translateZ(0);
-    width: 100%; 
-    height: 100%; 
-
-    &.is-showing {
-      z-index: 1; 
-      opacity: 1; 
-    }
-  }
-
-}
-
-
-@keyframes  main-nav-appear {
-
-  0% {
-    transform: translateY(-120vh); 
-  }
-
-  1% {
-    transform: translateY(-120vh); 
-  }
-
- 100% {
-    transform: translateY(0); 
-  }
-}
-
-@keyframes main-nav-disappear {
-
-  0% {
-    transform: translateY(0); 
-  }
-
-  99% {
-    transform: translateY(-120vh); 
-  }
-
- 100% {
-    transform: translateY(-120vh); 
-  }
-}
 
 
 

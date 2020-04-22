@@ -1,141 +1,52 @@
 
 
-<div data-section-id="{{ section.id }}" data-section-type="header"  data-template="{{ template.name }}">
+<div class="navigation" data-section-id="{{ section.id }}" data-section-type="header"  data-template="{{ template.name }}">
 
+    {% if section.settings.announcement_bar_enabled %}
+    <alert class="header-announcement"> 
+      {%- if section.settings.announcement_bar_link != blank -%}
+         <a href="{{ section.settings.announcement_bar_link }}" rel="internal" title="{{section.settings.announcement_bar_link_title}}">
+           {{ section.settings.announcement_bar_text | escape }}
+         </a>
+       {%- else -%}
+         <span>{{ section.settings.announcement_bar_text | escape }}</span>
+       {%- endif -%}
+    </alert>
+    {% endif %}
 
-
-            <ul class="mainNav-menu ">
-              <li>
-                <div class="mainNav-accountLink mainNav-animElem">
-                  {%if customer%}
-                  <a href="/account">
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M490.3 534.4c146.6 0 266-117.6 266-262.2S637 10 490.3 10c-146.6 0-266 117.6-266 262.2.1 144.5 119.4 262.2 266 262.2zm106.1 7.2H403.6C219.6 541.6 70 689 70 870.2v19C70 990 217.2 990 403.6 990h192.8c179 0 333.6 0 333.6-100.8v-19c0-181.2-149.7-328.6-333.6-328.6z"/></svg>
-                  </span>
-                  View Account</a>
-                  {%else%}
-                  <a href="/account/login" >
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M490.3 534.4c146.6 0 266-117.6 266-262.2S637 10 490.3 10c-146.6 0-266 117.6-266 262.2.1 144.5 119.4 262.2 266 262.2zm106.1 7.2H403.6C219.6 541.6 70 689 70 870.2v19C70 990 217.2 990 403.6 990h192.8c179 0 333.6 0 333.6-100.8v-19c0-181.2-149.7-328.6-333.6-328.6z"/></svg>
-                    </span>
-                    Account Login
-                  </a>
-                {%endif%}
-                </div>   
-              </li>
-
-                    {% for link in linklists[section.settings.main_linklist].links %}
-          {%- assign outerLoopIndex = forloop.index -%}
-
-          <li class="mobile-nav__item{% unless forloop.last %} border-bottom{% endunless %}">
-            {% if link.links != blank %}
-              {% capture child_list_handle %}{{ link.handle }}-{{ outerLoopIndex }}{% endcapture %}
-              <button type="button" class="btn--link js-toggle-submenu mobile-nav__link{% if link.child_active %} mobile-nav__link--active{% endif %}" data-target="{{ child_list_handle }}" data-level="1" aria-expanded="false">
-                <span class="mobile-nav__label">{{ link.title | escape }}</span>
-                <div class="mobile-nav__icon">
-                  {% include 'icon-chevron-right' %}
-                </div>
-              </button>
-              <ul class="mobile-nav__dropdown" data-parent="{{ child_list_handle }}" data-level="2">
-                <li class="visually-hidden" tabindex="-1" data-menu-title="2">
-                  {{- link.title }} {{ 'layout.navigation.menu' | t -}}
-                </li>
-                <li class="mobile-nav__item border-bottom">
-                  <div class="mobile-nav__table">
-                    <div class="mobile-nav__table-cell mobile-nav__return">
-                      <button class="btn--link js-toggle-submenu mobile-nav__return-btn" type="button" aria-expanded="true" aria-label="{{ link.title }}">
-                        {% include 'icon-chevron-left' %}
-                      </button>
-                    </div>
-                    <span class="mobile-nav__sublist-link mobile-nav__sublist-header mobile-nav__sublist-header--main-nav-parent">
-                      <span class="mobile-nav__label">{{ link.title | escape }}</span>
-                    </span>
-                  </div>
-                </li>
-
-                {% for childlink in link.links %}
-                  <li class="mobile-nav__item{% unless forloop.last %} border-bottom{% endunless %}">
-                    {% if childlink.links != blank %}
-                      {% capture grandchild_list_handle %}{{ childlink.handle }}-{{ outerLoopIndex }}-{{ forloop.index }}{% endcapture %}
-                      <button type="button" class="btn--link js-toggle-submenu mobile-nav__link mobile-nav__sublist-link" data-target="{{ grandchild_list_handle }}" aria-expanded="false">
-                        <span class="mobile-nav__label">{{ childlink.title | escape }}</span>
-                        <div class="mobile-nav__icon">
-                          {% include 'icon-chevron-right' %}
-                        </div>
-                      </button>
-                      <ul class="mobile-nav__dropdown" data-parent="{{ grandchild_list_handle }}" data-level="3">
-                        <li class="visually-hidden" tabindex="-1" data-menu-title="3">
-                          {{- childlink.title }} {{ 'layout.navigation.menu' | t -}}
-                        </li>
-                        <li class="mobile-nav__item border-bottom">
-                          <div class="mobile-nav__table">
-                            <div class="mobile-nav__table-cell mobile-nav__return">
-                              <button type="button" class="btn--link js-toggle-submenu mobile-nav__return-btn" data-target="{{ child_list_handle }}" aria-expanded="true" aria-label="{{ childlink.title }}">
-                                {% include 'icon-chevron-left' %}
-                              </button>
-                            </div>
-                            <a href="{{ childlink.url }}"
-                              class="mobile-nav__sublist-link mobile-nav__sublist-header"
-                              {% if childlink.current %} aria-current="page"{% endif %}
-                            >
-                              <span class="mobile-nav__label">{{ childlink.title | escape }}</span>
-                            </a>
-                          </div>
-                        </li>
-                        {% for grandchildlink in childlink.links %}
-                          <li class="mobile-nav__item{% unless forloop.last %} border-bottom{% endunless %}">
-                            <a href="{{ grandchildlink.url }}"
-                              class="mobile-nav__sublist-link"
-                              {% if grandchildlink.current %} aria-current="page"{% endif %}
-                            >
-                              <span class="mobile-nav__label">{{ grandchildlink.title | escape }}</span>
-                            </a>
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    {% else %}
-                      <a href="{{ childlink.url }}"
-                        class="mobile-nav__sublist-link"
-                        {% if childlink.current %} aria-current="page"{% endif %}
-                      >
-                        <span class="mobile-nav__label">{{ childlink.title | escape }}</span>
-                      </a>
-                    {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
-            {% else %}
-              <a href="{{ link.url }}"
-                class="mobile-nav__link{% if link.active %} mobile-nav__link--active{% endif %}"
-                {% if link.current %} aria-current="page"{% endif %}
-              >
-                <span class="mobile-nav__label">{{ link.title | escape }}</span>
-              </a>
-            {% endif %}
-          </li>
-        {% endfor %}
-
-        
-              <li class="hide-for-medium-up mainNav-animElem">
-                <a href="/cart"  rel="internal" class="cartToggle hide-for-medium-up">
-                      Cart <span class="cartToggle-total">{{cart.item_count}}</span>
-                 </a>
-              </li>
-            </ul>
-    
-  <!-- Navigation for small devices--> 
-  <header role="banner">
+    <!-- Navigation for small devices--> 
+    <header>
+      <div class="header__menu-toggle-wrapper">
+        <button class="header__menu-toggle"  data-menu-toggle data-target="menu">
+            <span class="header__menu-toggle__icon">
+              
+            </span>
+        </button>
+      </div>
+<!--       <div>
+        {%if customer%}
+            <a href="/account">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M490.3 534.4c146.6 0 266-117.6 266-262.2S637 10 490.3 10c-146.6 0-266 117.6-266 262.2.1 144.5 119.4 262.2 266 262.2zm106.1 7.2H403.6C219.6 541.6 70 689 70 870.2v19C70 990 217.2 990 403.6 990h192.8c179 0 333.6 0 333.6-100.8v-19c0-181.2-149.7-328.6-333.6-328.6z"/></svg>
+            </span>
+            View Account</a>
+            {%else%}
+            <a href="/account/login" >
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M490.3 534.4c146.6 0 266-117.6 266-262.2S637 10 490.3 10c-146.6 0-266 117.6-266 262.2.1 144.5 119.4 262.2 266 262.2zm106.1 7.2H403.6C219.6 541.6 70 689 70 870.2v19C70 990 217.2 990 403.6 990h192.8c179 0 333.6 0 333.6-100.8v-19c0-181.2-149.7-328.6-333.6-328.6z"/></svg>
+              </span>
+              Account Login
+            </a>
+          {%endif%}
+      </div> -->
 
     {% if template.name == 'index' %}
-      <h1 itemscope itemtype="http://schema.org/Organization" class="headerLogo grid grid--center grid--justifyCenter   large-grid--justifyLeft">
+      <h1 itemscope itemtype="http://schema.org/Organization" class="header__logo">
       {% else %}
         <div class="h1 headerLogo grid grid--center grid--justifyCenter   large-grid--justifyLeft" itemscope itemtype="http://schema.org/Organization">
         {% endif %}
             <a href="/" itemprop="url" >
-              <img src="{{'logo--whiskers--badge.svg' | asset_url}}"
-                   alt="{{ section.settings.logo.alt | default: shop.name }}"
-                   itemprop="logo"
-                   class="headerLogo-inner">
+             {%include 'logo-royal-highnies.liquid'%}
             </a>
         {% if template.name == 'index' %}
           </h1>
@@ -143,163 +54,112 @@
         </div>
     {% endif %}
 
+    <div class="header__cart-toggle-wrapper">
+       <button  data-menu-toggle  data-target="cart"  class="header__cart-toggle">
+            <span class="header__cart-toggle__total" id="cart-count">{{cart.item_count}}</span>
+            <span class="header__cart-toggle__icon">{% include 'icon-cart' %}</span>
+       </button>
+    </div>
+  </header>
 
-    <nav class="mainNav  grid grid--center  grid--justifyRight" role="navigation">
+  <aside class="navigation-menu-container is-open"  data-off-canvas-menu>
+    <nav class="navigation-menu" data-menu>
 
-      <div class="mainNav-title">
-  
-      </div>
+       <div class="navigation-menu__inner">
 
-
-      <div class="mainNav-menuToggleWrapper  grid  grid--center  grid--justifyCenter">
-         
-         <button  data-menu-toggle  data-target="cart"  class="cartToggle show-for-medium-up">
-              <span  class="cartToggle-label">Cart</span>
-              <span class="cartToggle-total" id="cart-count">{{cart.item_count}}</span>
-         </button>
-
-        <button class="mainNav-menuToggle  grid grid--center"  data-menu-toggle data-target="menu">
-            <span class="menuToggle-label  show-for-medium-up">
-               Menu
-            </span>
-
-            <span class="menuToggle-icon">
-              
-            </span>
-        </button>
-      </div>
-
-
-      <!-- Off canvas navigation for small devices--> 
-      <aside class="mainNavoffCanvas"  data-off-canvas-menu>
-         <div class="mainNav-container [ grid grid--flexDirectionColumn grid--justifySpaceBetween ]">
-
-          <!-- Navigation/Menu items--> 
-          <nav role="navigation" data-menu class="mainNav-menuContainer">
-
-           <!--  <div class="rewardsAlert  mainNav-rewardsAlert hide-for-medium-up  [ grid  grid--center grid--justifyCenter ]">
-                {%if customer%}
-               <a href="/pages/rewards" rel="internal" title="Whiskers Rewards Program">
-                {%else%}
-               <a href="/account/login" rel="internal" title="Whiskers Rewards Account Login">
-                {%endif%}
-                <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125"><switch><g><path d="M75.5 60.4L96 43.5c2.9-2.4 1.4-7.1-2.4-7.3l-26.4-1.6c-1.6-.1-3-1.1-3.6-2.6L53.9 7.2c-1.4-3.5-6.3-3.5-7.7 0l-9.7 24.7c-.6 1.5-2 2.5-3.6 2.6L6.4 36.1c-3.8.2-5.3 4.9-2.4 7.3l20.5 16.8c1.2 1 1.8 2.7 1.4 4.2l-6.7 25.7c-.9 3.6 3 6.5 6.2 4.5l22.3-14.3c1.4-.9 3.1-.9 4.4 0l22.4 14.3c3.2 2 7.1-.9 6.2-4.5L74 64.5c-.3-1.5.2-3.1 1.5-4.1z"/></g></switch></svg>
-                  </span>  
-                  Get exclusive rewards with our loyalty program!
-                </a>
-            </div> -->
-
-            <ul class="mainNav-menu ">
-              <li>
-                <div class="mainNav-accountLink mainNav-animElem">
-                  {%if customer%}
-                  <a href="/account">
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M490.3 534.4c146.6 0 266-117.6 266-262.2S637 10 490.3 10c-146.6 0-266 117.6-266 262.2.1 144.5 119.4 262.2 266 262.2zm106.1 7.2H403.6C219.6 541.6 70 689 70 870.2v19C70 990 217.2 990 403.6 990h192.8c179 0 333.6 0 333.6-100.8v-19c0-181.2-149.7-328.6-333.6-328.6z"/></svg>
-                  </span>
-                  View Account</a>
-                  {%else%}
-                  <a href="/account/login" >
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M490.3 534.4c146.6 0 266-117.6 266-262.2S637 10 490.3 10c-146.6 0-266 117.6-266 262.2.1 144.5 119.4 262.2 266 262.2zm106.1 7.2H403.6C219.6 541.6 70 689 70 870.2v19C70 990 217.2 990 403.6 990h192.8c179 0 333.6 0 333.6-100.8v-19c0-181.2-149.7-328.6-333.6-328.6z"/></svg>
-                    </span>
-                    Account Login
+        <!-- Navigation/Menu items--> 
+        <ul class="navigation-menu__primary-links-list ">
+ 
+          {% for link in linklists[section.settings.main_linklist].links %}
+            {%- assign child_list_handle = link.title | handleize -%}
+            {% if menus[child_list_handle].links != blank %}
+              <li class="navigation-menu__item">
+                <div class="navigation-menu__drop-down">
+                  <a href="{{link.url}}" class="navigation-menu__link navigation-menu__drop-down__title"
+                      data-toggle-id="{{ forloop.index }}"
+                      data-drop-down-toggle>
+                    {{ link.title }}
                   </a>
-                {%endif%}
-                </div>   
-              </li>
-              {% for link in linklists[section.settings.main_linklist].links %}
-                {%- assign child_list_handle = link.title | handleize -%}
-                {% if menus[child_list_handle].links != blank %}
-                  <li class="mainNav-menu-item ">
-                    <h1 class="mainNav-menu-link  mainNav-animElem"
-                        data-toggle-id="{{ forloop.index }}"
-                        data-drop-down-toggle>
-                      {{ link.title }}
-                    </h1>
-                    <ul class="mainNav-dropDown"
-                        data-dropdown-id="{{ forloop.index }}">
-                      {% for childlink in menus[child_list_handle].links %}
-                         {%if childlink.url == '/account'%}
-                          {%if customer%}
-                           <li class="mainNav-dropDown-item mainNav-animElem">
-                            <a href="{{ childlink.url }}" class="mainNav-dropDown-link">View Account</a>
-                          </li>
-                          {%else%}
-                          <li class="mainNav-dropDown-item mainNav-animElem">
-                            <a href="{{ childlink.url }}" class="mainNav-dropDown-link">{{ childlink.title }}</a>
-                          </li>   
-                          {%endif%}
-                        {%else%}
-                        <li class="mainNav-dropDown-item mainNav-animElem {% if childlink.active %}site-nav--active{% endif %}" >
-                          <a href="{{ childlink.url }}" class="mainNav-dropDown-link">{{ childlink.title | escape }}</a>
-                        </li>
-                        {%endif%}
-                      {% endfor %}
-                    </ul>
-                  </li>
-                {% else %}  
-                  <li class="mainNav-menu-item  {% if link.active %}site-nav--active{% endif %}">
-                    <a href="{{ link.url }}" class="mainNav-menu-link">{{ link.title }}</a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-              <li class="hide-for-medium-up mainNav-animElem">
-                <a href="/cart"  rel="internal" class="cartToggle hide-for-medium-up">
-                      Cart <span class="cartToggle-total">{{cart.item_count}}</span>
-                 </a>
-              </li>
-            </ul>
-    
-            <ul class="[ grid  grid--center  grid--justifyStart ]  [ mainNav-social mainNav-animElem ]">
-               <li>
-                 <a href="https://www.instagram.com/whiskerslaces/" target="_blank" class="mainNav-social-link   icon-instagram">
-                    {% include 'icon-instagram' %}
-                 </a> 
-               </li>
-                          
-               <li>
-                 <a href="https://facebook.com/whiskerslaces" target="_blank" class="mainNav-social-link   icon-facebook">
-                    {% include 'icon-facebook' %}
-                 </a>
-               </li>
-            </ul>
-          </nav>
-              
-           <!--Cart Container--> 
-           <div data-cart  class="mainNav-cartContainer  [ grid  show-for-medium-up  grid--flexDirectionColumn grid--justifySpaceBetween ]">
-              <div class="offCanvasCart">
-                <div class="offCanvasCart-loader">
-                  <div class="loader"></div>
+                  <ul class="navigation-menu__drop-down__links"
+                      data-dropdown-id="{{ forloop.index }}">
+                    {% for childlink in menus[child_list_handle].links %}
+
+                      {%- assign child_list_handle = childlink.title | handleize -%}
+                      {%if menus[child_list_handle].links %}
+                      <li class="navigation-menu__drop-down__item">
+                        <a href="{{ childlink.url }}" rel="internal" title="{{ childlink.title }}" class="navigation-menu__drop-down__category-title">{{ childlink.title }}</a>
+                         <ul class="navigation-menu__drop-down__category-links">
+                            {% for childlink in menus[child_list_handle].links %}
+                             <li>
+                                <a href="{{ childlink.url }}" title="{{childlink.title}}" class="navigation-menu__drop-down__link">{{childlink.title}}</a>
+                             </li>
+                             {%endfor%}
+                         </ul> 
+                      </li>   
+                      {%else%}
+
+                      <li class="navigation-menu__drop-down-item">
+                        <a href="{{ childlink.url }}" class="navigation-menu__drop-down__link">
+                        {{ childlink.title }}
+                        </a>
+                      </li> 
+                      {%endif%}
+
+                    {% endfor %}
+                  </ul>
                 </div>
-                <div  id="CartContainer">
-                  
-                </div>
+              </li>
+            {% else %}  
+              <li class="navigation-menu__item  {% if link.active %}site-nav--active{% endif %}">
+                <a href="{{ link.url }}" class="navigation-menu__link">{{ link.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+  
+        <ul class="navigation-menu__secondary-links-list">
+            {% for link in linklists[section.settings.secondary_linklist].links %}
+               <li class="navigation-menu__secondary-links-list__item">
+                <a href="{{link.url}}" class="navigation-menu__secondary-links-list__link">
+                  {{link.title}}
+                </a>
+              </li>
+            {%endfor%}
+        </ul>
 
-              </div>
-           </div>
-           <!-- END Cart Container--> 
-             
-         </div>
-
-      </aside>
-      <!--END off canvas navigation--> 
-
+       </div>
     </nav>
 
-  </header>
-  <!--END small devices navigation--> 
-    
+  </aside>
+  <!--END off canvas navigation--> 
+
+  <aside class="show-for-medium-up">
+              
+     <!--Cart Container--> 
+     <div data-cart  class="mainNav-cartContainer  [ grid  show-for-medium-up  grid--flexDirectionColumn grid--justifySpaceBetween ]">
+        <div class="offCanvasCart">
+          <div class="offCanvasCart-loader">
+            <div class="loader"></div>
+          </div>
+          <div  id="CartContainer">
+            
+          </div>
+
+        </div>
+     </div>
+     <!-- END Cart Container--> 
+             
+  </aside>
+
 
   <!-- Cart success modal, used for small devices--> 
-  <div class="cartSuccessModal  hide-for-medium-up" data-cart-item-added-success-modal>
+<!--   <div class="cartSuccessModal  hide-for-medium-up" data-cart-item-added-success-modal>
     <span class="cartSuccessModal-cartTotal" data-cart-total>
     </span>
     <a class="cartSuccessModal-button" href="/cart"  rel="internal">
       {% include 'icon-cart' %}
     </a>
-  </div>
+  </div> -->
   <!-- END Cart success modal--> 
 
 </div>
@@ -331,6 +191,12 @@
         "type": "link_list",
         "id": "main_linklist",
         "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "secondary_linklist",
+        "label": "Secondary Menu",
         "default": "main-menu"
       }
     ]
