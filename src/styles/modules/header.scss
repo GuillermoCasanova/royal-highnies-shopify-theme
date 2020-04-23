@@ -114,6 +114,31 @@ header {
       &:focus {
 
       }
+
+    } 
+
+
+    &.is-open {
+      .header__menu-toggle__icon {
+        border-bottom: solid 2px transparent; 
+        
+        &:before {
+          top: 50%; 
+          background-color: $primary-color; 
+          transform: translateY(0) rotate(-45deg); 
+        }
+
+        &:after {
+          top: 50%; 
+          background-color: $primary-color; 
+          transform: translateY(0) rotate(45deg); 
+        }
+
+        &:hover,
+        &:focus {
+          transform: scale(1.1); 
+        }
+      }
     }
   }
 
@@ -187,8 +212,7 @@ header {
       position: relative; 
       width: 100%; 
       min-height: calc(100vh - 60px);  
-      padding-left: rem-calc($level4); 
-      padding-right: rem-calc($level4); 
+
 
       .navigation-menu__link[href="/pages/about-royal-highnies"] {
         display: none; 
@@ -203,7 +227,6 @@ header {
       }
 
       .navigation-menu__item {
-        margin-bottom: rem-calc($level4); 
         width: 100%; 
         position: relative; 
       }
@@ -226,9 +249,26 @@ header {
         font-family: $secondary-font-family; 
         text-transform: capitalize; 
         text-decoration: none; 
-        margin-bottom: rem-calc($level4);
         width: 100%; 
+        padding-top: rem-calc($level2);
+        padding-bottom: rem-calc($level2);
+        transition: all .4s ease-in-out;
+        padding-left: rem-calc($level4); 
+        padding-right: rem-calc($level4);  
+        width: 100%; 
+        display: block; 
         @include h1();
+        
+        &:hover, 
+        &:focus {
+            background-color: #F6F6F6;
+        }
+
+        @include media-query($medium-up) {
+          padding-top: rem-calc($level4);
+          padding-bottom: rem-calc($level4);
+          @include text-kilo(); 
+        }
 
         .icon {
           position: absolute; 
@@ -239,12 +279,65 @@ header {
       }
 
       .navigation-menu__drop-down {
-        .navigation-menu__drop-down__title {
 
+        &.is-open {
+          .navigation-menu__drop-down__icon {
+            &:after {
+              transform: rotate(0);
+            }
+          }
+
+          .navigation-menu__drop-down__links {
+            display: block; 
+          }
+        }
+
+        .navigation-menu__drop-down__title {
+          position: relative; 
+          width: 100%; 
+          display: block; 
+        }
+
+        .navigation-menu__drop-down__icon {
+          position: absolute; 
+          right: rem-calc($level3) ; 
+          top: 0; 
+          bottom: 0; 
+          width: rem-calc(20px);
+          height: rem-calc(20px);
+
+          &:after,
+          &:before {
+            content: " ";
+            width: 100%; 
+            height: 3px;
+            background-color: $primary-color; 
+            position: absolute; 
+            top: 1.75rem; 
+            right: 0; 
+            bottom: 0; 
+            left: 0; 
+            transition: all .2s ease-in-out; 
+
+            @include media-query($medium-up) {
+              top: 2rem; 
+            }
+          }
+
+          &:after {
+            transform: rotate(90deg);
+          }
         }
 
         .navigation-menu__drop-down__links {
           display: none; 
+          padding-top: rem-calc($level3); 
+        }
+
+        .navigation-menu__drop-down__item {
+          padding-left: rem-calc($level4); 
+          padding-right: rem-calc($level4);  
+          margin-bottom: rem-calc($level2);
         }
 
         .navigation-menu__drop-down__category-title {
@@ -252,15 +345,13 @@ header {
           font-family: $tertiary-font-family; 
           color: $quaternary-color;
           text-decoration: none; 
+          margin-bottom: rem-calc($level2); 
           @include h6();
         }
 
         .navigation-menu__drop-down__category-links {
           margin-bottom: rem-calc($level5);
-        }
-          
-        .navigation-menu__drop-down__item {
-          margin-bottom: rem-calc($level1);
+
         }
 
         .navigation-menu__drop-down__link {
@@ -276,6 +367,8 @@ header {
         flex-direction: row; 
         flex-wrap: wrap; 
         bottom: 5%; 
+        width: 100%;
+
 
         .navigation-menu__secondary-links-list__item {
           width: 48%; 
@@ -298,6 +391,10 @@ header {
           color: $primary-color;
           text-decoration: none; 
           @include h6(); 
+
+          @include media-query($medium-up) {
+            @include h5(); 
+          }
         }
       }
     }
@@ -500,45 +597,6 @@ header {
 
 }
 
-
-
-
-
-
-
-
-/*------------------------------------*\
-    #Main Nav Small Menu Toggle Open
-\*------------------------------------*/
-
-
-.mainNav-menuToggle.is-menu-open {
-  
-  .menuToggle-label {
-    opacity: 0; 
-  }
-
-  .menuToggle-icon {
-    border-bottom: solid 2px transparent; 
-
-    &:before {
-      top: 50%; 
-      background-color: $accent-color; 
-      transform: translateY(0) rotate(-45deg); 
-    }
-
-    &:after {
-      top: 50%; 
-      background-color: $accent-color; 
-      transform: translateY(0) rotate(45deg); 
-    }
-
-    &:hover,
-    &:focus {
-      transform: scale(1.1); 
-    }
-  }
-}
 
 
 

@@ -16,7 +16,7 @@
 
     <!-- Navigation for small devices--> 
     <header>
-      <div class="header__menu-toggle-wrapper">
+      <div class="header__menu-toggle-wrapper  hide-for-large-up">
         <button class="header__menu-toggle"  data-menu-toggle data-target="menu">
             <span class="header__menu-toggle__icon">
               
@@ -62,7 +62,7 @@
     </div>
   </header>
 
-  <aside class="navigation-menu-container is-open"  data-off-canvas-menu>
+  <aside class="navigation-menu-container"  data-off-canvas-menu>
     <nav class="navigation-menu" data-menu>
 
        <div class="navigation-menu__inner">
@@ -74,14 +74,17 @@
             {%- assign child_list_handle = link.title | handleize -%}
             {% if menus[child_list_handle].links != blank %}
               <li class="navigation-menu__item">
-                <div class="navigation-menu__drop-down">
-                  <a href="{{link.url}}" class="navigation-menu__link navigation-menu__drop-down__title"
-                      data-toggle-id="{{ forloop.index }}"
+                <div class="navigation-menu__drop-down" 
+                      data-dropdown-id="{{child_list_handle}}">
+                  <a href="{{link.url}}" class="navigation-menu__link navigation-menu__drop-down__title" 
+                      data-toggle-id="{{child_list_handle}}"
                       data-drop-down-toggle>
-                    {{ link.title }}
+                    {{ link.title }} 
+                    <span class="navigation-menu__drop-down__icon">
+                      
+                    </span>
                   </a>
-                  <ul class="navigation-menu__drop-down__links"
-                      data-dropdown-id="{{ forloop.index }}">
+                  <ul class="navigation-menu__drop-down__links">
                     {% for childlink in menus[child_list_handle].links %}
 
                       {%- assign child_list_handle = childlink.title | handleize -%}

@@ -49,10 +49,14 @@ theme.Header = (function() {
       if(offCanvasMenu.hasClass('is-open')) {
         offCanvasMenu.removeClass('is-open');
         offCanvasMenu.addClass('is-closed');
+        menuToggle.removeClass('is-open');
+        menuToggle.addClass('is-closed');
         menuIsOpen = false;    
       } else{
         offCanvasMenu.addClass('is-open');
         offCanvasMenu.removeClass('is-closed');
+        menuToggle.addClass('is-open');
+        menuToggle.removeClass('is-closed');
         menuIsOpen = true;    
       }
     }
@@ -71,7 +75,9 @@ theme.Header = (function() {
     // Code the dropdown menu on small devices 
     //
     $(selectors.dropDownToggle).on('click', function(event, target) {
-      var id = $(event.target).data('toggle-id'); 
+      var id = $(event.target).data('toggle-id');
+      console.log(id); 
+      event.preventDefault(); 
 
       $('[data-dropdown-id]').each(function() {
         if($(this).hasClass('is-open') && $(this).data('dropdown-id') !== id) {
