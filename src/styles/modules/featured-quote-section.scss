@@ -1,0 +1,108 @@
+
+
+/*------------------------------------*\
+    #Featured Quote Section
+\*------------------------------------*/
+
+
+.featured-quote-section {
+	width: 100%;
+	.featured-quote-section__inner {
+		width: 100%; 
+	}		
+		
+	.featured-quote-section__headline {
+		text-align: center;
+		text-transform: uppercase;  
+		max-width: rem-calc(200px);
+		margin-right: auto; 
+		margin-left: auto; 
+		margin-bottom: rem-calc($level6); 
+		letter-spacing: 1px; 
+		@include h6(); 
+
+		@include media-query($medium-up) {
+			margin-bottom: rem-calc($level7); 
+		}
+	}
+
+	.featured-quote-section__crown {
+		width: rem-calc(72px);
+		height: rem-calc(72px);
+		display: flex; 
+		align-items: center;
+		justify-content: center; 
+	}
+
+	.featured-quote-section__quotes {
+		margin-right: auto; 
+		margin-left: auto; 
+		height: rem-calc(300px);
+		border: 4px solid $primary-color;
+		width: 100%; 
+		display: flex; 
+		align-items: center; 
+		flex-direction: column; 
+		padding-top: rem-calc($level7 + $level2); 
+		padding-bottom: rem-calc($level3); 
+		margin-bottom: rem-calc($level7); 
+		max-width: 90%; 
+		
+		@include media-query($medium-up) {
+			max-width: rem-calc(800px); 
+			height: rem-calc(380px);
+		}
+		@include media-query($large-up) {
+			min-height: 10vh; 
+			max-width: rem-calc(820px); 
+			margin-bottom: rem-calc($level7 + $level2); 
+		}
+
+		ul {
+		}
+		
+		blockquote {
+			text-align: center; 
+			padding-left: rem-calc($level4); 
+			padding-right: rem-calc($level4); 
+			font-family: $secondary-font-family;
+			text-align: center; 
+			width: 100%; 
+			@include h3(); 
+
+
+			@include media-query($medium-up) {
+				padding-left: rem-calc($level7); 
+				padding-right: rem-calc($level7); 
+				@include h1(); 
+			}
+
+			@include media-query($large-up) {
+				@include text-kilo(); 
+				line-height: 1.5; 
+				padding-left: rem-calc($level7 + $level2); 
+				padding-right: rem-calc($level7 + $level2); 
+			}
+
+			cite {
+				font-family: $primary-font-family;
+				color: $quaternary-color;
+				display: block; 
+				width: 100%; 
+				margin-top: rem-calc($level6); 
+
+				@include media-query($large-up) {
+					@include h5(); 
+				}
+			}
+		}
+	}
+
+	.featured-quote-section__cta {
+		margin-right: auto; 
+		margin-left: auto; 
+		max-width: rem-calc(260px); 
+	}
+}
+
+

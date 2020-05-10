@@ -5,7 +5,6 @@
 
 
 .product {
-	padding: rem-calc($level2); 
 	margin-bottom: rem-calc($level7 + $level7);
 	min-height: 100vh;
 	background-color: #fff;  
@@ -17,23 +16,31 @@
 	.product__images {
 		width: 100%; 
 		margin-bottom: rem-calc($level4); 
-		display: block; 
-		display: flex; 
-		flex-direction: reverse; 
-
-		@include media-query($medium-up) {
-			padding-left: rem-calc($level3);
-			padding-right: rem-calc($level3);
-			padding-top: rem-calc($level3); 
-		}
-
-		@include media-query($large-up) {
-			padding-right: rem-calc($level5); 
-			padding-top: rem-calc($level5); 
-		}
+		overflow: hidden; 
 
 		img {
 			width: 100%;
+		}
+	}
+
+
+	.product__images-slideshow {
+		position: relative; 
+		padding-bottom: 140%; 
+		overflow: hidden; 
+
+		.product__images-slideshow__slide {
+			position: absolute; 
+			top: 0; 
+			left: 0; 
+			height: 100%; 
+			width: 100%; 
+
+			img {
+				width: 100%; 
+				height: 100%; 
+				object-fit: cover; 
+			}
 		}
 	}
 

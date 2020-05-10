@@ -14,6 +14,7 @@
 /*================ VENDOR ================*/
 @import url('vendor/normalize.scss');
 @import url('vendor/foundationFunctions.scss');
+@import url('vendor/swiper.scss');
 
 
 /*================ GOBALS ================*/
@@ -41,7 +42,8 @@
 @import url('modules/site-header.scss');
 @import url('modules/gift-card-template.scss');
 @import url('modules/header.scss');
-
+@import url('modules/featured-quote-section.scss');
+@import url('modules/footer.scss');
 
 
 
@@ -49,7 +51,5 @@
 @import url('pages/home.scss');
 @import url('pages/product.scss');
 @import url('pages/cart.scss');
-
-
-
+@import url('pages/about.scss');
 

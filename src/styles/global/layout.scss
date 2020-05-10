@@ -10,3 +10,9 @@ html {
   padding: 0 $gutter;
   margin: 0 auto;
 }
+
+
+main {
+  z-index: 0;
+  position: relative;
+}

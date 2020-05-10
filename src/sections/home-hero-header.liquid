@@ -7,7 +7,7 @@
       <div>
         <div class="hero-header__slide">
          <div class="hero-header__slide__content">
-            <h1 class="headline  hero-header__headline">
+            <h1 class="headline  hero-header__slide__headline">
              {{block.settings.headline}}
            </h1>
             <div class="hero-header__body">
@@ -112,13 +112,13 @@
 //<script>
   $(document).ready(function(){
   $('.hero-header__slideshow').slick({
-    autoplay: true,
+    autoplay: false,
     autplaySpeed: 3000,
     fade: true, 
     slidesToScroll: 1, 
     dots: true,
     arrows: false,
-    infinite: true
+    infinite: false
   });
 });
 

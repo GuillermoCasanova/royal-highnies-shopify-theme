@@ -43,7 +43,7 @@
     {% if template.name == 'index' %}
       <h1 itemscope itemtype="http://schema.org/Organization" class="header__logo">
       {% else %}
-        <div class="h1 headerLogo grid grid--center grid--justifyCenter   large-grid--justifyLeft" itemscope itemtype="http://schema.org/Organization">
+        <div class="header__logo" itemscope itemtype="http://schema.org/Organization">
         {% endif %}
             <a href="/" itemprop="url" >
              {%include 'logo-royal-highnies.liquid'%}

@@ -48,8 +48,6 @@ $half-gutter-width: $flexboxgrid-gutter-width * .5;
   }
 
   @include media-query($large-up) {
-    padding-right: 1.25rem;
-    padding-left: 1.25rem;
     max-width:  $flexboxgrid-max-width;
   }
   

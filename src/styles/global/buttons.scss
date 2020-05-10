@@ -39,6 +39,15 @@
 
 @mixin button-primary {
  	background-color: $primary-color; 
+   box-shadow: 0 0 20px 8px rgba(119, 119, 119, 0.12); 
+   transition: all .2s ease-in-out; 
+
+   &:hover,
+   &:focus {
+    box-shadow: 0 0 40px 12px rgba(119, 119, 119, 0.06); 
+    transform: scale(1.05);
+    color: #fff; 
+   }
 }
 
 
@@ -46,7 +55,7 @@
  background-color: #fff; 
  color: $primary-color;
  box-shadow: 0 0 20px 8px rgba(119, 119, 119, 0.12); 
- transition: all .3s ease-in-out; 
+ transition: all .2s ease-in-out; 
 
  &:hover,
  &:focus {

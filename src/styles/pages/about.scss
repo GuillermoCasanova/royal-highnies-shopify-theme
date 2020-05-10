@@ -1,0 +1,54 @@
+
+
+/*------------------------------------*\
+    #About Page
+\*------------------------------------*/
+
+
+.about-us-narrative {
+	padding-top: rem-calc(100px); 
+
+	@include media-query($medium-up) {
+		padding-top: rem-calc($level7); 
+	}
+}
+
+
+
+
+
+/*------------------------------------*\
+    #Narrative Section
+\*------------------------------------*/
+
+
+.narrative-section {
+	min-height: 90vh; 
+	max-height: rem-calc(800px); 
+	width: 100%; 
+	display: flex; 
+	align-items: center; 
+	flex-direction: column; 
+
+	@include media-query($medium-up) {
+		flex-direction: row; 
+	}
+
+	.narrative-section__image {
+		max-width:27.25rem;
+		margin-left: auto; 
+		margin-right: auto; 
+		width: 100%; 
+		img {
+			width: 100%; 
+		}
+	}
+
+
+	.narrative-section__body {
+
+		 p {
+			@include h4();
+		 }
+	}
+}

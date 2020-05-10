@@ -48,7 +48,8 @@ header {
     margin-bottom: 0; 
     position: relative; 
     bottom: -2px; 
-    
+    z-index: 97; 
+
     h1, 
     a {
       width: 100%;
@@ -145,6 +146,11 @@ header {
   .header__cart-toggle-wrapper {
     width: rem-calc(42px);
     height: rem-calc(42px);
+
+    @include media-query($large-up) {
+      width: rem-calc(38px);
+      height: rem-calc(38px);
+    }
   }
 
   .header__cart-toggle {
@@ -194,11 +200,18 @@ header {
     overflow: auto; 
 
     &.is-closed {  // for when nav is closed
-        animation: main-nav-disappear .7s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+      animation: main-nav-disappear .7s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+      @include media-query($large-up) {
+        animation: none; 
+      }
     }
 
     &.is-open { // for when nav is open
         animation: main-nav-appear .8s cubic-bezier(0.23, 1, 0.32, 1) forwards; 
+
+        @include media-query($large-up) {
+          animation: none; 
+        }
 
         // .mainNav-container {
         //   .mainNav-animElem {
@@ -208,27 +221,29 @@ header {
         // }
     }
 
+    @include media-query($large-up) {
+      transform: translateY(0);
+      opacity: 1; 
+      top: 0; 
+      position: fixed; 
+      right: 0; 
+      left: auto; 
+      background-color: transparent; 
+      height: rem-calc(100px);
+      width: 90%; 
+      z-index: 99; 
+      padding-top: 0; 
+      overflow: visible; 
+    }
+
     .navigation-menu {
       position: relative; 
       width: 100%; 
       min-height: calc(100vh - 60px);  
 
-
-      .navigation-menu__link[href="/pages/about-royal-highnies"] {
-        display: none; 
-
-        @include media-query($medium-up) {
-          display: block; 
-        }
-      }
-      
-      .navigation-menu__primary-links-list {
-        margin-bottom: rem-calc($level4); 
-      }
-
-      .navigation-menu__item {
-        width: 100%; 
-        position: relative; 
+      @include media-query($large-up) {
+        height: rem-calc(90px); 
+        min-height: 0; 
       }
 
       .navigation-menu__inner {
@@ -242,6 +257,53 @@ header {
         flex-direction: column; 
         justify-content: space-between; 
         padding-bottom: 40%; 
+
+        @include media-query($large-up) {
+          min-height: 100%; 
+          flex-direction: row; 
+          justify-content: space-between; 
+          padding: 0;
+        }
+      }
+
+
+      .navigation-menu__item {
+        width: 100%; 
+        position: relative; 
+
+        @include media-query($large-up) {
+          width: auto; 
+          margin-right: 1%;  
+          margin-left: 1%;  
+          position: static; 
+        }
+      }
+
+
+      .navigation-menu__link[href="/pages/about-royal-highnies"] {
+        display: none; 
+
+        @include media-query($large-up) {
+          display: block; 
+        }
+      }
+      
+      .navigation-menu__primary-links-list {
+        margin-bottom: rem-calc($level4); 
+
+        @include media-query($large-up) {
+          display: flex; 
+          flex-direction: row; 
+          width: 100%; 
+          align-items: center; 
+          justify-content: flex-end; 
+          padding-right: 8vw; 
+          min-width: rem-calc(800px); 
+        }
+
+         @media only screen and (min-width: 1200px) {
+          padding-right: 10vw; 
+        }
       }
 
       .navigation-menu__link {
@@ -262,6 +324,10 @@ header {
         &:hover, 
         &:focus {
             background-color: #F6F6F6;
+
+            @include media-query($large-up) {
+              background-color: #fff; 
+            }
         }
 
         @include media-query($medium-up) {
@@ -269,6 +335,17 @@ header {
           padding-bottom: rem-calc($level4);
           @include text-kilo(); 
         }
+
+        @include media-query($large-up) {
+          padding-top: rem-calc($level1);
+          padding-bottom: rem-calc($level1);
+          padding-left: rem-calc($level1);  
+          padding-right: rem-calc($level1);   
+          font-family: $primary-font-family; 
+          white-space: nowrap;
+          @include h6(); 
+        }
+
 
         .icon {
           position: absolute; 
@@ -289,6 +366,10 @@ header {
 
           .navigation-menu__drop-down__links {
             display: block; 
+
+            @include media-query($large-up) {
+              display: flex; 
+            }
           }
         }
 
@@ -296,6 +377,11 @@ header {
           position: relative; 
           width: 100%; 
           display: block; 
+
+          @include media-query($large-up) {
+            padding-right: rem-calc($level3);
+          }
+
         }
 
         .navigation-menu__drop-down__icon {
@@ -322,22 +408,47 @@ header {
             @include media-query($medium-up) {
               top: 2rem; 
             }
+
+            @include media-query($large-up) {
+              height: 2px; 
+              top: 18px; 
+            }
           }
 
           &:after {
             transform: rotate(90deg);
+          }
+
+          @include media-query($large-up) {
+            width:.5rem; 
+            height:.5rem; 
+            top: 0; 
+            right: 2px; 
           }
         }
 
         .navigation-menu__drop-down__links {
           display: none; 
           padding-top: rem-calc($level3); 
+
+          @include media-query($large-up) {
+            position: absolute;
+            width: 100vw;
+            background-color: #F7F7F7;
+            left: -12%;
+            top: 84px;
+            padding-left: rem-calc($level7 + $level4); 
+            padding-right: rem-calc($level7); 
+            padding-bottom: rem-calc($level2); 
+            padding-top: rem-calc($level7); 
+          }
         }
 
         .navigation-menu__drop-down__item {
           padding-left: rem-calc($level4); 
           padding-right: rem-calc($level4);  
           margin-bottom: rem-calc($level2);
+          margin-right: 3%; 
         }
 
         .navigation-menu__drop-down__category-title {
@@ -347,6 +458,10 @@ header {
           text-decoration: none; 
           margin-bottom: rem-calc($level2); 
           @include h6();
+
+          @include media-query($large-up) {
+            margin-bottom: rem-calc($level3); 
+          }
         }
 
         .navigation-menu__drop-down__category-links {
@@ -357,6 +472,19 @@ header {
         .navigation-menu__drop-down__link {
           color: $primary-color;
           text-decoration: none; 
+
+         @include media-query($large-up) {
+            display: block; 
+            margin-bottom: rem-calc($level1);
+            white-space: nowrap;  
+            @include h6();
+
+            &:hover, 
+            &:focus {
+              background-color: transparent; 
+              text-decoration: underline; 
+            }
+          }
         }
       }
 
@@ -367,8 +495,11 @@ header {
         flex-direction: row; 
         flex-wrap: wrap; 
         bottom: 5%; 
-        width: 100%;
+        width: 100%;  
 
+        @include media-query($large-up) {
+          display: none; 
+        }
 
         .navigation-menu__secondary-links-list__item {
           width: 48%; 

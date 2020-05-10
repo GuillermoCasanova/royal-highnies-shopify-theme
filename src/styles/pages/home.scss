@@ -18,10 +18,13 @@
  	max-height: 770px;
 	overflow: hidden; 
 	margin-bottom: rem-calc($level7 + $level7 + $level3);
+	padding-bottom: 0; 
 
  	@include media-query($large-up) {
- 		height: 84vh;
- 		max-height: 900px; 
+ 		height: 80vh;
+ 		min-height: rem-calc(700px);
+ 		max-height: rem-calc(800px); 
+		padding-bottom: 0; 
  	}
 
 	.hero-header__inner {
@@ -85,8 +88,8 @@
 			}
 
 			@include media-query($large-up) {
-				left: 16%; 
-				max-width: 635px; 
+				left: 12%; 
+				max-width: rem-calc(620px); 
 			}
 		
 			.hero-header__slide__headline {
@@ -99,18 +102,19 @@
 				}
 
 				@include media-query($large-up) {
-					@include text-mega(); 
+					@include text-giga(); 
 				}
 			}
 
 			p {
-				font-size: 1.2rem;
 				color: $secondary-color; 
 				margin-bottom: 36px;
 				max-width: 312px; 
+				@include h6();
 
 				@include media-query($medium-up) {
 					max-width: 100%; 
+					@include h5();
 				}
 			}
 		}
@@ -158,7 +162,7 @@
 	}
 
 	.slick-dots li button:before {
-		font-size: 18px;
+		font-size: 2rem;
 	}
 }
 

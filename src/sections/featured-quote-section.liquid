@@ -1,0 +1,69 @@
+
+
+<section class="featured-quote-section">
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="featured-quote-section__inner">
+				<h2 class="subline featured-quote-section__headline">
+					{{section.settings.headline}}
+				</h2>
+
+				<div class="featured-quote-section__quotes">
+
+					<div class="featured-quote-section__crown">
+								<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" x="0" y="0" version="1.1" viewBox="0 0 146.5 76.89" xml:space="preserve"><defs/><style>.st0{fill:#1c3457}</style><path d="M73.44 14.16c3.93 0 7.13-3.17 7.13-7.08S77.37 0 73.44 0c-3.94 0-7.13 3.17-7.13 7.08s3.19 7.08 7.13 7.08zM107.88 17.7c3.94 0 7.13-3.17 7.13-7.08s-3.19-7.08-7.13-7.08c-3.93 0-7.12 3.17-7.12 7.08s3.19 7.08 7.12 7.08zM39.58 17.11c3.94 0 7.13-3.17 7.13-7.08s-3.19-7.08-7.13-7.08-7.13 3.17-7.13 7.08c-.01 3.91 3.19 7.08 7.13 7.08zM139.37 12.39c-3.93 0-7.13 3.17-7.13 7.08s3.2 7.08 7.13 7.08c3.94 0 7.13-3.17 7.13-7.08s-3.19-7.08-7.13-7.08zM105.15 20.83L88.51 40.3 73.66 17.88 61.19 40.3 42.77 20.24l-5.94 23.6-23.76-15.93 19.6 32.45s21.98-6.49 42.77-6.49c21.4 0 39.8 5.9 39.8 5.9l18.41-33.04-21.98 16.52-6.52-22.42z" class="st0"/><path d="M74.19 58c-22.47 0-40.69 4.23-40.69 9.44 0 5.21 18.22 9.44 40.69 9.44s40.69-4.23 40.69-9.44c0-5.21-18.22-9.44-40.69-9.44zm.6 14.12c-19.68 0-35.64-2.23-35.64-4.97 0-2.76 15.96-4.98 35.64-4.98 19.69 0 35.64 2.22 35.64 4.98 0 2.75-15.96 4.97-35.64 4.97zM7.13 10.8C3.19 10.8 0 13.97 0 17.88s3.19 7.08 7.13 7.08c3.93 0 7.13-3.17 7.13-7.08s-3.19-7.08-7.13-7.08z" class="st0"/></svg>
+					</div>
+		
+					<ul class="featured-quote-section__quotes__list">
+						<li>
+							<blockquote>
+								The softest, most comfortable jammies I’ve ever owned…period.
+								<cite>
+									- S.P. Jones, Charleston
+								</cite>
+							</blockquote>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<a href="{{section.settings.cta-link}}" class="button  button--medium  button--secondary  featured-quote-section__cta">
+						{{section.settings.cta-label}}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Featured Quote Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Headline",
+        "default": "This is  headline."
+      },
+       {
+        "type": "text",
+        "id": "cta-label",
+        "label": "Call to Action Label"
+      },
+       {
+        "type": "url",
+        "id": "cta-link",
+        "label": "Call to Action Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Quote Section",
+        "category": "Copy Sections"
+      }
+    ]
+  }
+
+{% endschema %}

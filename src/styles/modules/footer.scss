@@ -6,7 +6,8 @@
 
 
 footer {
-  background-color: $secondary-color;
+  background-color: $primary-color; 
+  width: 100%; 
   
   .footer-logo {
     margin-top: rem-calc($level6); 
@@ -19,16 +20,19 @@ footer {
   }
 
   .footer-inner {
-    background-color: $secondary-color;
-    padding-top: rem-calc($level4); 
+    padding-top: rem-calc($level7 + $level4); 
     padding-bottom: rem-calc($level4);  
-      
-    @include media-query($large-up) {
-      padding-top: rem-calc($level5); 
-      padding-bottom: rem-calc($level3);  
-      max-width: 1280px;
+
+    @include media-query($medium-up) {
+      max-width: rem-calc(960px);
       margin-right: auto;
       margin-left: auto;
+    }
+      
+    @include media-query($large-up) {
+      padding-top: rem-calc($level7 + $level7); 
+      padding-bottom: rem-calc($level3);  
+      max-width: 60rem; 
     }
   }
 
@@ -38,22 +42,22 @@ footer {
     color: $tertiary-color; 
     @include h6();  
 
+    @include media-query($medium-up) {
+      padding-left: rem-calc($level2); 
+    }
+
     @include media-query($large-up) {
       margin-bottom: 0; 
+      padding-left: rem-calc($level5); 
     }
 
     .footer-menu-title {
-      font-family: $secondary-font-family; 
+      font-family: $tertiary-font-family; 
       margin-bottom: rem-calc($level2); 
-      text-transform: uppercase; 
-      font-weight: bold; 
-      @include h4();  
-
-      @include media-query($large-up) {
-        margin-bottom: rem-calc($level1); 
-        @include h6();  
-      }
-
+      font-weight: 400;
+      text-transform: uppercase;  
+      letter-spacing: 1px; 
+      @include h5();  
     }
 
     .footer-menu-item {
@@ -66,10 +70,13 @@ footer {
     
     .footer-menu-link {
       color: $tertiary-color; 
+      text-decoration: none; 
+      border-bottom: 2px solid transparent; 
+      @include h5();  
       
       &:hover, 
       &:focus {
-        border-bottom: 2px solid $accent-color; 
+        border-bottom: 2px solid #fff; 
       }
     }
   }

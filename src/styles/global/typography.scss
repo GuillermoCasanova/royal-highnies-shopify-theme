@@ -273,13 +273,13 @@ $default-margin-bottom: rem-calc($level3);
 }; 
 
 @mixin text-mega() {
-  font-size: 3rem; //60px
+  font-size: 3.25rem; //60px
   line-height: $base-magic-number / 24;
 }; 
 
 @mixin text-giga() {
-  font-size: 3.5rem; //64px
-  line-height: $base-magic-number / 24;  // 72px
+  font-size: 3.75rem; //64px
+  line-height: $base-magic-number / 20;  // 72px
 }; 
 
 
