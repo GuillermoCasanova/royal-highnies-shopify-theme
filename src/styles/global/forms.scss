@@ -9,6 +9,8 @@ select {
   border: 1px solid $color-border;
   border-radius: 0;
   max-width: 100%;
+  font-family: $primary-font-family; 
+  color: $quaternary-color; 
 
   &:focus {
     // You should add some focus styles
@@ -61,3 +63,19 @@ textarea {
     color: $color-error;
   }
 }
+
+
+label {
+  text-transform: uppercase; 
+  display: block; 
+  color: $quaternary-color; 
+  margin-bottom: rem-calc($level1); 
+}
+
+
+
+input {
+  border: 3px solid $primary-color;
+  width: 100%; 
+}
+

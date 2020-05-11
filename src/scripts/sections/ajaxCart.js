@@ -174,7 +174,8 @@ var ajaxCart = (function(module, $) {
     $addToCart,
     $cartCountSelector,
     $cartCostSelector,
-    $cartContainer;
+    $cartContainer,
+    $offCanvasCart;
 
   // Private functions
   var updateCountPrice,
@@ -200,12 +201,15 @@ var ajaxCart = (function(module, $) {
       formSelector: 'form[action^="/cart/add"]',
       cartContainer: '#CartContainer',
       addToCartSelector: 'input[type="submit"]',
-      cartCountSelector: '#cart-count',
+      cartCountSelector: '[data-cart-count]',
       cartCostSelector: null,
       moneyFormat: '$',
       disableAjaxCart: false,
-      enableQtySelectors: true
+      enableQtySelectors: true,
+      closeOffCanvasCart: '[data-close-off-canvas-cart]',
+      offCanvasCart: '[data-off-canvas-cart]'
     };
+
 
 
     // Override defaults with arguments
@@ -218,6 +222,7 @@ var ajaxCart = (function(module, $) {
     $addToCart = $formContainer.find(settings.addToCartSelector);
     $cartCountSelector = $(settings.cartCountSelector);
     $cartCostSelector = $(settings.cartCostSelector);
+    $offCanvasCart = $(settings.offCanvasCart);
 
     // General Selectors
     $body = $('body');
@@ -246,10 +251,12 @@ var ajaxCart = (function(module, $) {
 
   updateCountPrice = function(cart) {
     if ($cartCountSelector) {
-      $cartCountSelector.html(cart.item_count).removeClass('hidden-count');
+      $cartCountSelector.html(cart.item_count);
 
       if (cart.item_count === 0) {
-        $cartCountSelector.addClass('hidden-count');
+        $cartCountSelector.removeClass('is-visible');
+      } else {
+        $cartCountSelector.addClass('is-visible');
       }
     }
     if ($cartCostSelector) {
@@ -300,18 +307,11 @@ var ajaxCart = (function(module, $) {
   cartUpdateCallback = function(cart) {
     // Update quantity and price
     updateCountPrice(cart);
-
-    //
-    // Builds cart and triggers the opening method if the device is over 680px wide 
-    //
-    if(window.innerWidth > 680) {
-    	buildCart(cart);
-    } else {
-    	$body.trigger('ajaxCart.itemAddedOnSmallDevice', cart); 
-    }
+    buildCart(cart);
   };
 
   buildCart = function(cart) {
+
 
    	  // Start with a fresh cart div	
 	    $cartContainer.empty();
@@ -337,6 +337,7 @@ var ajaxCart = (function(module, $) {
 
 	    // Add each item to our handlebars.js data
 	    $.each(cart.items, function(index, cartItem) {
+	    	
 	      /* Hack to get product image thumbnail
 	       *   - If image is not null
 	       *     - Remove file extension, add _small, and re-add extension
@@ -368,6 +369,7 @@ var ajaxCart = (function(module, $) {
 	        url: cartItem.url,
 	        img: prodImg,
 	        name: cartItem.product_title,
+	        options: cartItem.options_with_values,
 	        variation: cartItem.variant_title,
 	        properties: cartItem.properties,
 	        itemAdd: cartItem.quantity + 1,
@@ -385,7 +387,7 @@ var ajaxCart = (function(module, $) {
 	            : true,
 	        vendor: cartItem.vendor
 	      };
-		    
+
 	      items.push(item);
 	    });
 
@@ -415,9 +417,8 @@ var ajaxCart = (function(module, $) {
   cartCallback = function(cart) {
      
      $body.removeClass('drawer--is-loading');
-     var $offCanvasCart = $('.offCanvasCart');
 
-  	 // Removes 'is-loading' animation class if its there
+  	 //Removes 'is-loading' animation class if its there
   	 if($offCanvasCart.hasClass('is-loading')) {
 	      $offCanvasCart.removeClass('is-loading'); 
 	      $offCanvasCart.addClass('is-loaded'); 
@@ -528,12 +529,12 @@ var ajaxCart = (function(module, $) {
         'is-loading'
       );
       
-      $('.offCanvasCart').addClass('is-loading'); 
+     $offCanvasCart.addClass('is-loading'); 
 
       // Check to see if the qty is 0 in order to animate
       if (qty === 0) {
       	// If there was only 1 item in the cart, we hide the cart by adding 'is-hidden'
-	      if($('.offCanvasCart-product').length === 1) {
+	      if($('.off-canvas-cart__product').length === 1) {
         	ShopifyAPI.changeItem(line, qty, adjustCartCallback);
         	return 
 	      }

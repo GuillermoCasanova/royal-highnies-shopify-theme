@@ -39,7 +39,7 @@
 			img {
 				width: 100%; 
 				height: 100%; 
-				object-fit: cover; 
+				object-fit: cover;
 			}
 		}
 	}
@@ -47,6 +47,8 @@
 	.product__information {
 		padding-bottom: rem-calc($level7); 
 		position: relative;
+		padding-left: rem-calc($level4);
+		padding-right: rem-calc($level4);
 
 		@include media-query($medium-up) {
 			right: rem-calc($level2); 
@@ -62,15 +64,10 @@
 		}
 		
 		.product__information__title {
-			font-weight: bold; 
 			margin-bottom: rem-calc($level1); 
-			text-transform: uppercase; 
-			@include h2(); 
-
-			@include media-query($large-up) {
-				margin-bottom: rem-calc($level2); 
-				@include h1(); 
-			}
+			font-family: $secondary-font-family; 
+			margin-bottom: rem-calc($level4); 
+			@include h1(); 
 		}
 
 		a {
@@ -85,12 +82,63 @@
 		}
 		
 		.product__information__pricing {
-			font-weight: 900; 
-			margin-bottom: rem-calc($level2); 
+			margin-bottom: rem-calc($level4); 
 			display: block; 
-			font-family: $secondary-font-family; 
-			@include h2(); 
+			@include h3(); 
 		}
+
+		
+		.product__qty {
+			display: flex; 
+			align-items: flex-start; 
+			justify-content: flex-start; 
+			flex-direction: column; 
+			margin-bottom: rem-calc($level2);  
+
+			input, 
+			button {
+				@include h3(); 
+			} 
+			
+			input {
+				width: rem-calc(48px); 
+				height: rem-calc(48px); 
+				padding: rem-calc($level1);
+				margin-right: rem-calc($level2);
+				display: flex; 
+				align-items: center; 
+				justify-content: center;  
+				text-align: center; 
+				font-family: 1.75rem; 
+			}
+
+			.product__qty__actions {
+				display: flex; 
+				align-items: center; 
+				justify-content: center; 
+				flex-direction: row; 
+		
+				.js-qty {
+					display: flex; 
+					align-items: center; 
+					justify-content: center; 
+					flex-direction: row; 
+				}
+			
+				.js-qty__adjust--minus {
+					order: 3;
+				}
+
+				.js-qty__adjust {
+					color: $primary-color;
+					font-size: 1.75rem; 
+					margin-bottom: 0; 
+					margin-right: rem-calc($level2); 
+				}
+			}
+		}
+
+
 
 		.product__information__description {
 			padding-bottom: rem-calc($level2); 
@@ -118,28 +166,7 @@
 			text-transform: uppercase; 
 		}
 
-		
-		.product__qty {
-			height: rem-calc(39px);
-			border-top: 3px solid $tertiary-color; 
-			border-bottom: 3px solid $tertiary-color;
-			margin-bottom: rem-calc($level2);  
 
-			input, 
-			button {
-				background-color: transparent;
-				height: 100%; 
-				outline: 0;
-				border: 0; 
-				text-align: center; 
-				font-weight: bold; 
-				@include h3(); 
-			} 
-			
-			input {
-				max-width: rem-calc(140px); 
-			}
-		}
 
 		.product__add-to-cart-btn {
 			width: 100%; 

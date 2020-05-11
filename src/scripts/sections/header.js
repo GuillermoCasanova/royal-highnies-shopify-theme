@@ -10,19 +10,24 @@ theme.Header = (function() {
 
   var selectors = {
     offCanvasMenu: '[data-off-canvas-menu]',
+    offCanvasCart: '[data-off-canvas-cart]',
+    closeOffCanvasCart: '[data-close-off-canvas-cart]',
     menuToggle: '[data-menu-toggle]',
     dropDownToggle: '[data-drop-down-toggle]',
     menuContainer: '[data-menu]',
-    cartContainer: '[data-cart]',
+    cartToggle: '[data-cart-toggle]',
     cartItemAddedSuccessModal: '[data-cart-item-added-success-modal]'
   };
 
    var offCanvasMenu = $(selectors.offCanvasMenu);
+   var $offCanvasCart = $(selectors.offCanvasCart); 
   var menuToggle = $(selectors.menuToggle); 
-  var cartContainer = $(selectors.cartContainer);
   var menuContainer = $(selectors.menuContainer);
   var menuIsOpen = false; 
+  var offCanvasCartOpen = false; 
   var openSection = false; 
+  
+
 
 
   var Header = function(container) {
@@ -61,6 +66,26 @@ theme.Header = (function() {
       }
     }
 
+    //** Toggles the cart, loads it with AJAXCART.JS **//
+    this.toggleCart = function() {
+      if($offCanvasCart.hasClass('is-open')) {
+        $offCanvasCart.removeClass('is-open');
+        $offCanvasCart.addClass('is-closed');
+        offCanvasCartOpen = false;    
+      } else{
+        $offCanvasCart.addClass('is-open');
+        $offCanvasCart.removeClass('is-closed');
+        ajaxCart.load(); 
+        offCanvasCartOpen = true;    
+      }
+    }
+
+    this.closeCart = function() {
+      $offCanvasCart.removeClass('is-open');
+      $offCanvasCart.addClass('is-closed');
+      offCanvasCartOpen = false;    
+    }
+
     var closeMenuIcon = function() {
       menuToggle.removeClass('is-menu-open');
       menuToggle.addClass('is-menu-closed');
@@ -70,13 +95,20 @@ theme.Header = (function() {
       that.toggleNavigation(); 
     }); 
 
+    $(selectors.cartToggle).on('click', function(event) {
+      that.toggleCart(); 
+    }); 
+
+    $(selectors.closeOffCanvasCart).on('click', function(event) {
+      that.closeCart(); 
+    }); 
+
 
     //
     // Code the dropdown menu on small devices 
     //
     $(selectors.dropDownToggle).on('click', function(event, target) {
       var id = $(event.target).data('toggle-id');
-      console.log(id); 
       event.preventDefault(); 
 
       $('[data-dropdown-id]').each(function() {
@@ -111,20 +143,9 @@ theme.Header = (function() {
   // Open cart global method  
   //
   Header.openCart = function() {
-    offCanvasMenu.removeClass('is-closed');
-    offCanvasMenu.addClass('is-open');
-    cartContainer.addClass('is-showing');   
-    openSection = 'cart';
-    menuIsOpen = true;  
-  }; 
-
-  //
-  //Show display success cart modal global method 
-  //
-  Header.displaySuccessCartModal = function(cart) {
-    var $successModal = $(selectors.cartItemAddedSuccessModal); 
-    $successModal.find('[data-cart-total]').text(cart.item_count); 
-    $successModal.addClass('is-showing'); 
+    $offCanvasCart.removeClass('is-closed');
+    $offCanvasCart.addClass('is-open');
+    offCanvasCartOpen = true; 
   }; 
 
   return Header;

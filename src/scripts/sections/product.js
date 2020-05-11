@@ -14,6 +14,7 @@ theme.Product = (function() {
     backBtn: '[data-back-btn]',
     comparePrice: '[data-compare-price]',
     comparePriceText: '[data-compare-text]',
+    optionSelector: '[data-option-selector]',
     originalSelectorId: '[data-product-select]',
     priceWrapper: '[data-price-wrapper]',
     productAnimElem: '[data-product-anim-elem]', 
@@ -77,6 +78,7 @@ theme.Product = (function() {
 
     this.initAjaxCart(); 
     this.initImageSlideshow(selectors.productImageSlideshow);
+    this.initOptionSelector(); 
 
   }
 
@@ -151,6 +153,25 @@ theme.Product = (function() {
       this.$container.off(this.namespace);
     },
     /**
+     * Initializes radio buttons to change current option in the single-option-selector <select>  
+     */
+    initOptionSelector: function() {
+
+      if($(selectors.optionSelector).length > 0) {
+        this.$optionSelector = $(selectors.optionSelector);
+
+
+        this.$optionSelector.change(function() {
+          var optionValue = $(this).val();
+          $(this)
+            .closest('form')
+            .find('[data-single-option-selector]')
+            .val(optionValue)
+            .trigger('change');
+        });
+      }
+    },
+    /**
      * Initializes the AJAX cart with product template properties  
      */
     initAjaxCart: function() {
@@ -167,7 +188,24 @@ theme.Product = (function() {
     **/
     initImageSlideshow: function(slideshowContainer) {
 
-      var productImageSlideshow = new Swiper(slideshowContainer); 
+      const $slideshowContainer = $(slideshowContainer); 
+
+      $slideshowContainer.append('<div class="swiper-pagination"></div>');
+      $slideshowContainer.append(' <div class="swiper-button-prev"></div><div class="swiper-button-next"></div>');
+
+      var productImageSlideshow = new Swiper(slideshowContainer, {
+        effect: 'fade',
+        slidesPerView: 1,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true
+        }
+      }); 
 
     }
 

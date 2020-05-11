@@ -74,9 +74,6 @@ $(document).ready(function() {
       theme.Header.openCart(); 
     });
 
-    theme.cache.$body.on('ajaxCart.itemAddedOnSmallDevice', function(evt, cart) {
-      theme.Header.displaySuccessCartModal(cart); 
-    });
   };
 
   theme.cartInit = function() {

@@ -41,33 +41,28 @@ $half-gutter-width: $flexboxgrid-gutter-width * .5;
   max-width: $flexboxgrid-max-width;
   margin: 0 auto;
   width: 100%;
+}
 
-  @include media-query($medium-up) {
-    padding-right: 2rem;
-    padding-left: 2rem;
+
+.container-fluid {
+   .row {
+    margin-right: $gutter-compensation;
+    margin-left: $gutter-compensation;
   }
-
-  @include media-query($large-up) {
-    max-width:  $flexboxgrid-max-width;
-  }
-  
-  &.no-padding-sm {
-    padding: 0; 
-    @include media-query($medium-up) {
-      padding-right: 1rem;
-      padding-left: 1rem;
-    }
-
-    @include media-query($large-up) {
-      padding-right: 1.25rem;
-      padding-left: 1.25rem;
-    }
-  }
-
 }
 
 .container-fluid--no-padding {
   padding: 0 !important;
+
+  .row {
+    margin: 0;
+  }
+}
+
+.row--no-padding {
+  [class*="col-"] {
+    padding: 0; 
+  }
 }
 
 .row {
@@ -78,12 +73,6 @@ $half-gutter-width: $flexboxgrid-gutter-width * .5;
   flex-wrap: wrap;
 }
 
-.container-fluid {
-   .row {
-    margin-right: $gutter-compensation;
-    margin-left: $gutter-compensation;
-  }
-}
 
 .row--no-wrap {
   flex-wrap: nowrap;

@@ -18,8 +18,17 @@
 
 
 /*================ GOBALS ================*/
-@import url('global/normalize.scss');
 @import url('global/slate-reset.scss');
+@import url('global/normalize.scss');
+@import url('global/colors.scss'); 
+@import url('global/margins-and-padding.scss'); 
+@import url('global/typography.scss'); 
+@import url('global/breakpoints.scss'); 
+@import url('global/grids.scss');
+
+
+
+/*================ LAYOUT ================*/
 @import url('global/helper-classes.scss');
 @import url('global/layout.scss');
 @import url('global/rte.scss');
@@ -27,12 +36,7 @@
 @import url('global/links-buttons.scss');
 @import url('global/forms.scss');
 @import url('global/blank-states.scss');
-@import url('global/breakpoints.scss'); 
-@import url('global/grids.scss');
-@import url('global/colors.scss'); 
-@import url('global/margins-and-padding.scss'); 
 @import url('global/visibility.scss'); 
-@import url('global/typography.scss'); 
 @import url('global/sections.scss'); 
 @import url('global/buttons.scss'); 
 
@@ -44,6 +48,8 @@
 @import url('modules/header.scss');
 @import url('modules/featured-quote-section.scss');
 @import url('modules/footer.scss');
+@import url('modules/off-canvas-cart.scss');
+@import url('modules/loader.scss');
 
 
 

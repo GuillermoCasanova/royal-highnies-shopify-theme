@@ -55,8 +55,9 @@
     {% endif %}
 
     <div class="header__cart-toggle-wrapper">
-       <button  data-menu-toggle  data-target="cart"  class="header__cart-toggle">
-            <span class="header__cart-toggle__total" id="cart-count">{{cart.item_count}}</span>
+       <span class="header__cart-toggle-total" data-cart-count>{{cart.item_count}}</span>
+
+        <button data-cart-toggle title="Open off canvas cart" class="header__cart-toggle">
             <span class="header__cart-toggle__icon">{% include 'icon-cart' %}</span>
        </button>
     </div>
@@ -136,39 +137,36 @@
   </aside>
   <!--END off canvas navigation--> 
 
-  <aside class="show-for-medium-up">
-              
-     <!--Cart Container--> 
-     <div data-cart  class="mainNav-cartContainer  [ grid  show-for-medium-up  grid--flexDirectionColumn grid--justifySpaceBetween ]">
-        <div class="offCanvasCart">
-          <div class="offCanvasCart-loader">
-            <div class="loader"></div>
-          </div>
-          <div  id="CartContainer">
-            
-          </div>
-
-        </div>
-     </div>
-     <!-- END Cart Container--> 
-             
-  </aside>
-
-
-  <!-- Cart success modal, used for small devices--> 
-<!--   <div class="cartSuccessModal  hide-for-medium-up" data-cart-item-added-success-modal>
-    <span class="cartSuccessModal-cartTotal" data-cart-total>
-    </span>
-    <a class="cartSuccessModal-button" href="/cart"  rel="internal">
-      {% include 'icon-cart' %}
-    </a>
-  </div> -->
-  <!-- END Cart success modal--> 
-
 </div>
+
+
+
+<!--Cart Container--> 
+<aside data-off-canvas-cart class="off-canvas-cart  is-closed">
+
+  <div class="off-canvas-cart__loader">
+    <div class="loader"></div>
+    <span class="off-canvas-cart__loader__text">Updating cart...</span>
+  </div>
+
+  <button class="off-canvas-cart__close" title="Close off canvas cart" data-close-off-canvas-cart>
+    <span class="off-canvas-cart__close__icon">
+
+    </span>
+  </button>
+
+  <div  id="CartContainer"  class="off-canvas-cart__inner">
+    
+  </div>
+</aside>
+<!-- END Cart Container--> 
+
+
 
 {% include 'ajax-cart-template' %}
 {% include 'ajax-cart-empty' %}
+
+
 
 
 {% schema %}
