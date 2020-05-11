@@ -33,6 +33,7 @@
     filter: grayscale(100%);
     opacity: .4; 
     cursor: not-allowed;
+    pointer-events: none; 
   }
 }
 

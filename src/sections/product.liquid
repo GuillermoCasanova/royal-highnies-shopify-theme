@@ -24,7 +24,7 @@
                   <picture>
                     <source media="(min-width: 960px)" data-srcset="{{ featured_image | img_url: '1000x' }}" >
                     <source media="(min-width: 700px)" data-srcset="{{ featured_image | img_url: '800x' }}" >
-                    <img data-src="{{ featured_image | img_url: '600x' }}"  alt="{{ featured_image.alt | escape }}"  class="lazyload" data-product-featured-image>
+                    <img src="{{ featured_image | img_url: '600x' }}"  alt="{{ featured_image.alt | escape }}"  data-product-featured-image>
                   </picture>
                 </div>
               {% endif %}
@@ -144,28 +144,27 @@
 
                     <!--Back for when there is no JS activated--> 
                    <select name="id" class="no-js" data-product-select>
-                                    {% for variant in product.variants %}
-                                      <option
-                                        {% if variant == current_variant %}selected="selected"{% endif %}
-                                        {% unless variant.available %}disabled="disabled"{% endunless %}
-                                        value="{{ variant.id }}">
-                                          {{ variant.title }}
-                                      </option>
-                                    {% endfor %}
-                                  </select>
-        
-                                            <button
-                                  type="submit"
-                                  name="add"
-                                  class="button  button--medium  button--expanded  button--primary product-buyBtn"
-                                  data-add-to-cart
-                                  id="AddToCart--{{section.id}}"
-                                  data-text="{{ 'products.product.add_to_cart' | t }}"
-                                  {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-                                    <span data-add-to-cart-text class="button-textState1">
-                                        {{ 'products.product.add_to_cart' | t }}
-                                    </span>
-                                </button>
+                      {% for variant in product.variants %}
+                        <option
+                          {% if variant == current_variant %}selected="selected"{% endif %}
+                          {% unless variant.available %}disabled="disabled"{% endunless %}
+                          value="{{ variant.id }}">
+                            {{ variant.title }}
+                        </option>
+                      {% endfor %}
+                    </select>
+
+                    <button
+                      type="submit"
+                      name="add"
+                      class="button  button--medium  button--expanded  button--primary product__buy-btn  is-disabled"
+                      data-add-to-cart
+                      id="AddToCart--{{section.id}}"
+                      {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                        <span data-add-to-cart-text>
+                            {{ 'products.product.add_to_cart' | t }}
+                        </span>
+                    </button>
                                 
                   </form>
                 </div>

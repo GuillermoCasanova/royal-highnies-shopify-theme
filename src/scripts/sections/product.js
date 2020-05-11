@@ -155,11 +155,32 @@ theme.Product = (function() {
     /**
      * Initializes radio buttons to change current option in the single-option-selector <select>  
      */
+    checkIfVariantSelected: function(pSelectors) {
+      var $optionSelectors = $(pSelectors);
+      var isSelected = false; 
+
+        $optionSelectors.each(
+          function() {
+
+            if($(this).prop('checked')) {
+              $(selectors.addToCart).removeClass('is-disabled'); 
+              $(selectors.addToCart).find(selectors.addToCartText).text('Add to Cart');
+              isSelected =  true 
+            }
+          }
+        );
+
+        if(!isSelected) {
+          $(selectors.addToCart).find(selectors.addToCartText).text('Please Choose Size');
+        }
+
+        return isSelected
+    },
     initOptionSelector: function() {
+      var that = this; 
 
       if($(selectors.optionSelector).length > 0) {
         this.$optionSelector = $(selectors.optionSelector);
-
 
         this.$optionSelector.change(function() {
           var optionValue = $(this).val();
@@ -168,7 +189,12 @@ theme.Product = (function() {
             .find('[data-single-option-selector]')
             .val(optionValue)
             .trigger('change');
+            that.checkIfVariantSelected(selectors.optionSelector);
+
         });
+
+        this.checkIfVariantSelected(selectors.optionSelector);
+      
       }
     },
     /**
