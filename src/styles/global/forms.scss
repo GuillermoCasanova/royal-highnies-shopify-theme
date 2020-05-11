@@ -65,17 +65,28 @@ textarea {
 }
 
 
-label {
+
+@mixin labels() {
   text-transform: uppercase; 
   display: block; 
   color: $quaternary-color; 
   margin-bottom: rem-calc($level1); 
+
+  @include media-query($medium-up) {
+    @include  h6(); 
+  }
 }
 
 
 
+
+label {
+  @include labels(); 
+}
+
+
 input {
-  border: 3px solid $primary-color;
+  border: 2.5px solid $primary-color;
   width: 100%; 
 }
 

@@ -1,1 +1,20 @@
 {% section 'product' %}
+
+
+<!-- yotpo reviews widget-->
+<section class="product-reviews-section">
+	<div class="container-fluid">
+		<div class="row center-sm">
+			<div class="col-sm-12 col-md-10">
+				<div class="product-reviews-section__header">
+					<h1 class="headline  product-reviews-section__header__headline">
+						What others loyal royals have said
+					</h1>
+				</div>
+				<div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" data-description="{{ product.description | escape }}"></div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- end of yotpo reviews widget -->
+

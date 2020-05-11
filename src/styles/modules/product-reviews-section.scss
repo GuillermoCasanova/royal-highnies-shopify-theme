@@ -1,0 +1,25 @@
+
+
+
+
+.product-reviews-section {
+	width: 100%; 
+
+	.product-reviews-section__header {
+
+		.product-reviews-section__header__headline {
+			@include h2(); 
+
+			@include media-query($medium-up) {
+				max-width: rem-calc(300px)
+				margin-right: auto; 
+				margin-left: auto; 
+				@include h1(); 
+			}
+		}
+
+		.product-reviews-section__header__crown {
+
+		}
+	}
+}

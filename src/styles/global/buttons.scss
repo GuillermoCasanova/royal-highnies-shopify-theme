@@ -83,19 +83,15 @@ button,
 
 
 .button--small {
-  height: rem-calc(36px);
+  height: rem-calc(38px);
   padding-right: rem-calc($level2); 
   padding-left: rem-calc($level2);
 }
 
 .button--medium {
-  height: rem-calc(56px);
+  height: rem-calc(48px);
   padding-right: rem-calc($level2); 
   padding-left: rem-calc($level2);
-
-  @include media-query($medium-up) {
-    height: rem-calc(52px);
-  }
 }
 
 
