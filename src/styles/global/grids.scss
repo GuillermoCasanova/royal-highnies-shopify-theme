@@ -53,6 +53,7 @@ $half-gutter-width: $flexboxgrid-gutter-width * .5;
 
 .container-fluid--no-padding {
   padding: 0 !important;
+  max-width: 100%; 
 
   .row {
     margin: 0;

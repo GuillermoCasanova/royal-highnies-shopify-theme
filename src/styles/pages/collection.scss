@@ -1,0 +1,128 @@
+
+
+/*------------------------------------*\
+    #Collection Page
+\*------------------------------------*/
+
+
+.collection {
+	padding-top: rem-calc(120px);
+
+	.collection__header {
+		background: none; 
+		margin-bottom: rem-calc($level4);
+
+		@include media-query($medium-up) {
+			text-align: center; 
+			margin-bottom: rem-calc($level7);
+		}
+	}
+
+	.collection__products {
+		max-width: rem-calc(1200px);
+		margin-right: auto; 
+		margin-left: auto; 
+		width: 100%; 
+
+		@include media-query($medium-up) {
+			padding-left: rem-calc($level2);
+			padding-right: rem-calc($level2);
+		}
+	}
+}
+
+
+
+
+
+
+
+/*------------------------------------*\
+    #Product Thumbnail
+\*------------------------------------*/
+
+
+.product-thumbnail {
+	position: relative; 
+	display: block; 	
+
+	.product-thumbnail__actions {
+		position: absolute; 
+		z-index: 3; 
+		bottom: rem-calc($level2); 
+		width: 100%; 
+	}
+
+	.product-thumbnail__image {
+		position: relative; 
+		top: 0; 
+		right: 0; 
+		bottom: 0; 
+		left: 0; 
+		padding-bottom: 133%; 
+		overflow: hidden; 
+		margin-bottom: rem-calc($level1); 
+		background-color: $tertiary-color; 
+		display: block; 
+
+		&:hover, 
+		&:focus {
+			.product-thumbnail__image__primary {
+				opacity: 0;
+			}
+
+			.product-thumbnail__image__secondary {
+				opacity: 1;
+			}
+		}
+
+		.product-thumbnail__image__primary,
+		.product-thumbnail__image__secondary {
+			position: absolute; 
+			object-fit: cover; 
+			top: 0; 
+			right: 0; 
+			bottom: 0;
+			left: 0; 
+			transition: all .2s ease-in-out; 
+			z-index: 0;
+			height: 100%; 
+			width: 100%;
+
+			img {
+				height: 100%; 
+				width: 100%;
+				object-fit: cover; 
+				position: relative; 
+			}
+		}
+
+		.product-thumbnail__image__primary { 
+			z-index: 1; 
+		}
+	}
+
+	.product-thumbnail__info {
+		.product-thumbnail__info__title {
+		  color: $primary-color;
+		  margin-bottom: 0;
+
+			@include media-query($medium-up) {
+		 		@include h6();
+			}
+
+			a {
+				color: $primary-color;
+				text-decoration: none; 
+			}
+		}
+
+		.product-thumbnail__info__price {
+			color: $quaternary-color;
+
+			@include media-query($medium-up) {
+		 		@include h6();
+			}
+		}	
+	}
+}

@@ -29,7 +29,7 @@ $toggleStrokeWidth: 3px;
 $toggleHeight: 1.15rem; 
 $toggleWidth: 72%;  
 
-header {
+.header {
   background-color: #fff; 
   width: 100%;
   display: flex; 
@@ -247,14 +247,17 @@ header {
       opacity: 1; 
       top: 0; 
       position: fixed; 
-      right: auto;  
-      left: auto; 
+      right: 0;  
+      left: 0; 
       background-color: transparent; 
       height: rem-calc(100px);
-      width: 90%; 
+      width: 70%; 
       z-index: 99; 
       padding-top: 0; 
       overflow: visible; 
+      margin-right: auto; 
+      margin-left: auto; 
+      max-width: 43rem; 
     }
 
     .navigation-menu {
@@ -317,13 +320,7 @@ header {
           flex-direction: row; 
           width: 100%; 
           align-items: center; 
-          justify-content: flex-end; 
-          padding-right: 8vw; 
-          min-width: rem-calc(800px); 
-        }
-
-         @media only screen and (min-width: 1200px) {
-          padding-right: 10vw; 
+          justify-content: space-between;
         }
       }
 
@@ -456,7 +453,7 @@ header {
             position: absolute;
             width: 100vw;
             background-color: #F7F7F7;
-            left: -12%;
+            left: -20vw;
             top: 84px;
             padding-left: rem-calc($level7 + $level4); 
             padding-right: rem-calc($level7); 

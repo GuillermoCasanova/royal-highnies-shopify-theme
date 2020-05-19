@@ -20,6 +20,8 @@ window.theme = window.theme || {};
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
 // =require templates/customers-login.js
+// =require templates/collection.js
+
 
 $(document).ready(function() {
   var sections = new slate.Sections();
@@ -87,16 +89,7 @@ $(document).ready(function() {
         enableQtySelectors: true,
         moneyFormat: theme.strings.moneyFormat
     });
-
-     ajaxCart.init({
-        formSelector: '[data-thumb-add-to-cart-form]',
-        cartContainer: '#CartContainer',
-        addToCartSelector: '[data-thumb-add-to-cart-btn]',
-        enableQtySelectors: true,
-        moneyFormat: theme.strings.moneyFormat
-    });
-
-
+     
   };
 
   theme.initPlugins = function() {

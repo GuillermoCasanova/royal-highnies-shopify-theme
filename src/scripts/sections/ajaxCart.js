@@ -195,6 +195,7 @@ var ajaxCart = (function(module, $) {
   ==============================================================================*/
   init = function(options) {
 
+  	console.log(options); 
 
     // Default settings
     settings = {
@@ -269,6 +270,8 @@ var ajaxCart = (function(module, $) {
   formOverride = function() {
     $formContainer.on('submit', function(evt) {
 
+    	console.log('hello'); 
+    	
         evt.preventDefault();
 
         // Add class to be styled if desired
