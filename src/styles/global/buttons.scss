@@ -31,9 +31,9 @@
 
   &.is-disabled {
     filter: grayscale(100%);
-    opacity: .4; 
     cursor: not-allowed;
-    pointer-events: none; 
+    pointer-events: none;
+    background-color: $secondary-color;  
   }
 }
 
@@ -86,12 +86,14 @@ button,
   height: rem-calc(38px);
   padding-right: rem-calc($level2); 
   padding-left: rem-calc($level2);
+  @include text-micro();
 }
 
 .button--medium {
   height: rem-calc(48px);
   padding-right: rem-calc($level2); 
   padding-left: rem-calc($level2);
+  @include h5();
 }
 
 

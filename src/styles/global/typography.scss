@@ -209,6 +209,24 @@ $i : 0;
 
 
 /*------------------------------------*\
+    #Root Typography Resizing
+\*------------------------------------*/
+
+:root {
+    font-size: 1.1rem;
+    @include media-query($medium-up) {
+        font-size: rem-calc(17px);
+    }
+    @include media-query($large-up) {
+        font-size: rem-calc(18px);
+    }
+    @include media-query($xlarge-up) {
+        font-size: rem-calc(20px);
+    }
+}
+
+
+/*------------------------------------*\
     #Base Typographic Rhythm Mixins
 \*------------------------------------*/
 
@@ -227,12 +245,12 @@ $i : 0;
 $default-margin-bottom: rem-calc($level3);
 
 @mixin text-mini() {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   line-height: $base-magic-number / 16;
 };
 
 @mixin text-micro() {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   line-height: $base-magic-number / 16;
 }; 
 

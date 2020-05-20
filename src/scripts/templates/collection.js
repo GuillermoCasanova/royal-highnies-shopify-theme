@@ -40,8 +40,6 @@ theme.collection = (function() {
     },
     checkIfVariantSelected: function(pSelectors, pThumbnail) {
       
-      //console.log(pSelectors); 
-      console.log(pThumbnail); 
       var $optionSelectors = $(pSelectors);
       var $thumbnail = pThumbnail;
       var isSelected = false; 
@@ -50,7 +48,6 @@ theme.collection = (function() {
         $optionSelectors.each(
           function() {
 
-            console.log($(this));
             if($(this).prop('checked')) {
               console.log('checked!!');
               $thumbnail.find(selectors.addToCartButtons).removeClass('is-disabled'); 
@@ -70,26 +67,30 @@ theme.collection = (function() {
       var that = this; 
 
       var $thumbnails = $(pThumbnails); 
-      console.log($thumbnails); 
 
       $thumbnails.each(function() {
 
           this.$optionSelectors = $(this).find(selectors.optionSelector);
           var $thumbnail = $(this); 
 
-          this.$optionSelectors.change(function() {
+          if(this.$optionSelectors.length > 0) {
+            this.$optionSelectors.change(function() {
 
-            var optionValue = $(this).val();
-            $(this)
-              .closest('form')
-              .find($(this).find(selectors.singleOptionSelector))
-              .val(optionValue)
-              .trigger('change');
-              that.checkIfVariantSelected($thumbnail.find(selectors.optionSelector), $thumbnail);
+              var optionValue = $(this).val();
+              $(this)
+                .closest('form')
+                .find($(this).find(selectors.singleOptionSelector))
+                .val(optionValue)
+                .trigger('change');
+                that.checkIfVariantSelected($thumbnail.find(selectors.optionSelector), $thumbnail);
 
-          });
+            });
 
-          that.checkIfVariantSelected($thumbnail.find(selectors.optionSelector), $thumbnail);
+            that.checkIfVariantSelected($thumbnail.find(selectors.optionSelector), $thumbnail);
+          } else {
+            $thumbnail.find(selectors.addToCartButtons).removeClass('is-disabled'); 
+            $thumbnail.find(selectors.addToCartText).text('Add to Cart');
+          }
         
       });
 

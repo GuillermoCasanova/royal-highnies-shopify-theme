@@ -25,7 +25,7 @@
     td {
       display: block;
       text-align: right;
-      padding: $gutter / 2;
+      padding: $flexboxgrid-gutter-width / 2;
       margin: 0;
     }
 
@@ -42,15 +42,15 @@
   tfoot > .responsive-table-row:first-child {
     position: relative;
     margin-top: 10px;
-    padding-top: $gutter / 2;
+    padding-top: $flexboxgrid-gutter-width / 2;
 
     &::after {
       content: '';
       display: block;
       position: absolute;
       top: 0;
-      left: $gutter / 2;
-      right: $gutter / 2;
+      left: $flexboxgrid-gutter-width / 2;
+      right: $flexboxgrid-gutter-width / 2;
       border-bottom: 1px solid $color-border;
     }
   }

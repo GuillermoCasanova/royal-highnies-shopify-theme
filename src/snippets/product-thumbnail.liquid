@@ -3,16 +3,50 @@
 <div class="product-thumbnail" data-thumbnail>
   {% if product.featured_image != blank %}
 
+  <div class="product-thumbnail__inner">
+    
+      <a href="{{ product.url | within: collection }}" title="Shop {{ product.title }}"  class="product-thumbnail__image">
+    
+    
+        <div class="product-thumbnail__image__primary">
+          <picture>
+            <source srcset="{{product.featured_image.src | img_url: '800x'}}" media="(min-width: 960p)">
+            <source srcset="{{product.featured_image.src | img_url: '700x'}}" media="(min-width: 640px)">
+              <img src="{{product.featured_image.src | img_url: '480x480'}}" alt="{{product.featured_image.alt}}">
+          </picture>
+        </div>
+    
+        {% if product.images[2].src != blank %}
+          <div class="product-thumbnail__image__secondary">
+            <picture>
+              <source srcset="{{product.images[2].src | img_url: '800x'}}" media="(min-width: 960p)">
+              <source srcset="{{product.images[2].src | img_url: '700x'}}" media="(min-width: 640px)">
+                <img src="{{product.images[2].src | img_url: '480'}}" alt="{{product.featured_image.alt}}">
+            </picture>
+          </div>
+        {% else %}
+          <div class="product-thumbnail__image__secondary">
+            <picture>
+              <source srcset="{{product.featured_image.src | img_url: '800x'}}" media="(min-width: 960p)">
+              <source srcset="{{product.featured_image.src | img_url: '700x'}}" media="(min-width: 640px)">
+                <img src="{{product.featured_image.src | img_url: '480x480'}}" alt="{{product.featured_image.alt}}">
+            </picture>
+          </div>
+        {%endif%}
+    
+        </a>
+      {% endif %}
+
       <div class="product-thumbnail__actions">
         <form  action="/cart/add" method="post" enctype="multipart/form-data"
                           id="AddToCartForm" data-thumb-add-to-cart-form>
-    
-
-    
+          
+      
+          
           {% unless product.has_only_default_variant %}
             {% for option in product.options_with_values %}
               <div class="selector-wrapper js">
-
+      
                 <!--Needed for radio buttons to work--> 
                 <div class="visually-hidden">
                   <label for="SingleOptionSelector-{{ forloop.index0 }}">
@@ -34,21 +68,21 @@
                 </div>
                 <!--END--> 
                  
-
+      
                 <div class="product-thumbnail__options  flex-grid">
-
+      
                   <span class="product-thumbnail__options__label  visually-hidden">
                    Select {{ option.name }}
                   </span>
-
-
+      
+      
                   {%for value in option.values %}
                     {% assign variant_label_state = true %}
-
+      
                     {% unless product.variants[forloop.index0].available  %}
                       {% assign variant_label_state = false %}
                     {% endunless %}
-
+      
                     <div class="product-thumbnail__options__option  flex-grid-cell {% unless variant_label_state %} is-sold-out {% endunless %}">
                         <input 
                           type="radio" 
@@ -56,8 +90,8 @@
                           data-option-selector
                           data-option-index="option{{option.position}}"
                           value="{{ value | escape }}"
-                          id="{{option.name | handleize}}-{{value | escape | handleize}}">
-                        <label for="{{option.name | handleize}}-{{value | escape | handleize}}" class="{{option.name | downcase}}  flex-grid  flex-grid--center flex-grid--justify-center">
+                          id="{{option.name | handleize}}-{{value | escape | handleize}}-{{product.title}}">
+                        <label for="{{option.name | handleize}}-{{value | escape | handleize}}-{{product.title}}" class="{{option.name | downcase}}  flex-grid  flex-grid--center flex-grid--justify-center">
                           {{value}}
                         </label>
                     </div>
@@ -66,18 +100,18 @@
               </div>
             {% endfor %}
           {% endunless %}
-     
+           
           <div class="product-thumbnail__qty  visually-hidden">
-
+      
             <label for="Quantity">
             {{ 'products.product.quantity' | t }}
            </label>
-
+      
             <div class="product-thumbnail__qty__actions">
               <input type="number" id="Quantity" name="quantity" value="1" min="1">
             </div>
           </div>     
-
+      
           <!--Back for when there is no JS activated--> 
          <select name="id" class="no-js" data-product-select>
             {% for variant in product.variants %}
@@ -89,7 +123,7 @@
               </option>
             {% endfor %}
           </select>
-
+      
           <button
             type="submit"
             name="add"
@@ -103,39 +137,7 @@
                       
         </form>
       </div>
-
-
-    <a href="{{ product.url | within: collection }}" title="Shop {{ product.title }} " tabindex="-1" class="product-thumbnail__image">
-
-
-    <div class="product-thumbnail__image__primary">
-      <picture>
-        <source srcset="{{product.featured_image.src | img_url: '800x'}}" media="(min-width: 960p)">
-        <source srcset="{{product.featured_image.src | img_url: '700x'}}" media="(min-width: 640px)">
-          <img src="{{product.featured_image.src | img_url: '480x480'}}" alt="{{product.featured_image.alt}}">
-      </picture>
-    </div>
-
-    {% if product.images[2].src != blank %}
-      <div class="product-thumbnail__image__secondary">
-        <picture>
-          <source srcset="{{product.images[2].src | img_url: '800x'}}" media="(min-width: 960p)">
-          <source srcset="{{product.images[2].src | img_url: '700x'}}" media="(min-width: 640px)">
-            <img src="{{product.images[2].src | img_url: '480'}}" alt="{{product.featured_image.alt}}">
-        </picture>
-      </div>
-    {% else %}
-      <div class="product-thumbnail__image__secondary">
-        <picture>
-          <source srcset="{{product.featured_image.src | img_url: '800x'}}" media="(min-width: 960p)">
-          <source srcset="{{product.featured_image.src | img_url: '700x'}}" media="(min-width: 640px)">
-            <img src="{{product.featured_image.src | img_url: '480x480'}}" alt="{{product.featured_image.alt}}">
-        </picture>
-      </div>
-    {%endif%}
-
-    </a>
-  {% endif %}
+  </div>
 
   <div class="product-thumbnail__info">
     <p class="product-thumbnail__info__title">

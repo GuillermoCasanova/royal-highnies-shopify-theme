@@ -195,6 +195,9 @@ theme.Product = (function() {
 
         this.checkIfVariantSelected(selectors.optionSelector);
       
+      } else {
+        $(selectors.addToCart).removeClass('is-disabled'); 
+        $(selectors.addToCart).find(selectors.addToCartText).text('Add to Cart');
       }
     },
     /**

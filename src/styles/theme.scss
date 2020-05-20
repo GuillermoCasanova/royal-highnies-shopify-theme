@@ -18,19 +18,18 @@
 
 
 /*================ GOBALS ================*/
+@import url('global/breakpoints.scss'); 
 @import url('global/slate-reset.scss');
 @import url('global/normalize.scss');
 @import url('global/colors.scss'); 
 @import url('global/margins-and-padding.scss'); 
 @import url('global/typography.scss'); 
-@import url('global/breakpoints.scss'); 
 @import url('global/grids.scss');
 
 
 
 /*================ LAYOUT ================*/
 @import url('global/helper-classes.scss');
-@import url('global/layout.scss');
 @import url('global/rte.scss');
 @import url('global/responsive-tables.scss');
 @import url('global/links-buttons.scss');

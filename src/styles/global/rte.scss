@@ -10,7 +10,7 @@
 
   ul,
   ol {
-    margin: 0 0 ($gutter / 2) $gutter;
+    margin: 0 0 ($flexboxgrid-gutter-width / 2) $flexboxgrid-gutter-width;
   }
 
   // Match the styles from RTE nested lists
