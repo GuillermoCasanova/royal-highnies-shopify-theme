@@ -223,6 +223,9 @@ $i : 0;
     @include media-query($xlarge-up) {
         font-size: rem-calc(20px);
     }
+    @include media-query($widescreen) {
+        font-size: rem-calc(23px);
+    }
 }
 
 

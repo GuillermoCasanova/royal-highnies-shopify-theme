@@ -17,3 +17,11 @@ section {
 		padding-bottom: rem-calc($level7 + $level7 + $level5);
 	} 
 }
+
+.section--main {
+	margin-top: rem-calc(112px);
+
+	@include media-query($medium-up) {
+		margin-top: rem-calc(148px);
+	}
+}

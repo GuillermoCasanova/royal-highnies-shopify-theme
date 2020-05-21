@@ -5,18 +5,95 @@
 \*------------------------------------*/
 
 
-#MainContent .default-page {
-	padding-top: 60px !important;
+@keyframes animate-stroke-hover {
+	0% {
+		transform: scaleX(0);
+		transform-origin: right;
+	}
+
+	50% {
+		transform: scaleX(1);
+		transform-origin: right;
+	}
+
+
+	60% {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	100% {
+		transform-origin: left;
+		transform: scaleX(0);
+	}
 }
 
-.store-locator-header {
-	margin-bottom: 4rem; 
+
+
+.retailers-header {
 	text-align: center; 
-	padding-left: 2%; 
-	padding-right: 2%; 
-	margin-top: 10rem; 
+	margin-bottom: rem-calc($level7);
+
+	.retailers-header__headline {
+		@include h2();
+
+		@include media-query($medium-up) {
+			@include h1(); 
+		}
+
+	}
+
+  .retailers-header__body {
+		max-width: 23rem; 
+		margin-right: auto; 
+		margin-left: auto;
+
+		@include media-query($medium-up) {
+			margin-bottom: rem-calc($level7); 
+		}
+  }
 }
 
+
+
+/*------------------------------------*\
+    #Store List
+\*------------------------------------*/
+
+
+.store-list {
+	
+	.store-list__header {
+		.store-list__header__headline {
+			text-align: center; 
+			margin-bottom: rem-calc($level7);
+			@include h2();
+
+			@include media-query($medium-up) {
+				@include h1(); 
+			}
+		}
+	}
+
+	.page-width {
+
+		@include media-query($medium-up) {
+			transform: translateX(7vw);
+		}
+	}
+}
+
+
+
+
+
+/*------------------------------------*\
+    #Store Mapper
+\*------------------------------------*/
+
+.store-mapper {
+	margin-bottom: rem-calc($level7 + $level7); 
+}
 
 
 .store-locator-container {
@@ -26,7 +103,7 @@
 	padding-left: 2%; 
 	padding-right: 2%; 
 	margin-left: auto; 
-	margin-bottom: 48px; 
+	margin-bottom: rem-calc($level7 + $level7); 
 }
 
 .store-locator-title {
@@ -83,4 +160,119 @@ div#storemapper .storemapper-powered-by {
 #storemapper #storemapper-list li .storemapper-email {
 	display: none !important;
 }
+
+
+
+.retailers {
+  margin-bottom: rem-calc($level7);
+	
+	.retailers-title {
+		text-align: center; 
+	}
+
+	h3 {
+		font-family: $primary-font-family; 
+		letter-spacing: 0.5rem;
+		margin-bottom: rem-calc($level5);  
+		text-align: left; 
+		@include h5(); 
+
+		@include media-query($medium-up) {
+			@include h4(); 
+		}
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		line-height: 26px;
+		margin-bottom: rem-calc($level7 + $level7); 
+	}
+
+	li {
+		margin-bottom: rem-calc($level2); 
+	}
+
+	li a {
+		color: $primary-color;
+		text-decoration: none; 
+		font-family: $secondary-font-family; 
+		position: relative; 
+		display: block; 
+		@include h4(); 
+
+		@include media-query($medium-up) {
+			@include h3(); 
+		}
+
+		&:after {
+			content: " ";
+			position: absolute; 
+			height: 2px;  
+			background-color: $primary-color; 
+			left: -2rem;
+    	transform-origin: right;
+    	width: 1.5rem;
+    	top: 0;
+    	bottom: 0;
+    	margin: auto;
+    	transform: scaleX(0); 
+    	display: block; 
+		}
+
+		&:hover,
+		&:focus {
+			
+			&:after {
+				animation: animate-stroke-hover .6s ease-in-out forwards;
+			}
+		}
+	}
+
+	a {
+	}
+}
+
+
+.retailers .cat-grid-item.two-thirds ul {
+  columns: 3;
+}
+
+
+.retailers .cat-grid-item li a:hover {
+  font-weight: normal;
+  color: #1f305a;
+}
+.retailers-content {
+	background-color: $primary-color; 
+  color: $tertiary-color; 
+  padding: rem-calc($level4); 
+
+	min-height: 50vh; 
+
+   p {
+   	color: $secondary-color; 
+   	@include h3(); 
+   }
+}
+
+
+.retailers-content.hidden {
+  display: none;
+}
+.retailers-content .one-whole {
+  text-align: center;
+  margin: 20px auto;
+}
+.retailers-content .one-whole img {
+  max-width: 45px;
+  height: auto;
+}
+
+.retailers-content .one-quarter {
+  margin-bottom: 25px;
+  min-height: 90px;
+}
+
 

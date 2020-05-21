@@ -15,6 +15,10 @@
 		padding-top: rem-calc(100px);
 	}
 
+	@include media-query($widescreen) {
+		padding-top: rem-calc(136px);
+	}
+
 	.product__inner {
 		max-width: rem-calc(1110px);
 		margin-right: auto; 
@@ -136,14 +140,16 @@
 			} 
 			
 			input {
-				width: rem-calc(42px); 
-				height: rem-calc(42px); 
+				width: rem-calc(60px); 
+				height: rem-calc(36px); 
 				margin-right: rem-calc($level2);
 				display: flex; 
 				align-items: center; 
 				justify-content: center;  
 				text-align: center; 
 				font-family: 1.75rem; 
+				border: 2px solid $primary-color;
+				color: $primary-color;
 			}
 
 			.product__qty__actions {
@@ -344,7 +350,8 @@
 				font-weight: bold; 
 				display: flex; 
 				align-items: center; 
-				justify-content: center; 
+				justify-content: center;
+				color: $primary-color; 
 			}
 		}
 	}

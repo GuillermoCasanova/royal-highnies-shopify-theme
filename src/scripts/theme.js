@@ -107,6 +107,28 @@ $(document).ready(function() {
     theme.cartInit();
     theme.afterCartLoad(); 
     //theme.initPlugins(); 
+
+  $('.retailers li a').click(function(event) {
+    
+    console.log(event); 
+
+    $('.retailers li a').removeClass('active');
+    $(this).addClass('active');
+    var retailers_content = '.' + $(this).attr('data-target');
+    
+    if($(retailers_content).hasClass('hidden')) {
+      if($('.retailers-content:not(.hidden)').length > 0) {
+        $('.retailers-content:not(.hidden)').fadeOut('fast', function() {
+          $(retailers_content).fadeIn('fast').removeClass('hidden');
+        }).addClass('hidden');
+      } else {
+        $(retailers_content).fadeIn('fast').removeClass('hidden');
+      }
+    }
+    return false;
+  });
+
+
   };
 
   theme.init(); 

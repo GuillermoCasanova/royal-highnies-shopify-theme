@@ -1,19 +1,24 @@
 
 
-<div class="retailers-header">
-	<h2 class="retailers-header__headline">
-		Royal Highnie Retailers
-	</h2>
-	<div class="retailers-header__body">
-		<p>
-			Type your zip code or location to find royally approved stores around you. 
-		</p>
-</div>
-</div>
-
+<div class="section--main"> 
 
 {%section 'store-mapper'%}
-	<h2 class="retailers-title">
-		Search by State
-	</h2>
-{{ page.content }}      
+
+<div class="store-list">
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="store-list__header">
+					<h2 class="headline store-list__header__headline">
+						Search by State
+					</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col-sm-12">{{ page.content }}</div>  
+		</div>
+	</div>
+</div>
