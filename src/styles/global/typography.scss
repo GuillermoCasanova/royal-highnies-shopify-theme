@@ -222,7 +222,12 @@ p {
 \*------------------------------------*/
 
 :root {
-    font-size: 1.2rem;
+    font-size: 1rem;
+
+    @include media-query($small-up) {
+      font-size: 1.2rem;
+    }
+
     @include media-query($medium-up) {
         font-size: rem-calc(17px);
     }
@@ -257,7 +262,7 @@ p {
 $default-margin-bottom: rem-calc($level3);
 
 @mixin text-mini() {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   line-height: $base-magic-number / 16;
 };
 

@@ -1,3 +1,26 @@
+
+
+
+/*------------------------------------*\
+    #Grids  
+\*------------------------------------*/
+
+
+// .container {
+//  padding-left: rem-calc($level4); 
+//  padding-right: rem-calc($level4); 
+
+//  @media #{$large-up} {
+//    max-width: rem-calc(1120px);
+//    margin-right: auto; 
+//    margin-left: auto;  
+//  }
+// }
+
+
+
+
+
 //
 // -- Start editing -- //
 //
@@ -14,9 +37,9 @@
 // Set the number of columns you want to use on your layout.
 $flexboxgrid-grid-columns: 12 !default;
 // Set the gutter between columns.
-$flexboxgrid-gutter-width: 1.5rem !default;
+$flexboxgrid-gutter-width: 1rem !default;
 // Set a margin for the container sides.
-$flexboxgrid-outer-margin: 0rem !default;
+$flexboxgrid-outer-margin: 2rem !default;
 
 //
 // -- Stop editing -- //
@@ -26,6 +49,7 @@ $gutter-compensation: $flexboxgrid-gutter-width * .5 * -1;
 $half-gutter-width: $flexboxgrid-gutter-width * .5;
 
 .wrapper {
+  box-sizing: border-box;
   max-width: $flexboxgrid-max-width;
   margin: 0 auto;
 }
@@ -33,36 +57,36 @@ $half-gutter-width: $flexboxgrid-gutter-width * .5;
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
+  padding-right: $flexboxgrid-outer-margin;
+  padding-left: $flexboxgrid-outer-margin;
   height: auto; 
   box-sizing: border-box;
-  max-width: $flexboxgrid-max-width;
   margin: 0 auto;
   width: 100%;
-  box-sizing: border-box;
-}
+  max-width: 50rem;
 
-
-.container-fluid {
-   .row {
-    margin-right: $gutter-compensation;
-    margin-left: $gutter-compensation;
+  @include media-query($large-up) {
+    width: 80%; 
+    min-width: 52rem; 
+    max-width: $flexboxgrid-max-width;
   }
 }
 
-.container-fluid--no-padding {
+.container-fluid--flushed {
   padding: 0 !important;
   max-width: 100%; 
 
-  .row {
-    margin: 0;
-  }
-}
+  & > .row {
+    margin: 0; 
 
-.row--no-padding {
-  [class*="col-"] {
-    padding: 0; 
+    //  & > [class*="col-"] {
+    //   padding-left: 0; 
+    //   padding-right: 0; 
+    // } 
+  }
+
+  @include media-query($large-up) {
+    width: 100%; 
   }
 }
 
@@ -72,38 +96,29 @@ $half-gutter-width: $flexboxgrid-gutter-width * .5;
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%; 
+  margin-right: $gutter-compensation;
+  margin-left: $gutter-compensation;
 }
 
 
-.row--no-wrap {
-  flex-wrap: nowrap;
+.row.flushed {
+  margin: 0; 
+
+  [class*="col-"] {
+    padding-left: 0; 
+    padding-right: 0; 
+  } 
 }
 
-.row--contained { 
-  margin-right: 0; 
-  margin-left: 0; 
-}
-
-.row--expanded {
-  width: 100%;
-}
-
-.row--stretch {
+.row.stretch {
   align-items: stretch; 
-}
-
-
-.contained-sm {
-  margin-right: 0 !important; 
-  margin-left: 0 !important; 
 }
 
 .row.reverse {
   flex-direction: row-reverse;
 }
 
-.col-reverse {
+.col.reverse {
   flex-direction: column-reverse;
 }
 

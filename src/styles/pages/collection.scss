@@ -45,6 +45,11 @@
 .product-thumbnail {
 	position: relative; 
 	display: block; 	
+	
+	@include media-query($large-up) {
+		padding-right: rem-calc($level2);
+		padding-left: rem-calc($level2);
+	}
 
 	.product-thumbnail__inner {
 		position: relative; 

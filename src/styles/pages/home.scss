@@ -19,6 +19,7 @@
 	overflow: hidden; 
 	margin-bottom: rem-calc($level7 + $level7 + $level3);
 	padding-bottom: 0; 
+	margin-top: rem-calc(90px); 
 
  	@include media-query($large-up) {
  		height: 80vh;

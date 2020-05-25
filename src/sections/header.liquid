@@ -3,14 +3,16 @@
 <div class="navigation" data-section-id="{{ section.id }}" data-section-type="header"  data-template="{{ template.name }}">
 
     {% if section.settings.announcement_bar_enabled %}
-    <alert class="header-announcement"> 
-      {%- if section.settings.announcement_bar_link != blank -%}
-         <a href="{{ section.settings.announcement_bar_link }}" rel="internal" title="{{section.settings.announcement_bar_link_title}}">
-           {{ section.settings.announcement_bar_text | escape }}
-         </a>
-       {%- else -%}
-         <span>{{ section.settings.announcement_bar_text | escape }}</span>
-       {%- endif -%}
+    <alert class="header-announcement-bar"> 
+      <div class="header-announcement-bar__inner">
+        {%- if section.settings.announcement_bar_link != blank -%}
+           <a href="{{ section.settings.announcement_bar_link }}" rel="internal" title="{{section.settings.announcement_bar_link_title}}">
+             {{ section.settings.announcement_bar_text | escape }}
+           </a>
+         {%- else -%}
+           <span>{{ section.settings.announcement_bar_text | escape }}</span>
+         {%- endif -%}
+      </div>
     </alert>
     {% endif %}
 
@@ -174,19 +176,38 @@
     "name": "Header",
     "settings": [
       {
-        "type": "image_picker",
-        "id": "logo",
-        "label": "Logo image"
+        "type": "header",
+        "content": "Announcement bar"
       },
       {
-        "type": "range",
-        "id": "logo_max_width",
-        "min": 50,
-        "max": 450,
-        "step": 10,
-        "unit": "px",
-        "label": "Custom logo width",
-        "default": 250
+        "type": "checkbox",
+        "id": "announcement_bar_enabled",
+        "label": "Show announcement",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_home_page_only",
+        "label": "Show on home page only",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "announcement_bar_text",
+        "label": "Announcement text",
+        "default": "Announce something here"
+      },
+      {
+        "type": "text",
+        "id": "announcement_bar_link_title",
+        "label": "Announcement link title",
+        "default": "The title for the announcement link"
+      },
+      {
+        "type": "url",
+        "id": "announcement_bar_link",
+        "label": "Announcement link",
+        "info": "Optional"
       },
       {
         "type": "link_list",
