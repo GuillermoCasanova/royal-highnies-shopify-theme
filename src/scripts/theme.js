@@ -102,15 +102,71 @@ $(document).ready(function() {
   }; 
 
 
+  theme.setUpInputWrappers = function() {
+      
+    setTimeout(function(){ 
+    if( $('[data-input-wrapper]').length > 0) {
+      $('[data-input-wrapper]').each(function(index) {
+        var that = this; 
+          $(this).find('input').on('change', function() {
+            console.log('hello');
+             if($(this).val().length > 0) {
+                $(that).addClass('is-filled'); 
+              } else {
+                $(that).removeClass('is-filled'); 
+              }
+          }); 
+          
+          $(this).find('input').trigger('change');
+
+
+          $(this).find('input').on('focus', function() {
+              $(that).addClass('is-active'); 
+              console.log('hello');
+          }); 
+
+          $(this).find('input').on('blur', function() {
+            $(that).removeClass('is-active'); 
+
+            if($(this).val().length > 0) {
+              $(that).addClass('is-filled'); 
+            } else {
+              $(that).removeClass('is-filled'); 
+            }
+
+          if($(this).val().length > 0) {
+            $(that).addClass('is-filled'); 
+          } else {
+            $(that).removeClass('is-filled'); 
+          }
+
+
+        }); 
+      }); 
+
+      $('[data-textarea-wrapper]').each(function(index) {
+        var that = this; 
+        $(this).find('textarea').on('focus', function() {
+            $(that).addClass('is-active'); 
+        }); 
+          $(this).find('textarea').on('blur', function() {
+            $(that).removeClass('is-active'); 
+        }); 
+      }); 
+    }
+
+    }, 0); 
+     
+  }
+
   theme.init = function() {
     theme.initCache();
     theme.cartInit();
     theme.afterCartLoad(); 
+    theme.setUpInputWrappers(); 
     //theme.initPlugins(); 
 
   $('.retailers li a').click(function(event) {
-    
-    console.log(event); 
 
     $('.retailers li a').removeClass('active');
     $(this).addClass('active');

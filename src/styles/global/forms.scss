@@ -6,7 +6,6 @@
 input,
 textarea,
 select {
-  border: .5px solid $color-border;
   border-radius: 0;
   max-width: 100%;
   font-family: $primary-font-family; 
@@ -57,6 +56,8 @@ select::-ms-expand {
 input,
 select,
 textarea {
+  padding-left: rem-calc($level2); 
+
   &.input-error {
     border-color: $color-error;
     background-color: $color-error-bg;
@@ -86,7 +87,138 @@ label {
 
 
 input {
-  border: 2.5px solid $primary-color;
+  border: 1.5px solid $primary-color;
   width: 100%; 
 }
+
+
+.input-wrapper {
+  position:  relative; 
+
+  input {
+    padding-bottom: 0; 
+    padding-top: .5rem; 
+
+        &.error {
+            border-color: $warning-color;
+        }
+  }
+  
+  label {
+    position: absolute; 
+    top: .75rem; 
+    left: rem-calc($level2); 
+    transition: all .2s ease-in-out;
+    text-transform: capitalize; 
+
+  }
+    
+  label.error {
+      position: fixed;
+      left: -9999px;
+      opacity: 0;
+  }
+
+  &.is-active {
+    
+    label {
+      top: rem-calc(3px);
+      @include text-mini();
+      color: $primary-color;
+      line-height: 1; 
+    }
+
+    input {
+      outline: 0;
+    }
+  }
+
+  &.is-filled {
+    
+    label {
+      top: rem-calc(3px);
+      @include text-mini();
+      line-height: 1; 
+    }
+
+    input {
+      outline: 0;
+    }
+  }
+}
+
+
+.radio-wrapper {
+  position: relative;
+  padding-left: 40px;
+  text-transform: uppercase; 
+  font-family: 'Gotham-Black'; 
+  font-weight: normal; 
+  margin-bottom: 1.25rem;
+  color: $primary-color;
+  padding-top: 5px; 
+  @include h6();
+
+
+  @include media-query($medium-up) {
+    padding-left: 32px; 
+    padding-top: 2px; 
+    padding-right: 8px;
+    margin-bottom: 1rem; 
+    @include text-micro();
+  }
+
+  input {
+    position: absolute;
+    left: 0;
+    opacity: 0; 
+  }
+    
+  label.error {
+    position: fixed;
+    left: -9999px;
+    opacity: 0;
+  }
+
+  .checkmark {
+        border-radius: 100%;
+        position: absolute;
+        left: -1px;
+        top: 0;
+        border: 2px solid $primary-color;
+        height: 34px;
+        width: 34px;
+
+        @include media-query($medium-up) {
+           height: 28px;
+          width: 28px;  
+        }
+
+        &:after {
+          content: " "; 
+          height: 28px;
+          width: 28px;
+          border-radius: 100%;
+          position: absolute; 
+          z-index: 1; 
+          background-color: $primary-color; 
+          opacity: 0; 
+          top: 0; 
+          right: 0; 
+          bottom: 0; 
+          left: 0; 
+          margin: auto; 
+
+          @include media-query($medium-up) {
+            height: 22px;
+            width: 22px;      
+          }
+      }
+    }
+
+  input:checked ~ .checkmark:after {
+    opacity: 1; 
+  }
+}
+
 

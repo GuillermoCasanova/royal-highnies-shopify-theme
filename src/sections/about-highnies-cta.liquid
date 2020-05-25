@@ -1,0 +1,102 @@
+
+
+<section class="about-highnies-cta-section">
+	<div class="about-highnies-cta-section__inner">
+
+
+		<div class="about-highnies-cta-section__slideshow-container  swiper-container" data-ui-component="about-cta-slideshow">
+			<div class="swiper-wrapper">
+				{%for block in section.blocks%}
+				<a href="{{ block.settings.product-link }}" title="Shop {{block.settings.product-name}}" class="about-highnies-cta-section__image  swiper-slide">
+					<picture>
+						<source srcset="{{block.settings.image | img_url: '900x'}}" media="(min-width: 960px)">
+						<source srcset="{{block.settings.image | img_url: '700x'}}" media="(min-width: 700px)">
+						<img src="{{block.settings.image | img_url: '400x'}}" alt="{{block.settings.image.alt}}">
+					</picture>
+				</a>
+				{%endfor%}
+			</div>
+		</div>
+
+
+		<a href="{{section.settings.section-cta-link}}" class="button button--secondary  button--medium  about-highnies-cta-section__cta" title="{{section.settings.section-cta-label}}">
+			{{section.settings.section-cta-label}}
+		</a>
+
+	</div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Call to Action",
+    "max_blocks": 9,
+    "settings": [
+      {
+        "type": "url",
+        "id": "section-cta-link",
+        "label": "Call To Action"
+      },
+      {
+        "type": "text",
+        "id": "section-cta-label",
+        "label": "Call To Action Label"
+      }],
+     "blocks": [
+     	{
+				"type": "gallery-image",
+				"name": "Image",
+				"settings": [
+					{
+						"id": "image", 
+						"type": "image_picker",
+						"label": "Image"
+					},
+					{
+						"id": "product-name", 
+						"type": "text", 
+						"label": "Product Name"
+					},
+					{
+						"id": "product-link", 
+						"type": "url", 
+						"label": "Product Url"
+					}
+				]
+			}
+     ]
+   }
+ {%endschema%}
+
+
+{%javascript%}
+//<script>
+	$(document).ready(function() {
+	  var mySwiper = new Swiper ('[data-ui-component="about-cta-slideshow"]', {
+	    direction: 'horizontal',
+	    effect: 'slide',
+      spaceBetween: 25,
+      freeMode: true,
+      loop: false,
+      slidesPerView: 2, 
+      autoplay: false,
+      slidesOffsetAfter: 150,
+      slidesOffsetBefore: 50,
+      grabCursor: true, 
+      breakpoints: {
+      	768: {
+      		slidesPerView: 3,
+      		spaceBetween: 30
+      	},
+      	1000: {
+      		spaceBetween: 40,
+      		slidesPerView: 3
+      	}
+      }
+	  });
+
+	}); 
+//</script>
+{%endjavascript%}
+
+

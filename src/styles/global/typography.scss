@@ -101,8 +101,17 @@ body {
 
 
 .headline {
-  font-weight: 400; 
+  font-weight: normal; 
   font-family: $secondary-font-family; 
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+  font-weight: normal
 }
 
 
@@ -153,59 +162,59 @@ p {
     #Responsive Type with Media Queries 
 \*------------------------------------*/
 
-//This allows for type to resize as needed as oppose to needing media queries
-//that force changing type size 
-//http://robertmaple.co.uk/fluid-responsive-type-with-media-queries/
+// //This allows for type to resize as needed as oppose to needing media queries
+// //that force changing type size 
+// //http://robertmaple.co.uk/fluid-responsive-type-with-media-queries/
 
-//Set your font size min/max (px)
-$max-font-size : 24;
-$min-font-size : 17.5;
+// //Set your font size min/max (px)
+// $max-font-size : 24;
+// $min-font-size : 17.5;
  
-//Set your viewport size min/max (px)
-$max-media : 4000;
-$min-media : 340;
+// //Set your viewport size min/max (px)
+// $max-media : 4000;
+// $min-media : 340;
  
-// Internal variables for the font/viewport ranges
-$viewport-range : $max-media - $min-media;
-$font-increments : ($max-font-size - $min-font-size) / $viewport-range;
+// // Internal variables for the font/viewport ranges
+// $viewport-range : $max-media - $min-media;
+// $font-increments : ($max-font-size - $min-font-size) / $viewport-range;
  
-// Calculate min/max :root font sizes (%) - 6.25 relates to 1px being 6.25% of the default 16px html font-size. 
-$min-root-font : (6.25 * $min-font-size);
-$max-root-font : (6.25 * $max-font-size);
+// // Calculate min/max :root font sizes (%) - 6.25 relates to 1px being 6.25% of the default 16px html font-size. 
+// $min-root-font : (6.25 * $min-font-size);
+// $max-root-font : (6.25 * $max-font-size);
  
-// Counter variable for use in loop
-$i : 0;
+// // Counter variable for use in loop
+// $i : 0;
 
 
-// Loop through the range between the min/max viewport sizes
-@while $i < $viewport-range {
+// // Loop through the range between the min/max viewport sizes
+// @while $i < $viewport-range {
     
-    // Calculate the font size based on position in the loop.
-    $font-size : ((($font-increments * $i) *  6.25 ) + $min-root-font ) * 1%;
+//     // Calculate the font size based on position in the loop.
+//     $font-size : ((($font-increments * $i) *  6.25 ) + $min-root-font ) * 1%;
  
-    // Calculate the breakpoint size based on position in the loop
-    $break : $i + $min-media * 1px;
+//     // Calculate the breakpoint size based on position in the loop
+//     $break : $i + $min-media * 1px;
  
-    // Print out breakpoint with :root font-size
-    @media screen and (min-width: #{$break}) {
-        :root {   
-            font-size: $font-size; 
-        }
-    }
+//     // Print out breakpoint with :root font-size
+//     @media screen and (min-width: #{$break}) {
+//         :root {   
+//             font-size: $font-size; 
+//         }
+//     }
     
-    // Advance the counter
-    $i : $i + 1;
-}
+//     // Advance the counter
+//     $i : $i + 1;
+// }
  
-// Set the min and max font/viewport sizes where text will stop scaling.
-:root {    
-    @media (max-width: #{$min-media}px){
-        font-size: $min-root-font * 1%; 
-    }
-    @media (min-width: #{$max-media}px){
-        font-size: $max-root-font * 1%; 
-    } 
-}
+// // Set the min and max font/viewport sizes where text will stop scaling.
+// :root {    
+//     @media (max-width: #{$min-media}px){
+//         font-size: $min-root-font * 1%; 
+//     }
+//     @media (min-width: #{$max-media}px){
+//         font-size: $max-root-font * 1%; 
+//     } 
+// }
 
 
 /*------------------------------------*\
@@ -213,12 +222,12 @@ $i : 0;
 \*------------------------------------*/
 
 :root {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     @include media-query($medium-up) {
         font-size: rem-calc(17px);
     }
     @include media-query($large-up) {
-        font-size: rem-calc(18px);
+        font-size: rem-calc(19px);
     }
     @include media-query($xlarge-up) {
         font-size: rem-calc(20px);
@@ -248,7 +257,7 @@ $i : 0;
 $default-margin-bottom: rem-calc($level3);
 
 @mixin text-mini() {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   line-height: $base-magic-number / 16;
 };
 

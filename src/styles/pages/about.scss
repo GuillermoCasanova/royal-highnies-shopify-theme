@@ -6,10 +6,16 @@
 
 
 .about-us-narrative {
-	padding-top: rem-calc(100px); 
+	padding-top: rem-calc(72px);
+	margin-bottom: rem-calc($level7);
 
 	@include media-query($medium-up) {
-		padding-top: rem-calc($level7); 
+		padding-top: 8rem;
+		margin-bottom: rem-calc($level7);
+	}
+
+	@include media-query($large-up) {
+		padding-top: 10rem;
 	}
 }
 
@@ -23,32 +29,324 @@
 
 
 .narrative-section {
-	min-height: 90vh; 
 	max-height: rem-calc(800px); 
 	width: 100%; 
 	display: flex; 
 	align-items: center; 
 	flex-direction: column; 
+	overflow: hidden; 
+	margin-bottom: rem-calc($level7 + $level7); 
 
 	@include media-query($medium-up) {
 		flex-direction: row; 
+		height: 90vh; 
+		max-height: 27rem; 
+		margin-bottom: 0; 
+		margin-bottom: rem-calc($level4);
+		width: 100%;
+	}
+	
+	@include media-query($large-up) {
+		max-height: 38rem; 
+		max-width: rem-calc(1280px);
+		margin-right: auto; 
+		margin-left: auto; 
+		margin-bottom: rem-calc($level7); 
 	}
 
-	.narrative-section__image {
-		max-width:27.25rem;
-		margin-left: auto; 
-		margin-right: auto; 
-		width: 100%; 
-		img {
-			width: 100%; 
+
+	&.narrative-section--intro {
+
+		@include media-query($medium-up) {
+			max-height: 28rem;
+		}
+
+		@include media-query($large-up) {
+			max-height: 38rem;
+		}
+
+		.narrative-section__image {
+			padding-bottom: 70%; 
+
+	    @include media-query($medium-up) {
+			  padding-bottom: 100%; 
+	    }
+
+			img {
+		    width: 120%;
+		    height: 120%;
+		    top: -70px;
+
+		    @include media-query($medium-up) {
+					width: 120%;
+					height: 110%;
+					top: rem-calc(-72px);
+					right: -2rem;
+					left: auto;
+		    }
+
+		    @include media-query($large-up) {
+		    	right: 0; 
+		    	top: rem-calc(-36px);
+		    	left: 1.5rem; 
+		    }
+			}
+		}
+		
+
+		.narrative-section__copy {
+
+			@include media-query($large-up) {
+				max-width: 33rem; 
+			}
+
+			.narrative-section__body {
+			 p {
+				@include media-query($large-up) {
+					@include h4();
+				}
+			 }
+			}	
+		}
+	}
+
+	&.narrative-section--finest-cotton {
+		.narrative-section__image {
+			padding-bottom: 60%;
+
+			@include media-query($medium-up) {
+				padding-bottom: 90%;
+			}
+
+			@include media-query($large-up) {
+				padding-bottom: 100%;
+				right: 2rem; 
+			}
+
+			img {
+		    width: 100%;
+		    height: 100%;
+			}	
+		}
+	}
+
+	&.narrative-section--whole-family {
+		.narrative-section__image {
+			padding-bottom: 70%;
+
+			@include media-query($medium-up) {
+				padding-bottom: 100%;
+				width: 110%; 
+				max-width: 110%; 
+			}
+
+			@include media-query($medium-up) {
+				width: 110%; 
+			}
+
+			img {
+				width: 92%;
+		    height: 100%;
+		    left: -5vw;
+
+		    @include media-query($medium-up) {
+			    width: 132%;
+			    height: 110%;
+			    right: -5vw;
+		    }
+
+		    @include media-query($medium-up) {
+					left: -2.5vw; 
+					right: auto; 
+		    }
+			}	
 		}
 	}
 
 
-	.narrative-section__body {
+	&.narrative-section--experience {
+		.narrative-section__image {
+			padding-bottom: 70%;
+
+			@include media-query($medium-up) {
+				padding-bottom: 90%;
+			}
+
+			@include media-query($large-up) {
+				padding-bottom: 95%; 
+				right: 2.5rem;
+			}
+		}
+	}
+
+
+	.narrative-section__image {
+		max-width: 100%;
+		margin-left: auto; 
+		margin-right: auto; 
+		width: 100%; 
+		margin-bottom: rem-calc($level3); 
+		position: relative; 
+		padding-bottom: 100%; 
+
+		img {
+			width: 100%; 
+			position: absolute; 
+			height: 100%; 
+			top: 0; 
+			right: 0; 
+			bottom: 0; 
+			left: 0; 
+			object-fit: contain; 
+		}
+	}
+
+
+	.narrative-section__headline {
+		font-family: $secondary-font-family; 
+		display: flex; 
+		align-items: flex-end; 
+		@include h3(); 
+
+		@include media-query($large-up) {
+			@include text-kilo(); 
+		}
+
+		svg {
+			max-width: rem-calc(42px);
+			margin-right: rem-calc($level1);
+			fill: $primary-color; 
+			position: relative; 
+
+			@include media-query($medium-up) {
+				max-width: rem-calc(50px);
+			} 
+
+			@include media-query($large-up) {
+				max-width: rem-calc(78px);
+				margin-right: 0; 
+				left: -.5rem; 
+			} 
+		}
+	}
+	
+	.narrative-section__copy {
+		padding-left: rem-calc($level4);
+		padding-right: rem-calc($level4);
+		max-width: rem-calc(400px);
+		margin-right: auto; 
+		margin-left: auto; 
+
+		@include media-query($medium-up) {
+			max-width: 100%; 
+			padding-left: rem-calc($level5);
+			padding-right: rem-calc($level5);
+		}
+
+
+		@include media-query($large-up) {
+			max-width: 30rem; 
+			padding-left: rem-calc($level6);
+			padding-right: rem-calc($level6);
+			margin-right: auto; 
+			margin-left: auto; 
+		}
+
+		.narrative-section__body {
+			font-family: $secondary-font-family; 
 
 		 p {
-			@include h4();
+			@include h6();
+
+			@include media-query($medium-up) {
+				@include h5();
+			}
+
+			@include media-query($large-up) {
+				@include h3();
+				line-height: 1.75; 
+			}
 		 }
+		}		
+	}
+}
+
+
+
+
+
+/*------------------------------------*\
+    #About Highnies Cta Section
+\*------------------------------------*/
+
+
+.about-highnies-cta-section {
+	
+
+	.about-highnies-cta-section__inner {
+		display: flex; 
+		flex-direction: column; 
+
+		@include media-query($medium-up) {
+			flex-direction: column-reverse; 
+		}
+	}
+
+
+	.about-highnies-cta-section__slideshow-container {
+		width: 100%;
+		overflow: hidden; 
+		position: relative; 
+		margin-bottom: rem-calc($level7); 
+		padding-top: rem-calc($level2);
+		padding-bottom: rem-calc($level2);
+
+		.about-highnies-cta-section__image {
+			position: relative; 
+			padding-bottom: 70%; 
+			min-width: 50vw;
+			display: block; 
+			transition: all .2s ease-in-out; 
+
+			@include media-query($medium-up) {
+				min-width: 25vw;
+				padding-bottom: 40%; 
+			}
+
+			@include media-query($large-up) {
+				min-width: 30vw;
+				padding-bottom: 50%; 
+			}
+			
+
+			&:hover, 
+			&:focus {
+				transform: scale(1.04);
+			}
+
+			img {
+				position: absolute; 
+				width: 100%; 
+				height: 100%; 
+				top: 0; 
+				bottom: 0; 
+				left: 0; 
+				right: 0; 
+				object-fit: cover; 
+			}
+		}
+	}
+	
+	.about-highnies-cta-section__cta {
+		max-width: 14rem;
+		width: 100%; 
+		margin-right: auto; 
+		margin-left: auto;  
+		margin-bottom: rem-calc($level7 + $level2); 
+
+		@include media-query($large-up) {
+			max-width: 15rem;
+			margin-bottom: rem-calc($level7 + $level7); 
+		}
 	}
 }
