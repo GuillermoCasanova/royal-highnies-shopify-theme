@@ -1,6 +1,6 @@
 
 
-<div class="navigation" data-section-id="{{ section.id }}" data-section-type="header"  data-template="{{ template.name }}">
+<div class="navigation" data-section-id="{{ section.id }}" data-section-type="header"  data-template="{{ template.name }}" data-navigation>
 
     {% if section.settings.announcement_bar_enabled %}
     <alert class="header-announcement-bar"> 
@@ -25,7 +25,7 @@
             </span>
         </button>
       </div>
-<!--       <div>
+          <!--       <div>
         {%if customer%}
             <a href="/account">
             <span>
@@ -81,7 +81,9 @@
                       data-dropdown-id="{{child_list_handle}}">
                   <a href="{{link.url}}" class="navigation-menu__link navigation-menu__drop-down__title" 
                       data-toggle-id="{{child_list_handle}}"
-                      data-drop-down-toggle>
+                      data-drop-down-toggle
+                      data-navigation-link
+                      data-navigation-handle={{link.handle}}>
                     {{ link.title }} 
                     <span class="navigation-menu__drop-down__icon">
                       
@@ -117,7 +119,7 @@
               </li>
             {% else %}  
               <li class="navigation-menu__item  {% if link.active %}site-nav--active{% endif %}">
-                <a href="{{ link.url }}" class="navigation-menu__link">{{ link.title }}</a>
+                <a href="{{ link.url }}" class="navigation-menu__link" data-navigation-link data-navigation-handle={{link.handle}}>{{ link.title }}</a>
               </li>
             {% endif %}
           {% endfor %}
@@ -141,6 +143,9 @@
 
 </div>
 
+<div class="dropdown-overlay" data-dropdown-overlay>
+  
+</div>
 
 
 <!--Cart Container--> 

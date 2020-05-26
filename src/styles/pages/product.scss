@@ -12,11 +12,11 @@
 
 	@include media-query($medium-up) {
 		padding: 0; 
-		padding-top: rem-calc(100px);
+		padding-top: rem-calc(140px);
 	}
-
+	
 	@include media-query($widescreen) {
-		padding-top: rem-calc(136px);
+		padding-top: rem-calc(160px);
 	}
 
 	.product__inner {

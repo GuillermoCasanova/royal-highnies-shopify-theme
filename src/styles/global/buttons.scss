@@ -19,7 +19,7 @@
   align-items: center; 
   justify-content: center; 
   text-decoration: none; 
-  letter-spacing: .5px;
+  letter-spacing: .075rem;
 	text-transform: uppercase;
 	font-family: $tertiary-font-family;  
 
@@ -34,6 +34,14 @@
     cursor: not-allowed;
     pointer-events: none;
     background-color: $quaternary-color;  
+  }
+
+  .button__inner {
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
   }
 }
 
@@ -86,14 +94,14 @@ button,
   height: rem-calc(38px);
   padding-right: rem-calc($level2); 
   padding-left: rem-calc($level2);
-  @include text-micro();
+  @include text-mini();
 }
 
 .button--medium {
   height: rem-calc(48px);
   padding-right: rem-calc($level2); 
   padding-left: rem-calc($level2);
-  @include h5();
+  @include text-micro();
 }
 
 

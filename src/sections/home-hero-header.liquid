@@ -2,42 +2,42 @@
 
 <section class="hero-header">
   <div class="hero-header__inner">
-    <div class="hero-header__slideshow">
-      {%for block in section.blocks%}
-      <div>
-        <div class="hero-header__slide">
-         <div class="hero-header__slide__content">
-            <h1 class="headline  hero-header__slide__headline">
-             {{block.settings.headline}}
-           </h1>
-            <div class="hero-header__body">
-              <p>
-                {{block.settings.subline}}
-              </p>
-            </div>
-           {%if block.settings.secondary-cta-link%}
-             <a href="{{block.settings.cta-link}}" class="button">
-               {{block.settings.cta-label}}
-             </a>
-              <a href="{{block.settings.secondary-cta-link}}" class="button  hero-header__cta">
-               {{block.settings.secondary-cta-label}}
-             </a>
-           {%else%}
-              <a href="{{block.settings.cta-link}}" class="button  hero-header__cta">
-               {{block.settings.cta-label}}
-             </a>
-           {%endif%}
-         </div>
-         <div class="hero-header__slide__background">
-          <picture>
-            <source srcset="{{block.settings.background-desktop | img_url: '2000x'}}" media="(min-width: 1100px)">
-            <source srcset="{{block.settings.background-desktop | img_url: '1300x', crop: 'right'}}" media="(min-width: 750px)">
-           <img src="{{block.settings.background | img_url: '800x' }}" alt="{{block.settings.background.alt}}">
-          </picture>
-         </div>
-        </div>
+    <div class="hero-header__slideshow  swiper-container" data-hero-header-slideshow>
+      <div  class="swiper-wrapper">
+        {%for block in section.blocks%}
+          <div class="hero-header__slide  swiper-slide">
+           <div class="hero-header__slide__content">
+              <h1 class="headline  hero-header__slide__headline">
+               {{block.settings.headline}}
+             </h1>
+              <div class="hero-header__body">
+                <p>
+                  {{block.settings.subline}}
+                </p>
+              </div>
+             {%if block.settings.secondary-cta-link%}
+               <a href="{{block.settings.cta-link}}" class="button  button--medium  hero-header__cta">
+                 <span class="button__inner">{{block.settings.cta-label}}</span>
+               </a>
+                <a href="{{block.settings.secondary-cta-link}}" class="button  button--medium  hero-header__cta" title="{{block.settings.secondary-cta-label}}">
+                 <span class="button__inner">{{block.settings.secondary-cta-label}}</span>
+               </a>
+             {%else%}
+                <a href="{{block.settings.cta-link}}" class="button  button--medium  hero-header__cta" title="{{block.settings.cta-label}}">
+                 <span class="button__inner">{{block.settings.cta-label}}</span>
+               </a>
+             {%endif%}
+           </div>
+           <div class="hero-header__slide__background">
+            <picture>
+              <source srcset="{{block.settings.background-desktop | img_url: '2000x'}}" media="(min-width: 1100px)">
+              <source srcset="{{block.settings.background-desktop | img_url: '1300x', crop: 'right'}}" media="(min-width: 750px)">
+             <img src="{{block.settings.background | img_url: '800x' }}" alt="{{block.settings.background.alt}}">
+            </picture>
+           </div>
+          </div>
+        {%endfor%}
       </div>
-      {%endfor%}
     </div>
   </div>
 </section>
@@ -107,13 +107,38 @@
 {%endschema%}
 
 
-
 {%javascript%}
 //<script>
-  $(document).ready(function(){
+  $(document).ready(function() {
 
-});
+    var $slideshowContainer = $('[data-hero-header-slideshow]');
 
+      $slideshowContainer.append('<div class="swiper-pagination"></div>');
+      $slideshowContainer.append(' <div class="swiper-button-prev"></div><div class="swiper-button-next"></div>');
+
+      var productImageSlideshow = new Swiper($slideshowContainer, {
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        loop: true, 
+        slidesPerView: 1,
+        speed: 1000, 
+        autoplay: {
+          delay: 2000
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true
+        }
+      }); 
+  }); 
 //</script>
 {%endjavascript%}
+
 

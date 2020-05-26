@@ -6,7 +6,7 @@
 
 
 .collection {
-	padding-top: rem-calc(120px);
+	padding-top: rem-calc(142px);
 
 	.collection__header {
 		background: none; 
@@ -14,7 +14,7 @@
 
 		@include media-query($medium-up) {
 			text-align: center; 
-			margin-bottom: rem-calc($level7);
+			margin-bottom: rem-calc($level5);
 		}
 	}
 
