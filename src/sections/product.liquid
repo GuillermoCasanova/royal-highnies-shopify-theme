@@ -182,7 +182,10 @@
                       </script>
                     {% endunless %}
 
-
+<!-- 
+                    <div class="product__information__description">
+                      {{ product.description }}
+                    </div>      -->
 
                      <div class="product__details">
                       <h2 class="product__details__headline">
@@ -199,46 +202,40 @@
 
                     </div>
         
-                   <!--  <div class="product__information__description">
-                      {{ product.description }}
-                    </div>     
-                             -->
-
-
-
-        
             </div>
           
-          
           </div>
-
-          <div class="row center-md">
-            <div class="col-sm-12 col-md-10">
-              <div class="row">
-                <div class="col-sm-12 col-md-6">
-                  <div class="product__extra-info">
-                    <h2 class="headline  product__extra-info__headline">
-                      The boxers that started it all...
-                    </h2>
-                     <div class="product__extra-info__body">
-                      <p>
-                         The bestselling boxers that started it all. Royal Highnies Boxer Shorts are designed for supreme comfort. We cut and sew each pair with the highest-quality materials and outrageous attention to detail. 
-                       </p>
-                     </div>
+          
+          {%if product.metafields['secondary-info']%}
+            <div class="row center-md">
+              <div class="col-sm-12 col-md-10">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="product__extra-info">
+                      <h2 class="headline  product__extra-info__headline">
+                       {{ product.metafields['secondary-info']['Secondary-info__Headline'] }}
+                      </h2>
+                       <div class="product__extra-info__body">
+                        <p>
+                          {{ product.metafields['secondary-info']['Secondary-info__Body'] }}
+                         </p>
+                       </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                  <div class="product__extra-info">
-                    <ul>
-                      <li>Point 1</li>
-                      <li>Point 2</li>
-                      <li>Point 3</li>
-                    </ul>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="product__extra-info">
+                     <!--  <ul>
+                        <li>Point 1</li>
+                        <li>Point 2</li>
+                        <li>Point 3</li>
+                      </ul -->
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          {%endif%}
+
         </div>
       </div>
   </div>
