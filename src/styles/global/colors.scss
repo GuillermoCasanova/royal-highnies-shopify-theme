@@ -60,23 +60,6 @@ $red-pinterest: #cb2027;
 \*------------------------------------*/
 
 //$warning-color: #F07181; 
-$warning-color: #B73D37;
+$warning-color: #ae0f0f;
 
-%primary-gradient {
-	 background: #f66206; /* Old browsers */
-   background: -moz-linear-gradient(left, #f66206 0%, #f49b64 100%); /* FF3.6-15 */
-   background: -webkit-linear-gradient(left, #f66206 0%,#f49b64 100%); /* Chrome10-25,Safari5.1-6 */
-   background: linear-gradient(to right, #f66206 0%,#f49b64 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f66206', endColorstr='#f49b64',GradientType=1 ); /* IE6-9 */
-}
-
-
-%secondary-gradient {
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#901aff+0,c88fff+100 */
-	background: #901aff; /* Old browsers */
-	background: -moz-linear-gradient(left, #901aff 0%, #c88fff 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left, #901aff 0%,#c88fff 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, #901aff 0%,#c88fff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#901aff', endColorstr='#c88fff',GradientType=1 ); /* IE6-9 */
-}
 

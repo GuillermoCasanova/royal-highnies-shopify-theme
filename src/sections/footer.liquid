@@ -2,92 +2,100 @@
 
 <footer>
 
-  <div class="footer-inner">
+  <div class="footer__inner">
     
-    <div class="container-fluid">
-      <div class="row">
-      
-        <div class="col-sm-12">
-      
-          <div class="row">
-      
-            {% for block in section.blocks %}
-      
-              <div class="col-sm-12  col-md-4">
-              {% case block.type %}
-                {% when 'menu' %}
-                  <ul class="footer-menu">
-                    <h1 class="footer-menu-title">
-                        {{ block.settings.menu_title | escape}}
-                    </h1>
-                    {% for link in linklists[block.settings.menu].links %}
-                      <li class="footer-menu-item" >
-                        <a href="{{ link.url }}" class="footer-menu-link">{{ link.title | escape }}</a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-      
-                {% when 'social' %}
-      
-                  <ul class="footer-menu">
-      
-                    <h1 class="footer-menu-title">
-                        {{ block.settings.menu_title | escape}}
-                    </h1>
-      
-                      <ul class="footer-social [ grid  grid--center  grid--justifyStart large-grid--justifyCenter  ]">
-                      <li class="footer-social-item  text-center">
-                          <a target="_blank" href="https://www.facebook.com/whiskerslaces/">
-                            {% include 'icon-facebook' %}
-                            <span  class="hide-elem" aria-hidden="true">{{ 'general.social.share_on_facebook' | t }}</span>
-                            <span class="hide-elem">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
-                          </a>
-                       </li>
-      
-                      <li class="footer-social-item  text-center">
-                          <a target="_blank" href="https://www.instagram.com/whiskerslaces/">
-                            {% include 'icon-instagram' %}
-                            <span  class="hide-elem" aria-hidden="true">{{ 'general.social.share_on_pinterest' | t }}</span>
-                            <span class="hide-elem">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>
-                          </a>
-                       </li>
-      
-                      <li class="footer-social-item  show-for-medium-up">
-                        <a href="https://www.instagram.com/explore/tags/whiskerslaces/"  target="_blank" class="footer-social-tag">#whiskerslaces</a>
-                      </li>
-      
-                    </ul>
-                  </ul>
-      
-                  {% else %}
-        
-              {% endcase %}
-              </div>
-            {% endfor %}
-      
-          </div>
-      
-          
-      
-        </div>
-      
-      </div>
-      
-      <div class="row">
-        
-        <div class="col-sm-12">
-      
-          <div class="footer-credit">
-              Softest luxury pajamas | {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}
-          </div>
-      
-        </div>
-      
-      </div>
+    <div class="footer__menus">
+      {% for block in section.blocks %}
+       {% case block.type %}
+         {% when 'menu' %}
+           <ul class="footer__menu">
+             <h1 class="footer__menu__title">
+                 {{ block.settings.menu_title | escape}}
+             </h1>
+             {% for link in linklists[block.settings.menu].links %}
+               <li class="footer__menu__item" >
+                 <a href="{{ link.url }}" class="footer__menu__link">{{ link.title | escape }}</a>
+               </li>
+             {% endfor %}
+           </ul>
+        {% endcase %}
+      {% endfor %}
     </div>
 
-  </div>
+    <div class="footer__newsletter-form">
+        <h1 class="footer__newsletter-form__title  footer__newsletter-form__title">
+            Stay in Touch.
+        </h1>
 
+        <div id="mc_embed_signup">
+        <form action="https://royalhighnies.us13.list-manage.com/subscribe/post?u=83f45eb6de74c9683656e8ab6&amp;id=d4b77b6cef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"  data-newsletter-form novalidate>
+        
+        <div id="mc_embed_signup_scroll">
+
+          <div data-hide-on-submit>
+
+            <div class="mc-field-group input-group  footer__newsletter-form__styles-field">
+              <p class="question">What styles interest you most?</p>
+               <ul class="options">
+                <li>
+                  <label class="radio-wrapper radio-wrapper--secondary  radio-wrapper--small"  for="mce-MMERGE25-0">
+                    <span>Male</span>
+                    <input type="radio" value="Male"  class="required" required name="MMERGE25" id="mce-MMERGE25-0">
+                    <div class="checkmark"></div>
+                  </label>
+                </li>
+                <li>
+                  <label class="radio-wrapper radio-wrapper--secondary  radio-wrapper--small"   for="mce-MMERGE25-1">
+                      <span>Female</span>
+                    <input type="radio" value="Female" class="required" required  name="MMERGE25" id="mce-MMERGE25-1">
+                    <div class="checkmark"></div>
+                  </label>
+                </li>
+              <li>
+                <label class="radio-wrapper radio-wrapper--secondary  radio-wrapper--small"  for="mce-MMERGE25-2">
+                  <span>Both</span>
+                  <input type="radio" value="Both"  class="required" required name="MMERGE25" id="mce-MMERGE25-2">
+                  <div class="checkmark"></div>
+                </label>
+              </li>
+              </ul>
+            </div>
+
+            <div class="footer__newsletter-form__email-field">
+              <div class="mc-field-group">
+                <div class="input-wrapper  input-wrapper--secondary"  data-input-wrapper>
+                  <label for="mce-EMAIL">Email Address</label>
+                  <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                </div>
+              </div>
+              
+              <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button  button--expanded  button--tertiary  button--medium  footer__newsletter-form__cta"data-sign-up-button>
+                Sign Up
+              </button>
+            </div>
+
+
+          </div>
+
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response  email-pop-up__success" id="mce-success-response" style="display:none"></div>
+        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_83f45eb6de74c9683656e8ab6_d4b77b6cef" tabindex="-1" value=""></div>
+
+        </form>
+        </div>
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[5]='MMERGE5';ftypes[5]='text';fnames[6]='MMERGE6';ftypes[6]='text';fnames[7]='MMERGE7';ftypes[7]='text';fnames[8]='MMERGE8';ftypes[8]='text';fnames[9]='MMERGE9';ftypes[9]='text';fnames[10]='MMERGE10';ftypes[10]='text';fnames[11]='MMERGE11';ftypes[11]='text';fnames[12]='MMERGE12';ftypes[12]='text';fnames[13]='MMERGE13';ftypes[13]='text';fnames[14]='MMERGE14';ftypes[14]='text';fnames[15]='MMERGE15';ftypes[15]='text';fnames[16]='MMERGE16';ftypes[16]='text';fnames[17]='MMERGE17';ftypes[17]='text';fnames[18]='MMERGE18';ftypes[18]='text';fnames[19]='MMERGE19';ftypes[19]='text';fnames[20]='MMERGE20';ftypes[20]='text';fnames[21]='MMERGE21';ftypes[21]='text';fnames[22]='MMERGE22';ftypes[22]='text';fnames[23]='MMERGE23';ftypes[23]='text';fnames[24]='MMERGE24';ftypes[24]='text';fnames[25]='MMERGE25';ftypes[25]='radio';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+        <!--End mc_embed_signup-->
+      </div>
+   
+    </div>
+
+
+    <div class="footer__credit">
+       <span>{{section.settings.footer_tag_line}}| {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</span>
+    </div>
+  </div>
 </footer>
 
 {% schema %}
@@ -96,10 +104,9 @@
     "max_blocks": 4,
     "settings": [
       {
-        "type": "checkbox",
-        "id": "show_payment_icons",
-        "label": "Show payment icons",
-        "default": false
+        "type": "text",
+        "id": "footer_tag_line",
+        "label": "Tagline in the footer"
       }
     ],
     "blocks": [

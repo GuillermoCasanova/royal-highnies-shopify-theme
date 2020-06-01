@@ -182,23 +182,14 @@
                       </script>
                     {% endunless %}
 
-<!-- 
-                    <div class="product__information__description">
-                      {{ product.description }}
-                    </div>      -->
-
+                    {%if product.metafields['product-details']['primary-details'] %}
                      <div class="product__details">
                       <h2 class="product__details__headline">
                         Details
                       </h2>
-                      <ul class="product__details__list">
-                        <li>Detail goes here</li>
-                        <li>Another detail</li>
-                        <li>Third detail</li>
-                      </ul>
-                       
+                        {{ product.metafields['product-details']['primary-details'] }}
                      </div>    
-
+                    {%endif%}
 
                     </div>
         

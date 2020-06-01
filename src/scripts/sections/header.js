@@ -105,11 +105,11 @@ theme.Header = (function() {
 
 
     $navigation.mouseover(function() {
-      that.showOverlay(); 
+      //that.showOverlay(); 
     });
 
     $navigation.mouseout(function() {
-      that.hideOverlay(); 
+      //that.hideOverlay(); 
     });
 
     $navigationLinks.mouseover(function() {

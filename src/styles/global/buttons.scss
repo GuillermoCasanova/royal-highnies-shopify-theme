@@ -73,6 +73,20 @@
  }
 }
 
+@mixin button-tertiary {
+ background-color: transparent; 
+ color: #fff; 
+ border: 1.5px solid #fff; 
+ transition: all .2s ease-in-out; 
+
+ &:hover,
+ &:focus {
+  background-color: #fff; 
+  color: $primary-color;
+ }
+}
+
+
 
 button,
 .button {
@@ -87,6 +101,11 @@ button,
 .button--secondary {
   @include button-secondary; 
 }
+
+.button--tertiary {
+  @include button-tertiary; 
+}
+
 
 
 

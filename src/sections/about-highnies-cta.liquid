@@ -7,7 +7,12 @@
 		<div class="about-highnies-cta-section__slideshow-container  swiper-container" data-ui-component="about-cta-slideshow">
 			<div class="swiper-wrapper">
 				{%for block in section.blocks%}
-				<a href="{{ block.settings.product-link }}" title="Shop {{block.settings.product-name}}" class="about-highnies-cta-section__image  swiper-slide">
+				<a href="{{ block.settings.product-link }}" title="Shop {{block.settings.product-name}}" class="about-highnies-cta-section__image  swiper-slide" data-ui-component="product-image">
+					
+					<span class="button  button--secondary button--small about-highnies-cta-section__image__cta">
+						View {{block.settings.product-name}}
+					</span>
+
 					<picture>
 						<source srcset="{{block.settings.image | img_url: '900x'}}" media="(min-width: 960px)">
 						<source srcset="{{block.settings.image | img_url: '700x'}}" media="(min-width: 700px)">
@@ -72,7 +77,13 @@
 {%javascript%}
 //<script>
 	$(document).ready(function() {
-	  var mySwiper = new Swiper ('[data-ui-component="about-cta-slideshow"]', {
+
+		var selectors = {
+			slideshow: '[data-ui-component="about-cta-slideshow"]',
+			productImage: '[data-ui-component="product-image"]'
+		}
+
+	  var mySwiper = new Swiper (selectors.slideshow, {
 	    direction: 'horizontal',
 	    effect: 'slide',
       spaceBetween: 25,
@@ -94,6 +105,14 @@
       	}
       }
 	  });
+
+
+		$(selectors.productImage).hover(function() {
+		   $(selectors.productImage).not(this).addClass('is-subdued');
+		},
+		function() {
+		   $(selectors.productImage).not(this).removeClass('is-subdued');
+		});
 
 	}); 
 //</script>
