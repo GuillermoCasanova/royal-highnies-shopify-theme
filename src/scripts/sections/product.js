@@ -22,7 +22,10 @@ theme.Product = (function() {
     productJson: '[data-product-json]',
     productPrice: '[data-product-price]',
     productThumbs: '[data-product-single-thumbnail]',
-    productImageSlideshow: '[data-product-images-slideshow]', 
+    productImageSlideshow: '[data-product-images-slideshow]',
+    productImages: '[data-product-images]',
+    productImagesList: '[data-product-images] ul',
+    product: '[data-product]', 
     singleOptionSelector: '[data-single-option-selector]'
   };
   
@@ -77,9 +80,14 @@ theme.Product = (function() {
     }
 
     this.initAjaxCart(); 
-    this.initImageSlideshow(selectors.productImageSlideshow);
     this.initOptionSelector(); 
 
+    if(window.innerWidth < 768) {
+      this.initImageSlideshow(selectors.productImageSlideshow);
+    } else {
+      this.destroyImageSlideshow(); 
+      this.initScrollSlideshow(); 
+    }
   }
 
   Product.prototype = $.extend({}, Product.prototype, {
@@ -219,10 +227,13 @@ theme.Product = (function() {
 
       const $slideshowContainer = $(slideshowContainer); 
 
+      $slideshowContainer.addClass('swiper-container');
+      $slideshowContainer.find('ul').addClass("swiper-wrapper"); 
+      $slideshowContainer.find('li').addClass("swiper-slide"); 
       $slideshowContainer.append('<div class="swiper-pagination"></div>');
       $slideshowContainer.append(' <div class="swiper-button-prev"></div><div class="swiper-button-next"></div>');
 
-      var productImageSlideshow = new Swiper(slideshowContainer, {
+      this.productImageSlideshow = new Swiper(slideshowContainer, {
         effect: 'fade',
         slidesPerView: 1,
         navigation: {
@@ -235,6 +246,57 @@ theme.Product = (function() {
           clickable: true
         }
       }); 
+
+    },
+    destroyImageSlideshow: function() {
+      if(this.productImageSlideshow) {
+        this.productImageSlideshow(true, true); 
+      }
+    },
+    initScrollSlideshow: function(slideshowContainer) {
+
+
+      var controller = new ScrollMagic.Controller();
+
+      var scene = new ScrollMagic.Scene(
+        {triggerElement: 'body', 
+         triggerHook: 0,
+          duration: $(selectors.productImages).height()})
+          .setPin(selectors.product)
+          .addTo(controller); 
+
+      // console.log($(selectors.productImages).height());
+      // console.log($('[data-product-image]').length); 
+      // console.log($(selectors.productImages).height() / $('[data-product-image]').length);
+
+
+      var imageNumber = $('[data-product-image]').length;
+      var imagesHeight = $(selectors.productImages).height();
+      var imageHeight = $(selectors.productImages).height() / $('[data-product-image]').length - 100;
+
+
+      console.log(imageHeight); 
+      console.log(imagesHeight); 
+
+      var slideshowAnimTween = new TweenMax.fromTo(
+       selectors.productImagesList, 2, 
+        {
+          css: {transform: 'translateY(0)', ease: Power3.easeOut}
+        },
+        {
+          css: {transform: 'translateY('+ (-1 * (imagesHeight - imageHeight)) + 'px)', ease: Power3.easeOut}
+        });
+
+      var slideshowAnimationScene = new ScrollMagic.Scene(
+        {triggerElement: selectors.product, 
+         triggerHook: 0,
+          duration:  $(selectors.productImages).height()})
+          .setTween(slideshowAnimTween)
+          .addTo(controller); 
+
+
+       console.log(slideshowAnimTween); 
+
 
     }
 

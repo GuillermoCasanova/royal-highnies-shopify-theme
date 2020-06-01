@@ -28,6 +28,24 @@
 
 
 
+/*!
+ * ScrollMagic.js
+ */
+// =require vendor/ScrollMagic.js
+
+/*!
+ * animation.gsap.min.js
+ */
+// =require vendor/animation.gsap.min.js
+
+
+
+/*!
+ * TweenMax.min.js
+ */
+// =require vendor/TweenMax.min.js
+
+
 
 /*! jQuery Validation Plugin - v1.19.1 - 6/15/2019
  * https://jqueryvalidation.org/
