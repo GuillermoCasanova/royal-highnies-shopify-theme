@@ -235,10 +235,10 @@ p {
         font-size: rem-calc(18px);
     }
     @include media-query($xlarge-up) {
-        font-size: rem-calc(20px);
+        font-size: rem-calc(19px);
     }
     @include media-query($widescreen) {
-        font-size: rem-calc(23px);
+        font-size: rem-calc(22px);
     }
 }
 

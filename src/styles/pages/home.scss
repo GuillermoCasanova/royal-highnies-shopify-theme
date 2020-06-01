@@ -30,9 +30,9 @@
  	}
 
  	@include media-query($xlarge-up) {
- 		height: 85vh;
- 		min-height: rem-calc(680px);
- 		max-height: rem-calc(700px); 
+ 		height: 88vh;
+ 		min-height: rem-calc(760px);
+ 		max-height: rem-calc(800px); 
  	}
 
 	.hero-header__inner {
