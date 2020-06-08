@@ -232,7 +232,7 @@ p {
         font-size: rem-calc(17px);
     }
     @include media-query($large-up) {
-        font-size: rem-calc(18px);
+        font-size: rem-calc(17.5px);
     }
     @include media-query($xlarge-up) {
         font-size: rem-calc(19px);

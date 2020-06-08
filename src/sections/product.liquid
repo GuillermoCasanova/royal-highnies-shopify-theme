@@ -132,7 +132,7 @@
              
                   <div class="product__qty">
   
-                    <label for="Quantity">
+                    <label for="Quantity" class="visually-hidden">
                     {{ 'products.product.quantity' | t }}
                    </label>
   
@@ -175,9 +175,7 @@
               {% endunless %}
 
               <div class="product__information__description">
-                <p>
                   {{ product.metafields['secondary-info']['Secondary-info__Body'] }}
-                </p>
               </div>
 
               {%if product.metafields['product-details']['primary-details'] %}

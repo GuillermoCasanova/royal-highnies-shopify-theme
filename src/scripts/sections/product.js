@@ -255,53 +255,45 @@ theme.Product = (function() {
     },
     initScrollSlideshow: function(slideshowContainer) {
 
-
-      var controller = new ScrollMagic.Controller();
-
-      var scene = new ScrollMagic.Scene(
-        {triggerElement: 'body', 
-         triggerHook: 0,
-          duration: $(selectors.productImages).height()})
-          .setPin(selectors.product)
-          .addTo(controller); 
-
-      // console.log($(selectors.productImages).height());
-      // console.log($('[data-product-image]').length); 
-      // console.log($(selectors.productImages).height() / $('[data-product-image]').length);
-
-
       var imageNumber = $('[data-product-image]').length;
       var imagesHeight = $(selectors.productImages).height();
       var imageHeight = $(selectors.productImages).height() / $('[data-product-image]').length - 100;
 
+      if(imageNumber === 0) {
+        return 
 
-      console.log(imageHeight); 
-      console.log(imagesHeight); 
+      } else {
 
-      var slideshowAnimTween = new TweenMax.fromTo(
-       selectors.productImagesList, 2, 
-        {
-          css: {transform: 'translateY(0)', ease: Power3.easeOut}
-        },
-        {
-          css: {transform: 'translateY('+ (-1 * (imagesHeight - imageHeight)) + 'px)', ease: Power3.easeOut}
-        });
+        var controller = new ScrollMagic.Controller();
 
-      var slideshowAnimationScene = new ScrollMagic.Scene(
-        {triggerElement: selectors.product, 
-         triggerHook: 0,
-          duration:  $(selectors.productImages).height()})
-          .setTween(slideshowAnimTween)
-          .addTo(controller); 
+        var scene = new ScrollMagic.Scene(
+          {triggerElement: 'body', 
+           triggerHook: 0,
+            duration: $(selectors.productImages).height()})
+            .setPin(selectors.product)
+            .addTo(controller); 
 
 
-       console.log(slideshowAnimTween); 
+        var slideshowAnimTween = new TweenMax.fromTo(
+         selectors.productImagesList, 2, 
+          {
+            css: {transform: 'translateY(0)', ease: Power3.easeOut}
+          },
+          {
+            css: {transform: 'translateY('+ (-1 * (imagesHeight - imageHeight)) + 'px)', ease: Power3.easeOut}
+          });
 
+        var slideshowAnimationScene = new ScrollMagic.Scene(
+          {triggerElement: selectors.product, 
+           triggerHook: 0,
+            duration:  $(selectors.productImages).height()})
+            .setTween(slideshowAnimTween)
+            .addTo(controller); 
 
+      }
     }
-
   });
 
-
   return Product;
+
 })();

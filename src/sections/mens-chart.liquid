@@ -1,0 +1,75 @@
+
+
+
+
+<alert class="size-chart"> 
+
+	<div class="size-chart__overlay"> 			
+	</div>
+
+	<div class="size-chart__inner"> 	
+		<div class="size-chart__header">
+						<h1 class="size-chart__header__headline">{{section.settings.chart-main-title}}</h1>
+		</div>			 				 			
+			 				 			
+		<div class="size-chart__contents">
+			<div class="size-chart__charts">
+				{% for block in section.blocks %}
+					<div class="size-chart__chart">{{block.settings.chart}}</div>
+				{% endfor %}
+			</div> 	
+			
+			<div class="size-chart__diagram">
+			
+				<div class="size-chart__diagram__header"> 				
+					<h1  class="size-chart__diagram__header__headline">{{section.settings.diagram-title}}</h1> 				
+				</div> 		
+			
+				<div class="size-chart__diagram__image">
+					<img src="{{section.settings.diagram | img_url: "200x"}}" 
+						 alt="{{section.settings.diagram.alt}}">
+				</div>
+			
+			</div>	
+		</div>
+	</div>
+		
+</alert>
+
+
+{%schema %}
+  {
+    "name": "Mens Chart",
+    "settings": [
+      {
+        "type": "text",
+        "id": "chart-main-title",
+        "label": "Main Chart Title"
+      },
+ 			{
+				"type": "text", 
+				"id" :  "diagram-title",
+				"label": "Diagram Title"
+			},
+ 			{
+				"id": "diagram",
+				"type": "image_picker", 
+				"label": "Clothing Diagram"
+			}
+    ],
+    "blocks": [
+			{
+				"type": "size", 
+				"name" :  "Size Chart",
+				"settings": [
+						{
+							"id": "chart",
+							"type": "html", 
+							"label": "Chart"
+						}
+					]
+			}
+    ]
+  }
+{%endschema%}
+
