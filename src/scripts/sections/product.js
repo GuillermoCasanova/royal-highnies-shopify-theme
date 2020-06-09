@@ -26,7 +26,9 @@ theme.Product = (function() {
     productImages: '[data-product-images]',
     productImagesList: '[data-product-images] ul',
     product: '[data-product]', 
-    singleOptionSelector: '[data-single-option-selector]'
+    singleOptionSelector: '[data-single-option-selector]', 
+    sizeCharts: '[data-size-chart]',
+    sizeChartTrigger: '[data-size-chart-trigger]'
   };
   
 
@@ -81,6 +83,7 @@ theme.Product = (function() {
 
     this.initAjaxCart(); 
     this.initOptionSelector(); 
+    this.initSizeCharts(selectors.sizeCharts, selectors.sizeChartTrigger); 
 
     if(window.innerWidth < 768) {
       this.initImageSlideshow(selectors.productImageSlideshow);
@@ -291,6 +294,30 @@ theme.Product = (function() {
             .addTo(controller); 
 
       }
+    },
+    initSizeCharts: function(pSizeCharts, pSizeChartTrigger) {
+
+      var $sizeChart = $(pSizeCharts); 
+      var $sizeChartTrigger = $(pSizeChartTrigger);
+      var $closeSizeChart = $sizeChart.find('[data-close-size-chart]'); 
+
+      if($sizeChart.length > 0) {
+
+         $sizeChartTrigger.addClass('is-visible'); 
+
+         $sizeChartTrigger.click(function(event) {
+             event.preventDefault(); 
+             $sizeChart.removeClass('is-hidden');
+             $sizeChart.addClass('is-visible');
+         });
+
+         $closeSizeChart.click(function() {
+             $sizeChart.removeClass('is-visible');
+             $sizeChart.addClass('is-hidden');
+         }); 
+
+      }
+
     }
   });
 

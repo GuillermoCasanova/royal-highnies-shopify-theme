@@ -7,7 +7,20 @@
 {% section 'product' %}
 
 
-{% section 'mens-chart' %}
+{%if product.tags contains 'mens'%}
+	{% section 'mens-chart' %}
+{%endif%}
+
+
+{%if product.tags contains 'womens'%}
+	{% section 'womens-chart' %}
+{%endif%}
+
+
+{%if product.tags contains 'kids'%}
+	{% section 'kids-chart' %}
+{%endif%}
+
 
 
 <!-- yotpo reviews widget-->

@@ -2,14 +2,14 @@
 
 
 
-<alert class="size-chart" data-section-id="{{ section.id }}"  data-size-chart aria-label="Close Mens Size Guide"> 
+<alert class="size-chart" data-section-id="{{ section.id }}"  data-size-chart> 
 
 	<div class="size-chart__overlay" data-close-size-chart> 			
 	</div>
 
 	<div class="size-chart__inner"> 	
 
-		<button class="size-chart__close-btn" data-close-size-chart>
+		<button class="size-chart__close-btn" data-close-size-chart aria-label="Close Womens Size Guide">
 			<span class="visibly-hidden">Close</span>
 			<span aria-hidden="true">X</span>
 		</button>
@@ -45,7 +45,7 @@
 
 {%schema %}
   {
-    "name": "Mens Chart",
+    "name": "Womens Chart",
     "settings": [
       {
         "type": "text",

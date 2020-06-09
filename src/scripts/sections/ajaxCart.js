@@ -269,8 +269,6 @@ var ajaxCart = (function(module, $) {
 
   formOverride = function() {
     $formContainer.on('submit', function(evt) {
-
-    	console.log('hello'); 
     	
         evt.preventDefault();
 
