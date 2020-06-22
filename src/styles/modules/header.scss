@@ -259,7 +259,7 @@ $toggleWidth: 72%;
       z-index: 99; 
       padding-top: 0; 
       overflow: visible; 
-      top: 1.5rem; 
+      top: 1.70rem; 
       margin-right: auto; 
       margin-left: auto; 
       max-width: 43rem; 
@@ -293,6 +293,7 @@ $toggleWidth: 72%;
           justify-content: space-between; 
           padding: 0;
           align-items: center; 
+          height: 100%; 
         }
       }
 
@@ -304,6 +305,10 @@ $toggleWidth: 72%;
           width: auto; 
           margin-right: 1%;  
           margin-left: 1%;  
+          height: 100%; 
+          display: flex; 
+          align-items: center; 
+          justify-content: center; 
         }
       }
 
@@ -312,7 +317,7 @@ $toggleWidth: 72%;
         display: none; 
 
         @include media-query($large-up) {
-          display: block; 
+          display: flex; 
         }
       }
       
@@ -326,6 +331,7 @@ $toggleWidth: 72%;
           align-items: center; 
           justify-content: space-between;
           margin-bottom: 0; 
+          height: 100%; 
         }
       }
 
@@ -346,26 +352,10 @@ $toggleWidth: 72%;
         
         &:hover, 
         &:focus {
-            background-color: #F6F6F6;
+          background-color: #F6F6F6;
 
-            @include media-query($large-up) {
-              background-color: #fff; 
-            }
-        }
-
-        @include media-query($large-up) {
-          &.is-opaqued {
-            color: $quaternary-color;
-            opacity: .7; 
-            
-
-            .navigation-menu__drop-down__icon {
-                &:after,
-                &:before {
-                  background-color: $quaternary-color; 
-                  opacity: .7; 
-                }
-            }
+          @include media-query($large-up) {
+            background-color: transparent;  
           }
         }
 
@@ -382,9 +372,26 @@ $toggleWidth: 72%;
           padding-right: rem-calc($level1);   
           font-family: $primary-font-family; 
           white-space: nowrap;
+          height: 100%; 
+          display: flex; 
+          align-items: center; 
+          justify-content: center; 
           @include h6(); 
-        }
+          
+          &.is-opaqued {
+            color: $quaternary-color;
+            opacity: .7; 
+            
 
+            .navigation-menu__drop-down__icon {
+                &:after,
+                &:before {
+                  background-color: $quaternary-color; 
+                  opacity: .7; 
+                }
+            }
+          }
+        }
 
         .icon {
           position: absolute; 
@@ -395,6 +402,13 @@ $toggleWidth: 72%;
       }
 
       .navigation-menu__drop-down {
+
+        @include media-query($large-up) {
+          height: 100%; 
+          display: flex;
+          align-items: center; 
+          justify-content: center; 
+        }
 
         &.is-open {
           .navigation-menu__drop-down__icon {
@@ -430,6 +444,7 @@ $toggleWidth: 72%;
 
           @include media-query($large-up) {
             padding-right: rem-calc($level3);
+            display: flex; 
           }
         }
 
@@ -440,6 +455,15 @@ $toggleWidth: 72%;
           bottom: 0; 
           width: rem-calc(20px);
           height: rem-calc(20px);
+
+          @include media-query($large-up) {
+            width: .5rem; 
+            height: .5rem; 
+            top: 0; 
+            bottom: 0;
+            margin: auto; 
+            right: 2px; 
+          }
 
           &:after,
           &:before {
@@ -460,35 +484,25 @@ $toggleWidth: 72%;
 
             @include media-query($large-up) {
               height: 2px; 
-              top: 18px; 
+              top: 3px; 
             }
           }
 
           &:after {
             transform: rotate(90deg);
           }
-
-          @include media-query($large-up) {
-            width:.5rem; 
-            height:.5rem; 
-            top: 0; 
-            right: 2px; 
-          }
         }
 
         .navigation-menu__drop-down__links {
           padding-top: rem-calc($level3); 
-          opacity: 0; 
-          transform: translate(-50vh);
-          display: block; 
+          display: none; 
 
           @include media-query($large-up) {
-            position: fixed;
             width: 100vw;
             background-color: #fff; 
             left: calc(-1 * (100vw - 43rem) / 2);
             right: 0; 
-            top: 4.5rem;
+            top: 4.40rem;
             padding-left: rem-calc($level7 + $level3); 
             padding-right: rem-calc($level7); 
             padding-bottom: rem-calc($level2); 
@@ -498,7 +512,7 @@ $toggleWidth: 72%;
             display: flex; 
             transform: translateY(-120vh); 
             opacity: 0; 
-
+            position: absolute; 
           }
         }
 
