@@ -9,7 +9,7 @@ $grid-xsmall: 357px;
 $grid-small: 767px;
 $grid-medium: 768px;
 $grid-large:  1000px;
-$grid-xlarge:  1500px;
+$grid-xlarge:  1681px;
 $grid-widescreen: 2000px;
 
 
@@ -47,7 +47,7 @@ $flexboxgrid-breakpoints:
   sm 0 $grid-medium - 1,
   md $grid-medium 960px,
   lg $grid-large $grid-xlarge !default;
-$flexboxgrid-max-width: 70rem !default;
+$flexboxgrid-max-width: 73rem !default;
 
 
 

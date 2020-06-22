@@ -66,7 +66,7 @@ $half-gutter-width: $flexboxgrid-gutter-width * .5;
   max-width: 50rem;
 
   @include media-query($large-up) {
-    width: 80%; 
+    width: 90%; 
     min-width: 52rem; 
     max-width: $flexboxgrid-max-width;
   }

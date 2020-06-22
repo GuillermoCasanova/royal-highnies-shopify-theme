@@ -25,8 +25,9 @@
   background-color: transparent; 
 
   .button__icon {
-    width: rem-calc(26px);
-    height: rem-calc(26px); 
+    width: rem-calc(18px);
+    height: rem-calc(18px); 
+    margin-left: rem-calc($level2); 
   }
 
 
@@ -55,8 +56,13 @@
    &:hover,
    &:focus {
     box-shadow: 0 0 40px 12px rgba(119, 119, 119, 0.06); 
-    transform: scale(1.05);
+    transform: scale(1.03);
     color: #fff; 
+   }
+
+   .button__icon {
+    fill: #fff;
+    color: #fff;
    }
 }
 
@@ -70,7 +76,7 @@
  &:hover,
  &:focus {
  	box-shadow: 0 0 40px 12px rgba(119, 119, 119, 0.06); 
- 	transform: scale(1.05);
+ 	transform: scale(1.03);
  }
 }
 
@@ -115,6 +121,10 @@ button,
   padding-right: rem-calc($level2); 
   padding-left: rem-calc($level2);
   @include text-mini();
+
+  .button__icon {
+    @include text-mini();
+  }
 }
 
 .button--medium {
@@ -122,6 +132,10 @@ button,
   padding-right: rem-calc($level2); 
   padding-left: rem-calc($level2);
   @include text-micro();
+
+  .button__icon {
+   @include text-micro();
+  }
 }
 
 

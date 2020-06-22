@@ -359,7 +359,18 @@
 		height: 100%; 
 		flex: none; 
 		overflow: hidden; 
-	
+
+		@include media-query($medium-up) {
+			margin-left: rem-calc($level1); 
+			margin-right: rem-calc($level1); 
+		}
+
+
+		@include media-query($large-up) {
+			margin-left: rem-calc($level2); 
+			margin-right: rem-calc($level2); 
+		}
+
 		svg,
 		img {
 			position: absolute; 
@@ -372,6 +383,13 @@
 		}
 	}
 
+	.wholesellers-section__copy {
+		width: 100%; 
+		justify-content: center; 
+		align-items: center; 
+		flex-direction: columns; 
+	}
+
 	.wholesellers-section__headline {
 		max-width: rem-calc(340px);
 		@include h1(); 
@@ -381,10 +399,20 @@
 		p {
 			@include h4(); 
 		}
+
+		@include media-query($large-up) {
+			max-width: 27rem; 
+		}
 	}
 
 	.wholesellers-section__cta {
 		max-width: rem-calc(220px);
+
+
+		.button__icon {
+			position: relative; 
+			top: -2px; 
+		}
 	}
 }
 
