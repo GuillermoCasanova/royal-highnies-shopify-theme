@@ -16,6 +16,8 @@ theme.collection = (function() {
     addToCartText: '[data-add-to-cart-text]',
     thumbnails: '[data-thumbnail]',
     optionSelector: '[data-option-selector]',
+    productJson: '[data-product-json]',
+    originalSelectorId: '[data-product-select]',
     singleOptionSelector: '[data-single-option-selector]'
   };
 
@@ -26,13 +28,6 @@ theme.collection = (function() {
     return;
   }
 
-
-   ajaxCart.init({
-      cartContainer: '#CartContainer',
-      addToCartSelector: selectors.addToCartButtons,
-      enableQtySelectors: true,
-      moneyFormat: theme.strings.moneyFormat
-  });
 
   var productThumbnails = {
     init: function() {
@@ -49,7 +44,6 @@ theme.collection = (function() {
           function() {
 
             if($(this).prop('checked')) {
-              console.log('checked!!');
               $thumbnail.find(selectors.addToCartButtons).removeClass('is-disabled'); 
               $thumbnail.find(selectors.addToCartText).text('Add to Cart');
               isSelected =  true 
@@ -69,19 +63,42 @@ theme.collection = (function() {
       var $thumbnails = $(pThumbnails); 
 
       $thumbnails.each(function() {
+         var $optionSelector = $(this).find(selectors.optionSelector);
+         var $thumbnail = $(this); 
 
-          this.$optionSelectors = $(this).find(selectors.optionSelector);
-          var $thumbnail = $(this); 
+          this.productSingleObject = JSON.parse($(selectors.productJson, $thumbnail).html());
 
-          if(this.$optionSelectors.length > 0) {
-            this.$optionSelectors.change(function() {
+          var options = {
+            $container: $thumbnail,
+            enableHistoryState: false,
+            singleOptionSelector: selectors.singleOptionSelector,
+            originalSelectorId: selectors.originalSelectorId,
+            product: this.productSingleObject
+          };
+
+          this.variants = new slate.Variants(options);
+
+
+          if($optionSelector.length > 0) {
+            $optionSelector.change(function() {
 
               var optionValue = $(this).val();
+              
+              console.log(optionValue); 
+
               $(this)
                 .closest('form')
-                .find($(this).find(selectors.singleOptionSelector))
+                .find(selectors.singleOptionSelector)
                 .val(optionValue)
+                .attr('value', optionValue)
                 .trigger('change');
+
+
+                console.log($(this)
+                    .closest('form')
+                    .find(selectors.singleOptionSelector)
+                    .val());
+
                 that.checkIfVariantSelected($thumbnail.find(selectors.optionSelector), $thumbnail);
 
             });

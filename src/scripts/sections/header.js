@@ -211,6 +211,15 @@ theme.Header = (function() {
     this.desktopNavInit = function() {
 
 
+      $(selectors.cartToggle).on('click', function(event) {
+        that.toggleCart(); 
+      }); 
+
+      $(selectors.closeOffCanvasCart).on('click', function(event) {
+        that.closeCart(); 
+      }); 
+
+
       $('.navigation-menu__drop-down').each(function(index, element) {
 
           var timer; 

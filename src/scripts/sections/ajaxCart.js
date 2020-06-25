@@ -20,7 +20,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARI FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
@@ -102,6 +102,9 @@ ShopifyAPI.onError = function(XMLHttpRequest) {
     - Allow custom error callback
 ==============================================================================*/
 ShopifyAPI.addItemFromForm = function(form, callback, errorCallback) {
+
+	console.log(form); 
+
   var params = {
     type: 'POST',
     url: '/cart/add.js',
@@ -195,7 +198,6 @@ var ajaxCart = (function(module, $) {
   ==============================================================================*/
   init = function(options) {
 
-  	console.log(options); 
 
     // Default settings
     settings = {
@@ -269,7 +271,10 @@ var ajaxCart = (function(module, $) {
 
   formOverride = function() {
     $formContainer.on('submit', function(evt) {
-    	
+    		
+    		console.log(evt); 
+
+    		
         evt.preventDefault();
 
         // Add class to be styled if desired

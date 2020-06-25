@@ -197,9 +197,14 @@ theme.Product = (function() {
           var optionValue = $(this).val();
           $(this)
             .closest('form')
-            .find('[data-single-option-selector]')
+            .find(selectors.singleOptionSelector)
             .val(optionValue)
             .trigger('change');
+
+            console.log($(this)
+            .closest('form')
+            .find(selectors.singleOptionSelector).val());
+
             that.checkIfVariantSelected(selectors.optionSelector);
 
         });
