@@ -15,6 +15,7 @@ window.theme = window.theme || {};
 // =require sections/product.js
 // =require sections/ajaxCart.js
 // =require sections/header.js
+// =require sections/about-highnies.js
 
 
 /*================ Templates ================*/
@@ -27,6 +28,8 @@ $(document).ready(function() {
   var sections = new slate.Sections();
   sections.register('product', theme.Product);
   sections.register('header', theme.Header);
+  sections.register('aboutHighnies', theme.AboutHighnies);
+
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));

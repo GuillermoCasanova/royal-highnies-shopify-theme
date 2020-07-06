@@ -8,6 +8,9 @@
 .about-us-narrative {
 	padding-top: rem-calc(72px);
 	margin-bottom: rem-calc($level7);
+	position: relative;
+	width: 100%;
+	height: 100%; 
 
 	@include media-query($medium-up) {
 		padding-top: 8rem;
@@ -16,6 +19,59 @@
 
 	@include media-query($large-up) {
 		padding-top: 10rem;
+		margin-bottom: 0; 
+	}
+
+	.about-us-narrative__string {
+		display: none; 
+
+		@include media-query($large-up) {
+	    position: relative;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    z-index: -1;
+	    margin-top: 35rem; 
+
+	    svg {
+		    margin-right: auto;
+		    margin-left: auto;
+		    left: 0;
+		    right: 0;
+		    position: relative;
+		    z-index: 1;
+
+	    	path {
+	    		stroke-linecap: round; 
+	    	}
+	    }
+
+	    .follow-path {
+	    	z-index: 0; 
+	    	position: absolute; 
+	    	top: 0; 
+	    	bottom: 0; 
+	    	width: 100%; 
+	    	height: 100%; 
+	      left: 0;
+    		height: 99.8%;
+    		right: 0;
+	    }
+		}
+	}
+
+	.about-us-narrative__content {
+		@include media-query($large-up) {
+			position: absolute; 
+			z-index: 1; 
+			width: 100%; 
+			height: 88%; 
+			top: 0; 
+	    margin-top: 15rem; 
+	 		display: flex;
+    	flex-direction: column;
+    	justify-content: space-between;
+	  }
 	}
 }
 
@@ -27,6 +83,11 @@
     #Narrative Section
 \*------------------------------------*/
 
+
+.narrative-closing-image {
+	margin-right: auto; 
+	margin-left: auto; 
+}
 
 .narrative-section {
 	max-height: rem-calc(800px); 
@@ -47,11 +108,12 @@
 	}
 	
 	@include media-query($large-up) {
-		max-height: 38rem; 
 		max-width: rem-calc(1280px);
+		height: auto;
+		max-height: 100vh;  
 		margin-right: auto; 
 		margin-left: auto; 
-		margin-bottom: rem-calc($level7); 
+		margin-bottom: 0; 
 	}
 	
 	.narrative-section__inner {
@@ -299,10 +361,6 @@
 	.about-highnies-cta-section__inner {
 		display: flex; 
 		flex-direction: column; 
-
-		@include media-query($medium-up) {
-			flex-direction: column-reverse; 
-		}
 	}
 
 
@@ -329,7 +387,7 @@
 
 			@include media-query($large-up) {
 				min-width: 30vw;
-				padding-bottom: 50%; 
+				padding-bottom: 42%;
 			}
 			
 
