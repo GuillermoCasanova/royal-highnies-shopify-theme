@@ -85,12 +85,12 @@ theme.Product = (function() {
     this.initOptionSelector(); 
     this.initSizeCharts(selectors.sizeCharts, selectors.sizeChartTrigger); 
 
-    if(window.innerWidth < 768) {
+    // if(window.innerWidth < 768) {
       this.initImageSlideshow(selectors.productImageSlideshow);
-    } else {
-      this.destroyImageSlideshow(); 
-      this.initScrollSlideshow(); 
-    }
+    // } else {
+    //   this.destroyImageSlideshow(); 
+    //   this.initScrollSlideshow(); 
+    // }
   }
 
   Product.prototype = $.extend({}, Product.prototype, {
