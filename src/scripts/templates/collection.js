@@ -84,20 +84,12 @@ theme.collection = (function() {
 
               var optionValue = $(this).val();
               
-              console.log(optionValue); 
-
               $(this)
                 .closest('form')
                 .find(selectors.singleOptionSelector)
                 .val(optionValue)
                 .attr('value', optionValue)
                 .trigger('change');
-
-
-                console.log($(this)
-                    .closest('form')
-                    .find(selectors.singleOptionSelector)
-                    .val());
 
                 that.checkIfVariantSelected($thumbnail.find(selectors.optionSelector), $thumbnail);
 

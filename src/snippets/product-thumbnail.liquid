@@ -1,6 +1,14 @@
 
 
 <div class="product-thumbnail" data-thumbnail>
+
+    {% unless product == empty %}
+      <script type="application/json" data-product-json>
+      {{ product | json }}
+      </script>
+    {% endunless %}
+
+
   {% if product.featured_image != blank %}
 
   <div class="product-thumbnail__inner">
