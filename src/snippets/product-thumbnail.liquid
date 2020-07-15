@@ -20,7 +20,7 @@
           <picture>
             <source srcset="{{product.featured_image.src | img_url: '800x'}}" media="(min-width: 960p)">
             <source srcset="{{product.featured_image.src | img_url: '700x'}}" media="(min-width: 640px)">
-              <img src="{{product.featured_image.src | img_url: '480x480'}}" alt="{{product.featured_image.alt}}">
+              <img src="{{product.featured_image.src | img_url: '430x'}}" alt="{{product.featured_image.alt}}">
           </picture>
         </div>
     
@@ -29,7 +29,7 @@
             <picture>
               <source srcset="{{product.images[2].src | img_url: '800x'}}" media="(min-width: 960p)">
               <source srcset="{{product.images[2].src | img_url: '700x'}}" media="(min-width: 640px)">
-                <img src="{{product.images[2].src | img_url: '480'}}" alt="{{product.featured_image.alt}}">
+                <img src="{{product.images[2].src | img_url: '430x'}}" alt="{{product.featured_image.alt}}">
             </picture>
           </div>
         {% else %}
@@ -37,7 +37,7 @@
             <picture>
               <source srcset="{{product.featured_image.src | img_url: '800x'}}" media="(min-width: 960p)">
               <source srcset="{{product.featured_image.src | img_url: '700x'}}" media="(min-width: 640px)">
-                <img src="{{product.featured_image.src | img_url: '480x480'}}" alt="{{product.featured_image.alt}}">
+                <img src="{{product.featured_image.src | img_url: '430x'}}" alt="{{product.featured_image.alt}}">
             </picture>
           </div>
         {%endif%}

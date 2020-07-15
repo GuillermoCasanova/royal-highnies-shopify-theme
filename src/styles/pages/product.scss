@@ -341,8 +341,9 @@
 			text-align: center; 
 			margin-right: rem-calc($level2); 
 			margin-bottom: rem-calc($level2); 
-			transition: all .2s ease-in-out;
+			transition: all .4s $primary-easing;
 			transform: scale(1);
+			color: $quaternary-color;
 
 			@include  media-query($medium-up) {
 				height: rem-calc(44px); 
@@ -354,6 +355,16 @@
 				height: rem-calc(40px); 
 				width: rem-calc(52px); 
 			}
+
+		 	&:hover, 
+		 	&:focus {
+				box-shadow: 0 2px 18px rgba(0, 0, 0, .1); 
+				transform: scale(1.05);
+
+		 		label {
+					color: $primary-color; 
+		 		}
+		 	}
 
 			&.is-sold-out {
 				opacity: .3;
@@ -368,16 +379,6 @@
 				text-decoration: line-through;
 				}
 			}
-			
-		 	&:hover, 
-		 	&:focus {
-				box-shadow: 0 2px 18px rgba(0, 0, 0, .1); 
-				transform: scale(1.05);
-
-		 		label {
-					color: $primary-color; 
-		 		}
-		 	}
 
 			input {
 				background-color: transparent;
@@ -406,7 +407,8 @@
 				display: flex; 
 				align-items: center; 
 				justify-content: center;
-				color: $primary-color; 
+				color: $quaternary-color; 
+				transition: all .4s $primary-easing;
 			}
 		}
 	}

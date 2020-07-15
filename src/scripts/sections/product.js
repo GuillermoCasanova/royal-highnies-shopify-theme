@@ -85,12 +85,7 @@ theme.Product = (function() {
     this.initOptionSelector(); 
     this.initSizeCharts(selectors.sizeCharts, selectors.sizeChartTrigger); 
 
-    // if(window.innerWidth < 768) {
-      this.initImageSlideshow(selectors.productImageSlideshow);
-    // } else {
-    //   this.destroyImageSlideshow(); 
-    //   this.initScrollSlideshow(); 
-    // }
+    this.initImageSlideshow(selectors.productImageSlideshow);
   }
 
   Product.prototype = $.extend({}, Product.prototype, {

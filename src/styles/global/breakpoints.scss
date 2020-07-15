@@ -72,3 +72,25 @@ $flexboxgrid-max-width: 73rem !default;
     @warn 'Breakpoint "#{$media-query}" does not exist';
   }
 }
+
+
+body {
+&:before {
+    content: 'small';
+    position: fixed; 
+    left: -99999px;
+    opacity: 0; 
+  }
+
+  @include media-query($medium-up) {
+  &:before {
+      content: 'medium-up';
+    }
+  }
+
+  @include media-query($large-up) {
+  &:before {
+      content: 'large-up';
+    }
+  }
+}

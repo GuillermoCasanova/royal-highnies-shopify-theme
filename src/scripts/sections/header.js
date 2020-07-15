@@ -35,8 +35,6 @@ theme.Header = (function() {
   var openSection = false; 
   
 
-
-
   var Header = function(container) {
 
     var that = this; 
@@ -210,7 +208,6 @@ theme.Header = (function() {
     //
     this.desktopNavInit = function() {
 
-
       $(selectors.cartToggle).on('click', function(event) {
         that.toggleCart(); 
       }); 
@@ -280,12 +277,45 @@ theme.Header = (function() {
 
 
     this.globalNavPropInit(); 
+ 
+    var timerId = null;
 
-    if(window.innerWidth > 769) {
-      that.desktopNavInit();
-    } else {
-      that.mobileNavInit(); 
+    var  throttle  =  function (func, delay) {
+      // If setTimeout is already scheduled, no need to do anything
+      if (timerId) {
+        return
+      }
+
+      // Schedule a setTimeout after delay seconds
+      timerId  =  setTimeout(function () {
+        func()
+        
+        // Once setTimeout function execution is finished, timerId = undefined so that in <br>
+        // the next scroll event function execution can be scheduled by the setTimeout
+        timerId  =  undefined;
+      }, delay)
     }
+
+    this.initNav = function() {
+
+      var currentBreakpoint = window.getComputedStyle(
+          document.querySelector('body'), ':before'
+      ).getPropertyValue('content').replace(/"/g, "");
+
+      if(currentBreakpoint == 'medium-up' || currentBreakpoint == 'large-up') {
+        that.desktopNavInit();
+      } else {
+        that.mobileNavInit(); 
+      } 
+    }
+
+    this.initNav(); 
+
+     $(window).on('resize', function() {
+        throttle(function() {
+          that.initNav(); 
+        }, 1000)
+     });
   };
 
 

@@ -56,36 +56,6 @@
 
 
 
-/*------------------------------------*\
-    #Store List
-\*------------------------------------*/
-
-
-.store-list {
-	
-	.store-list__header {
-		.store-list__header__headline {
-			text-align: center; 
-			margin-bottom: rem-calc($level7);
-			@include h2();
-
-			@include media-query($medium-up) {
-				@include h1(); 
-			}
-		}
-	}
-
-	.page-width {
-
-		@include media-query($medium-up) {
-			transform: translateX(7vw);
-		}
-	}
-}
-
-
-
-
 
 /*------------------------------------*\
     #Store Mapper
@@ -163,6 +133,44 @@ div#storemapper .storemapper-powered-by {
 
 
 
+
+
+
+/*------------------------------------*\
+    #Store List
+\*------------------------------------*/
+
+
+.store-list {
+	
+	.store-list__header {
+		.store-list__header__headline {
+			text-align: center; 
+			margin-bottom: rem-calc($level7);
+			@include h2();
+
+			@include media-query($medium-up) {
+				@include h1(); 
+			}
+		}
+	}
+
+	.page-width {
+
+		@include media-query($medium-up) {
+			transform: translateX(7vw);
+		}
+	}
+}
+
+
+
+
+/*------------------------------------*\
+    #Retailers
+\*------------------------------------*/
+
+
 .retailers {
   margin-bottom: rem-calc($level7);
 	
@@ -211,9 +219,9 @@ div#storemapper .storemapper-powered-by {
 			position: absolute; 
 			height: 2px;  
 			background-color: $primary-color; 
-			left: -2rem;
+			left: -1.5rem;
     	transform-origin: right;
-    	width: 1.5rem;
+    	width: 1.25rem;
     	top: 0;
     	bottom: 0;
     	margin: auto;
@@ -225,12 +233,9 @@ div#storemapper .storemapper-powered-by {
 		&:focus {
 			
 			&:after {
-				animation: animate-stroke-hover .6s ease-in-out forwards;
+				animation: animate-stroke-hover .6s $primary-easing forwards;
 			}
 		}
-	}
-
-	a {
 	}
 }
 
@@ -244,23 +249,85 @@ div#storemapper .storemapper-powered-by {
   font-weight: normal;
   color: #1f305a;
 }
+
 .retailers-content {
-	background-color: $primary-color; 
-  color: $tertiary-color; 
+  color: $primary-color; 
   padding: rem-calc($level4); 
-
 	min-height: 50vh; 
+	position: relative; 
+  flex-direction: column;
+  display: none; 
+  padding-bottom: rem-calc($level7 + $level5); 
 
-   p {
-   	color: $secondary-color; 
-   	@include h3(); 
-   }
+	@include media-query($medium-up) {
+	  flex-wrap: wrap; 
+	  flex-direction: row;
+		align-content: flex-start; 	
+	}
+	
+
+	&.is-visible {
+		display: flex; 
+	}
+
+	&.is-hidden {
+		display: none; 
+	}
+
+	&:before {
+		background-color: #F6F6F6;
+		position: absolute; 
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+		content: " ";
+		z-index: -1; 
+		height: 102%;
+		bottom: 0;  
+		top: 0; 
+	}
+	
+	.retailers-content__country {
+		width: 100%; 
+		flex-grow: 1; 
+		text-align: center; 
+		flex: none;
+		font-family: $secondary-font-family; 
+		margin-bottom: rem-calc($level6); 
+
+		h3 {
+			@include h3(); 
+	
+			@include media-query($medium-up) {
+				@include h2(); 
+			}
+		}
+	}
+	
+	.retailers-content__store {
+		width: 100%;
+		
+		@include media-query($medium-up) {
+			width: 48%;
+			width: 40%;
+	    text-align: cente;
+	    position: relative;
+	    right: -17%;
+		} 
+
+		h3 {
+			margin-bottom: rem-calc($level2); 
+		}
+	}
+
+	p {	
+		color: $quaternary-color; 
+		@include h4(); 
+	}
 }
 
-
-.retailers-content.hidden {
-  display: none;
-}
 .retailers-content .one-whole {
   text-align: center;
   margin: 20px auto;

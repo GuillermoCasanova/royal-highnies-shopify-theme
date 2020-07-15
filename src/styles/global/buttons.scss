@@ -51,7 +51,7 @@
 @mixin button-primary {
  	background-color: $primary-color; 
    box-shadow: 0 0 20px 8px rgba(119, 119, 119, 0.12); 
-   transition: all .2s ease-in-out; 
+   transition: all .4s $primary-easing; 
 
    &:hover,
    &:focus {
@@ -71,7 +71,7 @@
  background-color: #fff; 
  color: $primary-color;
  box-shadow: 0 0 20px 8px rgba(119, 119, 119, 0.12); 
- transition: all .2s ease-in-out; 
+ transition: all .4s $primary-easing; 
 
  &:hover,
  &:focus {
@@ -84,7 +84,7 @@
  background-color: transparent; 
  color: #fff; 
  border: 1.5px solid #fff; 
- transition: all .2s ease-in-out; 
+ transition: all .4s $primary-easing; 
 
  &:hover,
  &:focus {
