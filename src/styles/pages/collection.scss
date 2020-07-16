@@ -181,7 +181,7 @@
 			background-color: transparent;
 			border: none;
 			height: rem-calc(32px); 
-			width: 15%;
+			min-width: 15%;
 			box-shadow: 0 0 12px rgba(0, 0, 0, .14); 
 			position: relative;
 			display: flex; 
@@ -193,6 +193,7 @@
 			transition: all .4s $primary-easing .1s;
 			transform: scale(1);
 			background-color: #fff; 
+	    flex: none; 
 
 			&.is-sold-out {
 				opacity: .3;
@@ -212,6 +213,7 @@
 		 	&:focus {
 				box-shadow: 0 2px 18px rgba(0, 0, 0, .1); 
 				transform: scale(1.05);
+				cursor: pointer; 
 
 		 		label {
 					color: $primary-color; 
@@ -224,6 +226,16 @@
 			  height: 100%;
     		width: 100%;
     		opacity: 0; 
+    		position: absolute; 
+ 				top: 0; 
+				left: 0; 
+				right: 0;
+				z-index: 1; 
+
+				&:hover, 
+				&:focus {
+				cursor: pointer; 
+				}
 			}
 
 			input:checked ~ label {
@@ -232,10 +244,10 @@
 			}
 
 			label {
-				position: absolute;
-				top: 0; 
-				left: 0; 
-				right: 0;
+		    padding-left: .25rem;
+		    padding-right: .25rem;
+				position: relative;
+				z-index: 0; 
 				margin: auto;
 				bottom: 0;
 				width: 100%;
@@ -246,6 +258,12 @@
 				align-items: center; 
 				justify-content: center; 
 				@include text-micro();
+				transition: all .4s $primary-easing;
+				
+				&:hover, 
+				&:focus {
+					cursor: pointer; 
+				}
 			}
 		}
 	}
