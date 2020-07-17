@@ -20,6 +20,7 @@ theme.AboutHighnies = (function() {
         if(this.scrollMagicCtrl) {
           this.scrollMagicCtrl.destroy(true);
           this.scene.destroy(true);
+          this.theYearsTween.destroy(true);
         }
 
         var that = this; 
@@ -34,24 +35,25 @@ theme.AboutHighnies = (function() {
         this.scrollMagicCtrl = new ScrollMagic.Controller(); 
 
 
-
         //
         // Creates looping clothing animation for "through the years" section
         //
-        this.theYearsTween = new TimelineMax({onComplete: function() {
-           this.restart()}})
-            .fromTo('[data-animation-wand]', .3, {rotation: -4}, {rotation: 0}, '+=0.2')
-            .to('[data-animation-wand]', .3, {rotation: -4})
-            .to('[data-animation-shirt]', .1, {opacity:  0}, '-=0.2')
-            .fromTo('[data-animation-shorts]', 1, {opacity: 0},  {opacity: 1}, '-=0.2')
-            .fromTo('[data-animation-wand]', .3, {rotation: -4}, {rotation: 0})
-            .to('[data-animation-wand]', .3, {rotation: -4})
-            .to('[data-animation-shorts]', .1, {opacity:  0}, '-=0.3')
-            .fromTo('[data-animation-pants]', 1, {opacity: 0},  {opacity: 1}, '-=0.2')
-            .fromTo('[data-animation-wand]', .3, {rotation: -4}, {rotation: 0})
-            .to('[data-animation-wand]', .3, {rotation: -4})
-            .to('[data-animation-pants]', .1, {opacity:  0}, '-=0.2')
-            .to('[data-animation-shirt]', .6,{opacity: 1}, '-=0.1');
+        setTimeout(function() {
+          that.theYearsTween = new TimelineMax({onComplete: function() {
+             this.restart()}})
+              .fromTo('[data-animation-wand]', .2, {rotation: -4,  ease: Power1.easeIn}, {rotation: 0,  ease: Power1.easeIn}, '+=0.2')
+              .to('[data-animation-wand]', .2, {rotation: -4, ease: Power1.easeIn})
+              .to('[data-animation-shirt]', .1, {opacity:  0}, '-=0.2')
+              .fromTo('[data-animation-shorts]', 1, {opacity: 0},  {opacity: 1}, '-=0.2')
+              .fromTo('[data-animation-wand]', .2, {rotation: -4}, {rotation: 0})
+              .to('[data-animation-wand]', .2, {rotation: -4, ease: Power1.easeIn})
+              .to('[data-animation-shorts]', .1, {opacity:  0}, '-=0.3')
+              .fromTo('[data-animation-pants]', 1, {opacity: 0},  {opacity: 1}, '-=0.2')
+              .fromTo('[data-animation-wand]', .2, {rotation: -4,  ease: Power1.easeIn}, {rotation: 0,  ease: Power1.easeIn})
+              .to('[data-animation-wand]', .2, {rotation: -4,  ease: Power1.easeIn})
+              .to('[data-animation-pants]', .1, {opacity:  0}, '-=0.2')
+              .to('[data-animation-shirt]', .6,{opacity: 1}, '-=0.1');
+        }, 200); 
 
 
         //

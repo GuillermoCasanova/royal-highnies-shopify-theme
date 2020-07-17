@@ -13,7 +13,7 @@
 	height: 100%; 
 
 	@include media-query($medium-up) {
-		padding-top: 8rem;
+		padding-top: 7rem;
 		margin-bottom: 0;
 	}
 
@@ -73,7 +73,7 @@
 			position: absolute; 
 			z-index: 1; 
 			width: 100%; 
-			height: 84%;
+			height: 86%;
 			padding-bottom: rem-calc($level7);  
 			top: 0; 
 	    margin-top: 15rem; 
@@ -83,7 +83,6 @@
 	  }
 
 		@include media-query($large-up) {
-			height: 88%; 
 			padding-bottom: 0; 
 		}
 	}
@@ -109,7 +108,7 @@
 	display: flex; 
 	align-items: center; 
 	flex-direction: column; 
-	overflow: hidden; 
+	overflow: visible; 
 	margin-bottom: rem-calc($level7 + $level7); 
 
 	// @include media-query($medium-up) {
@@ -143,163 +142,21 @@
     }
 	}
 
-	&.narrative-section--intro {
-
-		@include media-query($medium-up) {
-			max-height: 28rem;
-		}
-
-		@include media-query($large-up) {
-			max-height: 38rem;
-		}
-
-		.narrative-section__image {
-			padding-bottom: 70%; 
-
-	    @include media-query($medium-up) {
-			  padding-bottom: 100%; 
-	    }
-
-			img {
-		    width: 120%;
-		    height: 120%;
-		    top: -70px;
-
-		    @include media-query($medium-up) {
-					width: 120%;
-					height: 110%;
-					top: rem-calc(-72px);
-					right: -2rem;
-					left: auto;
-		    }
-
-		    @include media-query($large-up) {
-		    	right: 0; 
-		    	top: rem-calc(-36px);
-		    	left: 1.5rem; 
-		    }
-			}
-		}
-		
-
-		.narrative-section__copy {
-
-			@include media-query($large-up) {
-				max-width: 33rem; 
-			}
-
-			.narrative-section__body {
-			 p {
-				@include media-query($large-up) {
-					@include h4();
-				}
-			 }
-			}	
-		}
-	}
-
-	&.narrative-section--finest-cotton {
-		.narrative-section__image {
-			padding-bottom: 60%;
-
-			@include media-query($medium-up) {
-				padding-bottom: 90%;
-			}
-
-			@include media-query($large-up) {
-				padding-bottom: 100%;
-				right: 2rem; 
-			}
-
-			img {
-		    width: 100%;
-		    height: 100%;
-			}	
-		}
-	}
-
-	&.narrative-section--whole-family {
-		.narrative-section__image {
-			padding-bottom: 75%;
-
-			@include media-query($medium-up) {
-				padding-bottom: 100%;
-				width: 110%; 
-				max-width: 110%; 
-			}
-
-			@include media-query($medium-up) {
-				width: 110%; 
-			}
-
-			.pants,
-			.shirt,
-			.shorts {
-				width: 92%;
-		    height: 100%;
-				left: 0;
-				right: 0;
-				margin: auto;
-		   //  @include media-query($medium-up) {
-			  //   width: 132%;
-			  //   height: 110%;
-			  //   right: -5vw;
-		   //  }
-
-		   //  @include media-query($medium-up) {
-					// left: -2.5vw; 
-					// right: auto; 
-		   //  }
-			}	
-
-			.pants {
-
-			}
-
-			.wand {
-		    position: absolute;
-		    z-index: 3;
-		    width: 42%;
-		    left: 2rem;
-		    bottom: -90px;
-		    top: auto;
-		    // transform: rotate(-4deg);
-		    transform-origin: left;
-		  //  transition: all .4s ease-in-out;
-			}
-
-			.shorts {
-				width: 48%; 
-				transform: rotate(-10deg);
-			}
-		}
-	}
-
-
-	&.narrative-section--experience {
-		.narrative-section__image {
-			padding-bottom: 75%;
-
-			@include media-query($medium-up) {
-				padding-bottom: 90%;
-			}
-
-			@include media-query($large-up) {
-				padding-bottom: 95%; 
-				right: 2.5rem;
-			}
-		}
-	}
-
-
 	.narrative-section__image {
 		max-width: 100%;
 		margin-left: auto; 
 		margin-right: auto; 
 		width: 100%; 
-		margin-bottom: rem-calc($level3); 
+		margin-bottom: rem-calc($level7); 
 		position: relative; 
-		padding-bottom: 100%; 
+		margin-right: auto; 
+		margin-left: auto; 
+		left: 0; 
+		right: 0; 
+
+		@include media-query($large-up) {
+			margin-bottom: rem-calc($level7); 
+		}
 
 		img,
 		svg {
@@ -346,19 +203,20 @@
 	.narrative-section__copy {
 		padding-left: rem-calc($level4);
 		padding-right: rem-calc($level4);
-		max-width: rem-calc(400px);
+		max-width: 27rem;
 		margin-right: auto; 
 		margin-left: auto; 
+		margin-bottom: 2rem; 
 
 		@include media-query($medium-up) {
-			max-width: 100%; 
 			padding-left: rem-calc($level5);
 			padding-right: rem-calc($level5);
+			max-width: 24rem; 
 		}
 
 
 		@include media-query($large-up) {
-			max-width: 30rem; 
+			max-width: 32rem; 
 			padding-left: rem-calc($level6);
 			padding-right: rem-calc($level6);
 			margin-right: auto; 
@@ -367,9 +225,10 @@
 
 		.narrative-section__body {
 			font-family: $secondary-font-family; 
+			@include h4();
 
 		 p {
-			@include h6();
+			@include h4();
 
 			@include media-query($medium-up) {
 				@include h5();
@@ -381,6 +240,197 @@
 			}
 		 }
 		}		
+	}
+
+	&.narrative-section--intro {
+
+		@include media-query($medium-up) {
+			max-height: 28rem;
+		}
+
+		@include media-query($large-up) {
+			max-height: 38rem;
+		}
+
+		.narrative-section__image {
+			padding-bottom: 70%; 
+			transform: rotate(-20deg); 
+			margin-bottom: rem-calc($level7 + $level3); 
+			max-width: 22rem; 
+
+	    @include media-query($medium-up) {
+			  padding: 0;
+    		height: 23rem;
+	    }
+
+	    @include media-query($large-up) {
+		  	height: auto; 
+		    padding: 50%;
+		    max-width: 100%;
+		    right: -3rem;
+		    left: auto;
+	    }
+
+			img {
+		    width: 120%;
+		    height: 120%;
+		    top: -70px;
+
+		    @include media-query($medium-up) {
+					width: 120%;
+					height: 110%;
+					top: rem-calc(-72px);
+					right: -2rem;
+					left: auto;
+		    }
+
+		    @include media-query($large-up) {
+		    	right: 0; 
+		    	top: rem-calc(-36px);
+		    	left: 1.5rem; 
+		    }
+			}
+		}
+		
+
+		.narrative-section__copy {
+
+			.narrative-section__body {
+			 p {
+				@include media-query($large-up) {
+					@include h4();
+				}
+			 }
+			}	
+		}
+	}
+
+	&.narrative-section--finest-cotton {
+		.narrative-section__image {
+			padding-bottom: 67%;
+			transform: rotate(10deg);
+			max-width: 28rem; 
+
+			@include media-query($medium-up) {
+				padding-bottom: 0;
+				height: 22rem;
+				right: -2rem;
+				left: auto; 
+			}
+
+			@include media-query($large-up) {
+				padding-bottom: 95%;
+				right: 2rem; 
+			}
+
+			img {
+		    width: 100%;
+		    height: 100%;
+			}	
+		}
+	}
+
+	&.narrative-section--whole-family {
+		.narrative-section__image {
+			padding-bottom: 75%;
+
+			@include media-query($medium-up) {
+		    padding: 0;
+		    height: 22rem;
+				width: 110%; 
+				max-width: 110%; 
+				left: -2rem;
+				right: auto; 
+			}
+
+			@include media-query($medium-up) {
+				width: 110%; 
+				height: auto;
+    		padding-bottom: 90%;
+    		left: 0; 
+    		right: 0; 
+			}
+
+			.pants,
+			.shirt,
+			.shorts {
+				width: 92%;
+		    height: 100%;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}	
+
+			.pants {
+			 	max-width: 13rem; 
+
+				@include media-query($medium-up) {
+			    max-width: 100%;
+			    width: 74%;
+				}
+			}
+
+			.shirt {
+				max-width: 26rem; 
+
+				@include media-query($medium-up) {
+			    max-width: 100%;
+			    width: 74%;
+				}
+			}
+
+			.wand {
+		    position: absolute;
+		    z-index: 3;
+		    width: 51%;
+		    left: -2vw;
+		    bottom: -4.5rem;
+		    top: auto;
+		    transform-origin: left;
+		    max-width: 16rem; 
+
+		    @include media-query($medium-up) {
+					left: 1rem;
+					bottom: -5rem;
+		    }
+
+		    @include media-query($large-up) {
+			    left: -2.5rem;
+			    bottom: -5rem;
+			    max-width: 22rem;
+			    width: 51%;
+		    }
+			}
+
+			.shorts {
+				width: 48%; 
+				transform: rotate(-10deg);
+				max-width: 16rem; 
+
+				@include media-query($medium-up) {
+			    max-width: 100%;
+			    width: 44%;
+				}
+			}
+		}
+	}
+
+
+	&.narrative-section--experience {
+		.narrative-section__image {
+			padding-bottom: 84%;
+			max-width: 25rem; 
+
+			@include media-query($medium-up) {
+				height: 21rem;
+    		padding: 0;
+			}
+
+			@include media-query($large-up) {
+				padding-bottom: 95%; 
+				right: 2.5rem;
+			}
+		}
 	}
 }
 
