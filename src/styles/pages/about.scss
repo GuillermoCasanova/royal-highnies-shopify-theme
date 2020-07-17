@@ -220,7 +220,7 @@
 
 	&.narrative-section--whole-family {
 		.narrative-section__image {
-			padding-bottom: 70%;
+			padding-bottom: 75%;
 
 			@include media-query($medium-up) {
 				padding-bottom: 100%;
@@ -232,29 +232,53 @@
 				width: 110%; 
 			}
 
-			img {
+			.pants,
+			.shirt,
+			.shorts {
 				width: 92%;
 		    height: 100%;
-		    left: -5vw;
+				left: 0;
+				right: 0;
+				margin: auto;
+		   //  @include media-query($medium-up) {
+			  //   width: 132%;
+			  //   height: 110%;
+			  //   right: -5vw;
+		   //  }
 
-		    @include media-query($medium-up) {
-			    width: 132%;
-			    height: 110%;
-			    right: -5vw;
-		    }
-
-		    @include media-query($medium-up) {
-					left: -2.5vw; 
-					right: auto; 
-		    }
+		   //  @include media-query($medium-up) {
+					// left: -2.5vw; 
+					// right: auto; 
+		   //  }
 			}	
+
+			.pants {
+
+			}
+
+			.wand {
+		    position: absolute;
+		    z-index: 3;
+		    width: 42%;
+		    left: 2rem;
+		    bottom: -90px;
+		    top: auto;
+		    // transform: rotate(-4deg);
+		    transform-origin: left;
+		  //  transition: all .4s ease-in-out;
+			}
+
+			.shorts {
+				width: 48%; 
+				transform: rotate(-10deg);
+			}
 		}
 	}
 
 
 	&.narrative-section--experience {
 		.narrative-section__image {
-			padding-bottom: 70%;
+			padding-bottom: 75%;
 
 			@include media-query($medium-up) {
 				padding-bottom: 90%;
