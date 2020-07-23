@@ -81,6 +81,22 @@
 		    height: 100%;
 			}
 		}
+		
+		.swiper-button-prev, .swiper-button-next {
+			color: $primary-color;
+		}
+
+		.swiper-button-next {
+			right: 1.5rem; 
+		}
+
+		.swiper-button-prev {
+			left: 1.5rem; 
+		}
+
+		.swiper-pagination-bullet-active {
+			background-color: $primary-color; 
+		}
 	}
 
 	.product__information {

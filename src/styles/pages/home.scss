@@ -176,6 +176,14 @@
 	.slick-dots li button:before {
 		font-size: 2rem;
 	}
+
+	.swiper-button-prev, .swiper-button-next {
+		color: $primary-color;
+	}
+
+	.swiper-pagination-bullet-active {
+		background-color: $primary-color; 
+	}
 }
 
 
