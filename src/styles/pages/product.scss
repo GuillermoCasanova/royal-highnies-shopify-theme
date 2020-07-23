@@ -46,6 +46,7 @@
 		}
 		
 		@include media-query($large-up) {
+			min-height: 44rem; 
 			width: 45%; 
 			padding-bottom: 60%; 
 			margin-top: rem-calc($level7 + $level3); 
@@ -418,6 +419,17 @@
 			}
 		}
 	}
+	
+
+	.product__model-sizing {
+		color: $quaternary-color;
+		text-transform: none; 
+		@include text-micro();
+
+		p {
+			margin-bottom: rem-calc($level2); 
+		}
+	}
 
 	// .product__variants {
 	// 	width: 100%; 
@@ -683,14 +695,10 @@
 
 		@include media-query($medium-up) {
 			width: 100%; 
-			flex-direction: row-reverse; 
+			flex-direction: row; 
 			display: flex; 
 			flex-wrap: wrap;
 			justify-content: flex-end;
-		}
-
-		@include media-query($large-up) {
-			flex-direction: row-reverse; 
 		}
 
 		.size-guide-table {

@@ -132,6 +132,11 @@
                                     </label>
                                 </div>
                               {%endfor%}
+
+                              {%if option.name == 'Size'%}
+                                 <div class="product__model-sizing">{{ product.metafields['model-details']['model-sizing'] }}</div>
+                              {%endif%}
+
                             </div>
                           </div>
                         {% endfor %}

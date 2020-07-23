@@ -1,0 +1,146 @@
+
+
+<section class="instagram-posts-section">
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="instagram-posts-section__inner">
+				<h2 class="subline instagram-posts-section__headline">
+					{{section.settings.headline}}
+
+					<span class="instagram-posts-section__hashtag">
+						{{section.settings.hashtag}}
+					</span>
+				</h2>
+
+				<div class="instagram-posts-section__slideshow-container  swiper-container" data-instagram-post-slideshow>
+					<div class="swiper-wrapper">
+						{%for block in section.blocks%}
+						<a href="{{ block.settings.product-link }}" title="Shop {{block.settings.product-name}}" class="instagram-posts-section__image  swiper-slide" data-instagram-post>
+							<div class="instagram-posts-section__image__image-container">
+								<picture>
+									<source srcset="{{block.settings.image | img_url: '900x'}}" media="(min-width: 960px)">
+									<source srcset="{{block.settings.image | img_url: '700x'}}" media="(min-width: 700px)">
+									<img src="{{block.settings.image | img_url: '400x'}}" alt="{{block.settings.image.alt}}">
+								</picture>
+							</div>
+							<div class="instagram-posts-section__image__information">
+								<span class="instagram-posts-section__image__information__username">@{{block.settings.username}}</span>
+								<span class="instagram-posts-section__image__information__product-name">Shop {{block.settings.product-name}}</span>
+							</div>
+						</a>
+						{%endfor%}
+					</div>
+					 <div class="swiper-scrollbar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Instagram Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Headline",
+        "default": "Follow us on instagram and show is your"
+      },
+       {
+        "type": "text",
+        "id": "hashtag",
+        "label": "The hashtag for the brand."
+      }
+    ],
+    "blocks": [
+  		{
+  			"type": "instagram-fan-post",
+  			"name": "Instagram Fan Post",
+  			"settings": [
+  					{
+  						"id": "username",
+  						"type": "text",
+  						"label": "The fan's username on instagram."
+  					},
+  					{
+  						"id": "image", 
+  						"type": "image_picker",
+  						"label": "The photo from instagram."
+  					},
+						{
+							"id": "product-name", 
+							"type": "text", 
+							"label": "Product Name"
+						},
+						{
+							"id": "product-link", 
+							"type": "url", 
+							"label": "Product Url"
+						}
+  			]
+  		}
+    ],
+    "presets": [
+      {
+        "name": "Instagram Section",
+        "category": "Content Section"
+      }
+    ]
+  }
+
+{% endschema %}
+
+
+{%javascript%}
+//<script>
+	$(document).ready(function() {
+
+		var selectors = {
+			slideshow: '[data-instagram-post-slideshow]',
+			productImage: '[data-instagram-post]'
+		}
+
+	  var mySwiper = new Swiper (selectors.slideshow, {
+	    direction: 'horizontal',
+	    effect: 'slide',
+      spaceBetween: 36,
+      freeMode: true,
+      loop: false,
+      slidesPerView: 2, 
+      autoplay: false,
+      slidesOffsetAfter: 150,
+      slidesOffsetBefore: 50,
+      grabCursor: true, 
+      scrollbar: {
+      	el: '.swiper-scrollbar',
+      	draggable: true
+      },
+      breakpoints: {
+      	768: {
+      		slidesPerView: 3,
+      		spaceBetween: 30
+      	},
+      	1000: {
+      		spaceBetween: 40,
+      		slidesPerView: 3
+      	}
+      }
+	  });
+
+
+		// $(selectors.productImage).hover(function() {
+		//    $(selectors.productImage).not(this).addClass('is-subdued');
+		// },
+		// function() {
+		//    $(selectors.productImage).not(this).removeClass('is-subdued');
+		// });
+
+	}); 
+//</script>
+{%endjavascript%}
+
+
+
