@@ -19,9 +19,9 @@
 						<a href="{{ block.settings.product-link }}" title="Shop {{block.settings.product-name}}" class="instagram-posts-section__image  swiper-slide" data-instagram-post>
 							<div class="instagram-posts-section__image__image-container">
 								<picture>
-									<source srcset="{{block.settings.image | img_url: '900x'}}" media="(min-width: 960px)">
-									<source srcset="{{block.settings.image | img_url: '700x'}}" media="(min-width: 700px)">
-									<img src="{{block.settings.image | img_url: '400x'}}" alt="{{block.settings.image.alt}}">
+									<source data-srcset="{{block.settings.image | img_url: '900x'}}" media="--large">
+									<source data-srcset="{{block.settings.image | img_url: '700x'}}" media="--medium">
+									<img data-src="{{block.settings.image | img_url: '400x'}}" alt="{{block.settings.image.alt}}" class="lazyload">
 								</picture>
 							</div>
 							<div class="instagram-posts-section__image__information">

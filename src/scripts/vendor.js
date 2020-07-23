@@ -29,15 +29,22 @@
 
 
 /*!
+ * lazysizes.min.js
+ */
+/*!*/
+// =require vendor/lazysizes.min.js
+
+
+/*!
  * ScrollMagic.js
  */
 // =require vendor/ScrollMagic.js
+
 
 /*!
  * animation.gsap.min.js
  */
 // =require vendor/animation.gsap.min.js
-
 
 
 /*!

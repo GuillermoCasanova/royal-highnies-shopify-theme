@@ -25,11 +25,15 @@ window.theme = window.theme || {};
 // =require templates/retailers.js
 
 
+
+
+
 $(document).ready(function() {
   var sections = new slate.Sections();
   sections.register('product', theme.Product);
   sections.register('header', theme.Header);
   sections.register('aboutHighnies', theme.AboutHighnies);
+
 
 
   // Common a11y fixes

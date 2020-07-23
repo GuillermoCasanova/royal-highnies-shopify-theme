@@ -19,3 +19,19 @@
 
 
 $primary-easing:  cubic-bezier(0.25, 1, 0.5, 1);
+
+
+
+/*------------------------------------*\
+    #Lazysizes
+\*------------------------------------*/
+
+.lazyloading, 
+.lazyload {
+	opacity: 0; 
+	transition: all .6s $primary-easing; 
+}
+
+.lazyloaded {
+	opacity: 1; 
+}

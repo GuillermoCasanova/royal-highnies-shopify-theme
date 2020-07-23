@@ -18,26 +18,26 @@
     
         <div class="product-thumbnail__image__primary">
           <picture>
-            <source srcset="{{product.featured_image.src | img_url: '800x'}}" media="(min-width: 960p)">
-            <source srcset="{{product.featured_image.src | img_url: '700x'}}" media="(min-width: 640px)">
-              <img src="{{product.featured_image.src | img_url: '430x'}}" alt="{{product.featured_image.alt}}">
+            <source data-srcset="{{product.featured_image.src | img_url: '800x'}}" media="--large">
+            <source data-srcset="{{product.featured_image.src | img_url: '700x'}}" media="--medium">
+              <img data-src="{{product.featured_image.src | img_url: '430x'}}" alt="{{product.featured_image.alt}}" class="lazyload">
           </picture>
         </div>
     
         {% if product.images[2].src != blank %}
           <div class="product-thumbnail__image__secondary">
             <picture>
-              <source srcset="{{product.images[2].src | img_url: '800x'}}" media="(min-width: 960p)">
-              <source srcset="{{product.images[2].src | img_url: '700x'}}" media="(min-width: 640px)">
-                <img src="{{product.images[2].src | img_url: '430x'}}" alt="{{product.featured_image.alt}}">
+              <source data-srcset="{{product.images[2].src | img_url: '800x'}}" media="--large">
+              <source data-srcset="{{product.images[2].src | img_url: '700x'}}" media="--medium">
+                <img data-src="{{product.images[2].src | img_url: '430x'}}" alt="{{product.featured_image.alt}}" class="lazyload">
             </picture>
           </div>
         {% else %}
           <div class="product-thumbnail__image__secondary">
             <picture>
-              <source srcset="{{product.featured_image.src | img_url: '800x'}}" media="(min-width: 960p)">
-              <source srcset="{{product.featured_image.src | img_url: '700x'}}" media="(min-width: 640px)">
-                <img src="{{product.featured_image.src | img_url: '430x'}}" alt="{{product.featured_image.alt}}">
+              <source data-srcset="{{product.featured_image.src | img_url: '800x'}}" media="--large">
+              <source data-srcset="{{product.featured_image.src | img_url: '700x'}}" media="--medium">
+                <img data-src="{{product.featured_image.src | img_url: '430x'}}" alt="{{product.featured_image.alt}}" class="lazyload">
             </picture>
           </div>
         {%endif%}

@@ -48,6 +48,18 @@
       },
       moneyFormat: {{ shop.money_format | json }}
     };
+
+
+    /*------------------------------------*\
+        #Lazy Sizes Config 
+    \*------------------------------------*/
+
+    window.lazySizesConfig = window.lazySizesConfig || {};
+    window.lazySizesConfig.customMedia = {
+        '--small': '(min-width: 0)',
+        '--medium': '(min-width: 768px)',
+        '--large': '(min-width: 1000px)',
+    };
   </script>
 
   {% if template.directory == 'customers' %}

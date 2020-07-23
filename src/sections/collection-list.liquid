@@ -19,9 +19,9 @@
                       <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}"class="featured-collections__collection__image" tabindex="-1" role="presentation">
                           {% if collection.image != blank %}
                           <picture>
-                              <source media="(min-width: 960px)" data-srcset="{{ collection | img_url: '900x' }}" >
-                              <source media="(min-width: 700px)" data-srcset="{{ collection | img_url: '600x' }}" >
-                              <img src=" {{ collection | img_url: '480x' }}" alt="{{collection.title}}">
+                              <source media="--large" data-srcset="{{ collection | img_url: '900x' }}" >
+                              <source media="--medium" data-srcset="{{ collection | img_url: '600x' }}" >
+                              <img data-src=" {{ collection | img_url: '480x' }}" alt="{{collection.title}}" class="lazyload">
                           </picture>
                            
                           {% elsif collection.products.first != blank %}
