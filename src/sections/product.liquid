@@ -208,6 +208,8 @@
   
   {%if  product.metafields['secondary-info']['Secondary-info__Headline'] %}
   <section class="product-secondary-info">
+
+    {%if product.metafields['secondary-details'].length > 0 %}
     <div class="row">
       <div class="col-sm-12 col-lg-6"> 
           <div class="product-secondary-info__body-copy">
@@ -262,6 +264,20 @@
         </ul>
       </div>
     </div>
+    {%else%}
+    <div class="row">
+      <div class="col-sm-12"> 
+          <div class="product-secondary-info__copy  product-secondary-info__copy--alt">
+            <h1 class="headline  product-secondary-info__headline">
+              {{ product.metafields['secondary-info']['Secondary-info__Headline'] }}
+            </h1>
+            <div class="product-secondary-info__description">
+              {{ product.metafields['secondary-info']['Secondary-info__Body'] }}
+            </div>
+          </div>
+      </div>
+    </div>
+    {%endif%}
   </section>
   {%endif%}
 
