@@ -21,6 +21,7 @@ theme.Product = (function() {
     productFeaturedImage: '[data-product-featured-image]',
     productJson: '[data-product-json]',
     productPrice: '[data-product-price]',
+    productOption: '[data-product-option]',
     productThumbs: '[data-product-single-thumbnail]',
     productImageSlideshow: '[data-product-images-slideshow]',
     productImages: '[data-product-images]',
@@ -164,23 +165,32 @@ theme.Product = (function() {
     checkIfVariantSelected: function(pSelectors) {
       var $optionSelectors = $(pSelectors);
       var isSelected = false; 
+      var optionsToSelect = $(selectors.productOption);
+      var optionToSelectText = '';
 
-        $optionSelectors.each(
-          function() {
+      if(optionsToSelect.length > 1)  {
+        optionToSelectText = 'Size'
+      } else {
+        optionToSelectText = optionsToSelect.data("product-option")
+      }
 
-            if($(this).prop('checked')) {
-              $(selectors.addToCart).removeClass('is-disabled'); 
-              $(selectors.addToCart).find(selectors.addToCartText).text('Add to Cart');
-              isSelected =  true 
-            }
+      
+      $optionSelectors.each(
+        function() {
+
+          if($(this).prop('checked')) {
+            $(selectors.addToCart).removeClass('is-disabled'); 
+            $(selectors.addToCart).find(selectors.addToCartText).text('Add to Cart');
+            isSelected =  true 
           }
-        );
-
-        if(!isSelected) {
-          $(selectors.addToCart).find(selectors.addToCartText).text('Please Choose Size');
         }
+      );
 
-        return isSelected
+      if(!isSelected) {
+        $(selectors.addToCart).find(selectors.addToCartText).text('Please Choose ' + optionToSelectText);
+      }
+
+      return isSelected
     },
     initOptionSelector: function() {
       var that = this; 

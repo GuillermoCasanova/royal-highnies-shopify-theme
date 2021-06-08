@@ -501,10 +501,10 @@
 				margin-right: auto;
 
 				@include media-query($medium-up) {
-					max-width: 100%; 
+					max-width: 23rem; 
 				} 
-
 			}
+
 			.product-secondary-info__description {
 				@include media-query($medium-up) {
 					max-width: 100%; 
