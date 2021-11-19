@@ -1,0 +1,159 @@
+
+
+/*------------------------------------*\
+    #Gift Card
+\*------------------------------------*/
+
+
+.giftcard {
+    background-color:  #fff;
+    padding-top: rem-calc($level7 + $level7 + $level5);
+    padding-bottom: rem-calc($level7  + $level7);
+
+    @include media-query($medium-up) {
+         background-color: $tertiary-color;
+    }
+}
+
+.giftcard__inner {
+    max-width: 42rem;
+    margin-left: auto; 
+    margin-right: auto; 
+    background-color: #fff;
+    width: 100%; 
+    padding-top: 1rem;
+
+    @include media-query($medium-up) {
+        padding: 2rem;
+        padding-bottom: 2.5rem;
+    }
+}
+
+.giftcard__header__image {
+    margin-bottom: rem-calc($level2);
+    max-width: 6rem; 
+    margin-right: auto; 
+    margin-left: auto; 
+}
+
+.giftcard__header__headline {
+    text-align: center;
+    margin-bottom: rem-calc($level7);
+
+    @include media-query($medium-up) {
+      h1 {
+        @include text-kilo(); 
+      }  
+    }
+}
+
+.giftcard__image-container {
+    max-width: 26rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.giftcard__image {
+    padding-bottom: 58%; 
+    position: relative;
+    width: 100%; 
+    border-radius: 10px;
+    border: 3px solid $primary-color; 
+    margin-bottom: rem-calc($level7);
+    color: $primary-color;
+    box-shadow: 2px 2px 20px #2025403b;
+
+    @include media-query($medium-up) {
+        margin-bottom: rem-calc($level7);
+    }
+}
+
+.giftcard__image__content {
+    position: absolute;
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    top: -1rem;
+}
+
+.giftcard__image__value {
+    @include h4(); 
+
+    @include media-query($medium-up) {
+        margin-bottom: rem-calc($level5);
+        @include h3(); 
+    }
+}
+
+.giftcard__image__code {
+    font-weight: bold;
+    @include h3(); 
+
+    @include media-query($medium-up) {
+        @include h2(); 
+    }
+}
+
+.giftcard__body {
+    text-align: center;
+    color: $quaternary-color;
+    margin-bottom: rem-calc($level5);
+    max-width: 16.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    @include h4(); 
+
+    @include media-query($medium-up) {
+        font-size: 1.35rem;
+        line-height: 1.2;
+        max-width: 18.5rem;
+        margin-bottom: rem-calc($level7 + $level1);
+    }
+}
+
+.giftcard__ctas {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: rem-calc($level7);
+    
+    @include media-query($medium-up) {
+        flex-direction: row;
+        max-width: 33rem;
+        margin-right: auto;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: space-between;
+    }
+}
+
+
+.giftcard__ctas__button {
+    width: 100%; 
+    margin-bottom: rem-calc($level3);
+
+    @include media-query($medium-up) {
+        max-width: 45%; 
+    }
+}
+
+.giftcard__extras {
+    text-align: center;
+}
+
+
+.giftcard-qr {
+    max-width: 6rem;
+    margin-right: auto; 
+    margin-left: auto; 
+    margin-bottom: rem-calc($level4);
+}
+
+.print-giftcard {
+    color: $primary-color; 
+    text-align: center;
+    display: inline-block;
+}

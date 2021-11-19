@@ -33,8 +33,12 @@
 </head>
 
 <body class="template-giftcard">
-  <main role="main" id="MainContent">
-    {{ content_for_layout }}
-  </main>
+
+  {% section 'header' %}
+    <main role="main" id="MainContent">
+      {{ content_for_layout }}
+    </main>
+  {% section 'footer' %}
+
 </body>
 </html>
